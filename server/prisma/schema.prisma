@@ -12,3 +12,34 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Score {
+  id   Int   @id @default(autoincrement())
+  addition_score  Int?
+  subtraction_score  Int?
+  multiplication_score  Int?
+  division_score  Int?
+  user User @relation(fields: [user_id], references: [id])
+  user_id Int @unique
+
+}
+
+model User {
+  id  Int  @id @default(autoincrement())
+  name String
+  birth_year Int
+  email String
+  username String @unique
+  password String
+  score Score?
+}
+
+// model Post {
+//   id        Int      @id @default(autoincrement())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   title     String   @db.VarChar(255)
+//   content   String?
+//   published Boolean  @default(false)
+//   authorId  Int
+// }
