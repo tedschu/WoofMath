@@ -21,7 +21,6 @@ model Score {
   division_score  Int?
   user User @relation(fields: [user_id], references: [id])
   user_id Int @unique
-
 }
 
 model User {
@@ -32,14 +31,37 @@ model User {
   username String @unique
   password String
   score Score?
+  badge Badge?
+  game_state Game_state?
+  user_stats User_stats?
 }
 
-// model Post {
-//   id        Int      @id @default(autoincrement())
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   title     String   @db.VarChar(255)
-//   content   String?
-//   published Boolean  @default(false)
-//   authorId  Int
-// }
+model Badge {
+  id Int @id @default(autoincrement())
+  dog Boolean? @default(false)
+  hippo Boolean? @default(false)
+  shield_dog Boolean? @default(false)
+  frog Boolean? @default(false)
+  dove Boolean? @default(false)
+  cat Boolean? @default(false)
+  fish Boolean? @default(false)
+  cow Boolean? @default(false)
+  user User @relation(fields: [user_id], references: [id])
+  user_id Int @unique
+}
+
+model Game_state {
+  id Int @id @default(autoincrement())
+  json_setting String
+  user User @relation(fields: [user_id], references: [id])
+  user_id Int @unique
+}
+
+model User_stats {
+  id Int @id @default(autoincrement())
+  total_logins Int
+  last_login DateTime
+  user User @relation(fields: [user_id], references: [id])
+  user_id Int @unique
+}
+
