@@ -1,6 +1,9 @@
 const { PrismaClient } = require("@prisma/client");
+const { default: test } = require("node:test");
 
 const prisma = new PrismaClient();
+
+let now = new Date().toISOString();
 
 async function main() {
   console.log("seeding the database...");
@@ -31,7 +34,24 @@ async function main() {
       user_id: testUser.id,
     },
   });
+
+  await prisma.user_stats.create({
+    data: {
+      total_logins: 7,
+      last_login: now,
+      user_id: testUser.id,
+    },
+  });
+
+  await prisma.game_state.create({
+    data: {
+      json_setting: "difficulty: 3",
+      user_id: testUser.id,
+    },
+  });
 }
+
+console.log(now);
 
 main()
   .then(async () => {
