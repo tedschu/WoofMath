@@ -4,6 +4,35 @@ const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
-// Routes
+// Gets all scores
+router.get("/", async (req, res) => {
+  try {
+    const score = await prisma.score.findMany({
+      include: {
+        user: true,
+      },
+    });
+    res.send(score);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+// updates a score
+router.put("/user/:user_id", async (req, res) => {
+  try {
+    const score = await prisma.score.update({
+      where: {
+        user_id: parseInt(req.params.user_id),
+      },
+      data: req.body,
+    });
+    res.send(score);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
 
 module.exports = router;

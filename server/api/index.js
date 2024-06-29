@@ -43,8 +43,8 @@ app.use("/auth", require("../auth/index")); // for register and login
 app.use(baseQuery + "users", require("./users"));
 app.use(baseQuery + "badges", require("./badges"));
 // app.use(baseQuery + "game_state", require("./game_state"));
-// app.use(baseQuery + "scores", require("./scores"));
-// app.use(baseQuery + "user_stats", require("./user_stats"));
+app.use(baseQuery + "scores", require("./scores"));
+app.use(baseQuery + "user_stats", require("./user_stats"));
 
 app.listen(port, () => {
   console.log(`WoofMath is running at port ${port}`);
