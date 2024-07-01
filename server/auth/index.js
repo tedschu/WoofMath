@@ -17,6 +17,8 @@ router.post("/register", async (req, res) => {
         email: req.body.email,
         username: req.body.username,
         password: hashPassword,
+        total_logins: 1,
+        last_login: new Date().toISOString(),
       },
     });
     res.send(newUser);

@@ -30,10 +30,11 @@ model User {
   email String
   username String @unique
   password String
+  total_logins Int
+  last_login DateTime
   score Score?
   badge Badge?
   game_state Game_state?
-  user_stats User_stats?
 }
 
 model Badge {
@@ -57,11 +58,5 @@ model Game_state {
   user_id Int @unique
 }
 
-model User_stats {
-  id Int @id @default(autoincrement())
-  total_logins Int
-  last_login DateTime
-  user User @relation(fields: [user_id], references: [id])
-  user_id Int @unique
-}
+
 

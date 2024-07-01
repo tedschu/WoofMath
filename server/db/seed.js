@@ -15,6 +15,8 @@ async function main() {
       email: "test@email.com",
       username: "testUser",
       password: "test",
+      total_logins: 7,
+      last_login: now,
     },
   });
 
@@ -35,14 +37,6 @@ async function main() {
     },
   });
 
-  await prisma.user_stats.create({
-    data: {
-      total_logins: 7,
-      last_login: now,
-      user_id: testUser.id,
-    },
-  });
-
   await prisma.game_state.create({
     data: {
       json_setting: "difficulty: 3",
@@ -58,6 +52,8 @@ async function main() {
       email: "test@email.com",
       username: "Jimmy",
       password: "test",
+      total_logins: 7,
+      last_login: now,
     },
   });
 
@@ -77,14 +73,6 @@ async function main() {
       hippo: true,
       shield_dog: true,
       dove: true,
-      user_id: secondUser.id,
-    },
-  });
-
-  await prisma.user_stats.create({
-    data: {
-      total_logins: 7,
-      last_login: now,
       user_id: secondUser.id,
     },
   });

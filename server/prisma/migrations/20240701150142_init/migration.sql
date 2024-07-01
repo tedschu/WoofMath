@@ -18,6 +18,8 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "total_logins" INTEGER NOT NULL,
+    "last_login" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -47,16 +49,6 @@ CREATE TABLE "Game_state" (
     CONSTRAINT "Game_state_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
-CREATE TABLE "User_stats" (
-    "id" SERIAL NOT NULL,
-    "total_logins" INTEGER NOT NULL,
-    "last_login" TIMESTAMP(3) NOT NULL,
-    "user_id" INTEGER NOT NULL,
-
-    CONSTRAINT "User_stats_pkey" PRIMARY KEY ("id")
-);
-
 -- CreateIndex
 CREATE UNIQUE INDEX "Score_user_id_key" ON "Score"("user_id");
 
@@ -69,9 +61,6 @@ CREATE UNIQUE INDEX "Badge_user_id_key" ON "Badge"("user_id");
 -- CreateIndex
 CREATE UNIQUE INDEX "Game_state_user_id_key" ON "Game_state"("user_id");
 
--- CreateIndex
-CREATE UNIQUE INDEX "User_stats_user_id_key" ON "User_stats"("user_id");
-
 -- AddForeignKey
 ALTER TABLE "Score" ADD CONSTRAINT "Score_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -80,6 +69,3 @@ ALTER TABLE "Badge" ADD CONSTRAINT "Badge_user_id_fkey" FOREIGN KEY ("user_id") 
 
 -- AddForeignKey
 ALTER TABLE "Game_state" ADD CONSTRAINT "Game_state_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "User_stats" ADD CONSTRAINT "User_stats_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
