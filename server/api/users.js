@@ -6,8 +6,6 @@ const saltRounds = 10;
 
 const prisma = new PrismaClient();
 
-let now = new Date().toISOString();
-
 // Gets all users
 // "Include" statement pulls in related data models / tables to the user
 router.get("/", async (req, res) => {

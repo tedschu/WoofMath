@@ -3,10 +3,11 @@ const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const jwt = require("jsonwebtoken");
 
 const prisma = new PrismaClient();
 
-// Creates a new user via registration
+// Creates a new user via registration, adds a token
 router.post("/register", async (req, res) => {
   try {
     const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -21,13 +22,79 @@ router.post("/register", async (req, res) => {
         last_login: new Date().toISOString(),
       },
     });
-    res.send(newUser);
+
+    const token = jwt.sign(
+      {
+        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 48,
+        data: { id: newUser.id },
+      },
+      process.env.JWT_SECRET
+    );
+
+    res.json({
+      token: token,
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        username: newUser.username,
+        email: newUser.email,
+        birth_year: newUser.birth_year,
+        total_logins: newUser.total_logins,
+        last_login: newUser.last_login,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    res.stat(500).json({ error: "Registration failed" });
+  }
+});
+
+// Logs in a user if user exists, adds token
+// Increments login_count and updates last_login (accessible in user GET, but can add updateUserStats to res.send if needed)
+router.post("/login", async (req, res) => {
+  try {
+    //gets user and pass from body
+    const username = req.body.username;
+    const password = req.body.password;
+
+    //checks if the user exists
+    const userMatch = await prisma.user.findUnique({
+      where: {
+        username: username,
+      },
+    });
+
+    if (!userMatch) {
+      res.status(401).send({ message: "Invalid login credentials" });
+    } else {
+      const passMatch = await bcrypt.compare(password, userMatch.password);
+      if (!passMatch) {
+        res.status(401).send({ message: "Invalid login credentials" });
+      } else {
+        const updateUserStats = await prisma.user.update({
+          where: { username: username },
+          data: {
+            total_logins: {
+              increment: 1,
+            },
+            last_login: new Date().toISOString(),
+          },
+        });
+
+        const token = jwt.sign(
+          {
+            exp: Math.floor(Date.now() / 1000) + 60 * 60 * 48,
+            data: { id: userMatch.id },
+          },
+          process.env.JWT_SECRET
+        );
+        res.send({ token: token });
+      }
+    }
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
   }
 });
-
-// TODO: login function
 
 module.exports = router;
