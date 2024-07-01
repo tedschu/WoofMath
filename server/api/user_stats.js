@@ -37,7 +37,25 @@ router.get("/:user_id", async (req, res) => {
   }
 });
 
-//TODO: INCREMENTS LOGIN COUNT BY 1
+// Increments total_login count by one (add to every login button fire)
+router.put("/:user_id", async (req, res) => {
+  try {
+    const updateLogin = await prisma.user_stats.update({
+      where: {
+        user_id: parseInt(req.params.user_id),
+      },
+      data: {
+        total_logins: {
+          increment: 1,
+        },
+      },
+    });
+    res.send(updateLogin);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
 
 //TODO: ADDS LAST LOGIN
 
