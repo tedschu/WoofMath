@@ -9,15 +9,21 @@ import Slider from "./components/Slider";
 import Game from "./pages/Game";
 import Me from "./pages/Me";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  <Nav />;
-
   return (
     <>
-      <div>Welcome to WoofMath.</div>
+      <Nav />
+
+      <Routes>
+        <Route index element={<Game />} />
+        <Route path="/me" element={<Me />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </>
   );
 }

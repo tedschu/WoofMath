@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Game() {
-  return <>Home / game page</>;
+function Login() {
+  return <>Login page</>;
 }
 
-export default Game;
+export default Login;

@@ -11,3 +11,47 @@
   box-sizing: border-box;
   font-family: Schoolbell;
 }
+
+#root {
+  padding-top: 85px;
+}
+
+/* NAV BAR STYLING */
+nav {
+  height: 70px;
+  width: 100%;
+  background: white;
+  display: grid;
+  grid-template-columns: [first] 25% [line2] 50% [line3] 25%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 3px rgb(220, 220, 220);
+}
+
+.navLogo {
+  font-size: 15px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.navLogo > a {
+  color: purple;
+}
+
+.navTitle {
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navUser {
+  font-size: 15px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 15px;
+}
