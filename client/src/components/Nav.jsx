@@ -15,7 +15,9 @@ function Nav() {
 
         <div className="navTitle">WoofMath</div>
 
-        <div className="navUser">Hello, Jasper!</div>
+        <Link to={"/me"} className="navUser">
+          <h3>Hello, Jasper!</h3>
+        </Link>
       </nav>
     </>
   );

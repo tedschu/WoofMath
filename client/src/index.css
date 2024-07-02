@@ -13,12 +13,12 @@
 }
 
 #root {
-  padding-top: 85px;
+  padding-top: 70px;
 }
 
 /* NAV BAR STYLING */
 nav {
-  height: 70px;
+  height: 65px;
   width: 100%;
   background: white;
   display: grid;
@@ -26,7 +26,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 3px 3px 3px rgb(220, 220, 220);
+  border-bottom: 1px solid rgb(232, 232, 232);
 }
 
 .navLogo {
@@ -35,10 +35,7 @@ nav {
   justify-content: start;
   align-items: center;
   padding-left: 15px;
-}
-
-.navLogo > a {
-  color: purple;
+  color: rgb(86, 64, 255);
 }
 
 .navTitle {
@@ -54,4 +51,63 @@ nav {
   justify-content: end;
   align-items: center;
   padding-right: 15px;
+}
+
+/* SCOREBAR STYLING */
+
+.scoreBarContainer {
+  background: rgb(237, 237, 237);
+  display: grid;
+  grid-template-columns: [first] 50% [line2] 50%;
+  height: 75px;
+  border-bottom: 1px solid rgb(232, 232, 232);
+  padding: 5px;
+}
+
+.scores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GAME SELECTION and SLIDER STYLING */
+.gameSelectContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(191, 238, 238);
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.gameSelectButtons {
+  display: flex;
+  width: 70%;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.gameSelectButtons > button {
+  border: none;
+  width: 100px;
+  height: 26px;
+}
+
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(217, 252, 252);
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.sliderBox {
+  font-family: Schoolbell;
 }
