@@ -21,6 +21,14 @@ function valuetext(value) {
 }
 
 export default function DiscreteSlider() {
+  const [sliderValue, setSliderValue] = useState(1);
+
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue);
+  };
+
+  //console.log(sliderValue);
+
   return (
     <div className="sliderContainer">
       <h3>How hard should the questions be?</h3>
@@ -28,6 +36,8 @@ export default function DiscreteSlider() {
       <Box sx={{ width: 300 }} className="sliderBox">
         <Slider
           aria-label="Custom marks"
+          value={sliderValue}
+          onChange={handleSliderChange}
           defaultValue={1}
           getAriaValueText={valuetext}
           valueLabelDisplay="auto"

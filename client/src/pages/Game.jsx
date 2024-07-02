@@ -16,10 +16,10 @@ function Game() {
       <div className="gameSelectContainer">
         <h3>What kind of math do you want to play?</h3>
         <div className="gameSelectButtons">
-          <button>Addition</button>
-          <button>Subtraction</button>
-          <button>Multiplication</button>
-          <button>Division</button>
+          <button>Addition (+)</button>
+          <button>Subtraction (-)</button>
+          <button>Multiplication (*)</button>
+          <button>Division (%)</button>
         </div>
       </div>
 

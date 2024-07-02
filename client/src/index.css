@@ -97,6 +97,7 @@ nav {
   border: none;
   width: 100px;
   height: 26px;
+  border-radius: 4px;
 }
 
 .sliderContainer {
@@ -110,4 +111,29 @@ nav {
 
 .sliderBox {
   font-family: Schoolbell;
+}
+
+/* GAME PLAY CONTAINER and BOX STYLING */
+.gamePlayContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(253, 234, 232);
+  padding: 10px;
+}
+
+.gamePlay {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  border-radius: 6px;
+}
+
+.questionContainer {
+  display: flex;
+  flex-direction: row;
+  background: rgb(223, 223, 223);
 }
