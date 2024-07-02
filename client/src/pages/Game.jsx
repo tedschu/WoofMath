@@ -8,15 +8,18 @@ import GamePlay from "../components/GamePlay";
 import GameSelector from "../components/GameSelector";
 
 function Game() {
+  const [sliderValue, setSliderValue] = useState(1);
+  const [gameSelector, setGameSelector] = useState("addition");
+
   return (
     <>
       <ScoreBar />
 
-      <GameSelector />
+      <GameSelector setGameSelector={setGameSelector} />
 
-      <Slider />
+      <Slider setSliderValue={setSliderValue} sliderValue={sliderValue} />
 
-      <GamePlay />
+      <GamePlay sliderValue={sliderValue} gameSelector={gameSelector} />
     </>
   );
 }

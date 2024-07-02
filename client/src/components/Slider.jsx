@@ -20,9 +20,7 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-export default function DiscreteSlider() {
-  const [sliderValue, setSliderValue] = useState(1);
-
+export default function DiscreteSlider({ setSliderValue, sliderValue }) {
   const handleSliderChange = (event, newValue) => {
     setSliderValue(newValue);
   };
