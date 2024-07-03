@@ -34,6 +34,7 @@ function GamePlay({ sliderValue, gameSelector }) {
     setSecondNumber(multiple);
   }
 
+  // Ensures getDivisionEquation is called AFTER state values update (ex. divNumberAnswer)
   useEffect(() => {
     if (gameSelector === "division") {
       getDivisionEquation(divNumberAnswer, divNumberMultiple);
