@@ -207,13 +207,10 @@ function GamePlay({ sliderValue, gameSelector }) {
 
           <div className="questionContainer">
             <div className="questionsBox">
-              {firstNumber}
-              {mathOperator}
-              {secondNumber}
+              {firstNumber} {mathOperator} {secondNumber}
               {sliderValue === 5 && gameSelector != "division" && (
                 <>
-                  {mathOperator}
-                  {thirdNumber}
+                  &nbsp; {mathOperator} {thirdNumber}
                 </>
               )}
             </div>
