@@ -9,14 +9,18 @@ export default function GameSelector({ setGameSelector }) {
   const [alignment, setAlignment] = React.useState("addition");
 
   const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
-    setGameSelector(newAlignment);
+    if (newAlignment != null) {
+      setAlignment(newAlignment);
+      setGameSelector(newAlignment);
+    }
   };
 
   const buttonStyle = {
     fontFamily: "Schoolbell",
     textTransform: "none",
   };
+
+  //console.log(alignment);
 
   return (
     <>
@@ -29,6 +33,7 @@ export default function GameSelector({ setGameSelector }) {
           exclusive
           onChange={handleChange}
           aria-label="Platform"
+          required
           sx={{
             "& .MuiToggleButton-root": buttonStyle,
           }}
