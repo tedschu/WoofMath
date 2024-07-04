@@ -135,7 +135,7 @@ nav {
 .questionContainer {
   display: flex;
   flex-direction: row;
-  background: rgb(223, 223, 223);
+  /* background: lightcyan; */
   padding: 5px;
   margin: 5px;
   font-size: 35px;
@@ -146,6 +146,7 @@ nav {
 .answerBox {
   padding-left: 10px;
   display: flex;
+  align-items: center;
 }
 
 .questionBox {

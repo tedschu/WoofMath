@@ -60,16 +60,34 @@ function GamePlay({ sliderValue, gameSelector }) {
               mathOperator={mathOperator}
             />
             <div className="answerBox">
-              <h3> = </h3>
+              <h4> = </h4>
               <Box
                 component="form"
                 sx={{
                   "& > :not(style)": { m: 1, width: "150px" },
+                  backgroundColor: "white",
                 }}
                 noValidate
                 autoComplete="off"
               >
-                <TextField id="filled-basic" label="Filled" variant="filled" />
+                <TextField
+                  id="outlined-basic"
+                  label="Your answer..."
+                  variant="outlined"
+                  sx={{
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "white",
+                      fontFamily: "Schoolbell",
+                      fontSize: "30px",
+                      borderColor: "purple",
+                    },
+                    "& .MuiInputLabel-root": {
+                      fontFamily: "Schoolbell",
+                      top: "10%",
+                    },
+                  }}
+                />
               </Box>
             </div>
           </div>
