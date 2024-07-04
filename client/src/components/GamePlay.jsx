@@ -12,39 +12,60 @@ function GamePlay({ sliderValue, gameSelector }) {
   const [secondNumber, setSecondNumber] = useState("");
   const [thirdNumber, setThirdNumber] = useState("");
   const [userAnswer, setUserAnswer] = useState("");
+  const [questionResult, setQuestionResult] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-  function findAnswer(firstNumber, secondNumber, thirdNumber, mathOperator) {
+  // Determines the correct answer to the generated question AND stores value in questionResult
+  // Compares userAnswer to questionResult to determine if answer is correct
+  function findAnswer() {
     let result;
 
     switch (mathOperator) {
       case "+":
         result = firstNumber + secondNumber;
         if (thirdNumber && sliderValue === 5) result += thirdNumber;
+        setQuestionResult(parseInt(result));
         break;
       case "-":
         result = firstNumber - secondNumber;
         if (thirdNumber && sliderValue === 5) result -= thirdNumber;
+        setQuestionResult(parseInt(result));
         break;
       case "*":
         result = firstNumber * secondNumber;
         if (thirdNumber && sliderValue === 5) result *= thirdNumber;
+        setQuestionResult(parseInt(result));
         break;
       case "/":
         result = firstNumber / secondNumber;
+        setQuestionResult(parseInt(result));
         break;
     }
-
-    console.log("The result is: ", result);
-    // console.log("Third: ", thirdNumber);
   }
 
   // User input field (answer) results
   const setAnswer = (e) => {
-    setUserAnswer(e.target.value);
+    setUserAnswer(parseInt(e.target.value));
     //console.log(value);
   };
 
-  console.log(userAnswer);
+  function checkResult() {
+    if (userAnswer === questionResult) {
+      console.log("yay, you got it!");
+    } else {
+      console.log("something's wrong");
+    }
+  }
+
+  useEffect(() => {
+    if (submitted) {
+      checkResult();
+      setSubmitted(false);
+    }
+  }, [submitted, userAnswer, questionResult]);
+
+  // console.log("userAnswer: ", userAnswer, typeof userAnswer);
+  // console.log("questionResult: ", questionResult, typeof questionResult);
 
   return (
     <>
@@ -79,9 +100,11 @@ function GamePlay({ sliderValue, gameSelector }) {
           </div>
           <div className="answerSubmit">
             <button
-              onClick={() =>
-                findAnswer(firstNumber, secondNumber, thirdNumber, mathOperator)
-              }
+              onClick={() => {
+                findAnswer();
+
+                setSubmitted(true);
+              }}
             >
               Submit
             </button>

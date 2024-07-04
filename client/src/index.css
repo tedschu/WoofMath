@@ -153,6 +153,17 @@ nav {
   align-items: center;
 }
 
+.answerBox > input {
+  border: 1px solid salmon;
+  border-radius: 6px;
+  padding: 7px;
+  background: rgb(255, 220, 216);
+  font-size: 30px;
+  min-width: 100px;
+  width: 210px;
+  height: 70px;
+}
+
 .questionBox {
   display: flex;
   flex-wrap: nowrap;
