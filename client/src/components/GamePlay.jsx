@@ -14,6 +14,9 @@ function GamePlay({ sliderValue, gameSelector }) {
   const [userAnswer, setUserAnswer] = useState("");
   const [questionResult, setQuestionResult] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  //State values for conditional user alerts AND to pass points to DB (if gotRight )
+  const [gotRight, setGotRight] = useState(false);
+  const [gotWrong, setGotWrong] = useState(false);
 
   // Determines the correct answer to the generated question AND stores value in questionResult
   // Compares userAnswer to questionResult to determine if answer is correct
@@ -48,9 +51,11 @@ function GamePlay({ sliderValue, gameSelector }) {
 
   function checkResult() {
     if (userAnswer === questionResult) {
-      console.log("yay, you got it!");
+      setGotRight(true);
+      setGotWrong(false);
     } else {
-      console.log("something's wrong");
+      setGotWrong(true);
+      setGotRight(false);
     }
   }
 
@@ -95,11 +100,12 @@ function GamePlay({ sliderValue, gameSelector }) {
               />
             </div>
           </div>
+          {/* SUBMIT BUTTON */}
           <div className="answerSubmit">
             <button
+              className="submitButton"
               onClick={() => {
                 findAnswer();
-
                 setSubmitted(true);
               }}
             >
@@ -108,12 +114,21 @@ function GamePlay({ sliderValue, gameSelector }) {
           </div>
 
           {/* Prompt based on response goes here (e.g. "yay, you got it right") see MUI components */}
-          <h4>prompt here</h4>
-          <br />
+          <div className="answerAlert"></div>
+          {gotRight && (
+            <div className="rightAnswerAlert">
+              <h4>Yay! You got it right!</h4>
+            </div>
+          )}
+          {gotWrong && (
+            <div className="wrongAnswerAlert">
+              <h4>Oops. Try again!</h4>
+            </div>
+          )}
 
-          <div className="endSession">
-            <button>Done for now. Save!</button>
-          </div>
+          <button className="nextQuestion">Next question, please!</button>
+
+          <button className="saveSession">Done for now. Save!</button>
         </div>
       </div>
     </>

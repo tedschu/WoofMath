@@ -128,7 +128,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 75%;
+  width: 85%;
   border-radius: 6px;
 }
 
@@ -160,11 +160,48 @@ nav {
   background: rgb(255, 220, 216);
   font-size: 30px;
   min-width: 100px;
-  width: 210px;
+  width: 150px;
   height: 70px;
+}
+
+.answerBox input::placeholder {
+  font-size: 20px;
 }
 
 .questionBox {
   display: flex;
   flex-wrap: nowrap;
+}
+
+.rightAnswerAlert {
+  color: rgb(7, 187, 7);
+  margin-top: 10px;
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.wrongAnswerAlert {
+  color: rgb(250, 109, 109);
+  margin-top: 10px;
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+/* BUTTON STYLING */
+
+button {
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.submitButton {
+  margin: 5px;
+}
+
+.nextQuestion {
+  margin: 15px;
+}
+
+.saveSession {
+  margin: 25px;
 }
