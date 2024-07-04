@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import NumberGenerator from "./NumberGenerator";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 function GamePlay({ sliderValue, gameSelector }) {
   const [questionCount, setQuestionCount] = useState(1);
@@ -10,6 +12,7 @@ function GamePlay({ sliderValue, gameSelector }) {
   const [firstNumber, setFirstNumber] = useState("");
   const [secondNumber, setSecondNumber] = useState("");
   const [thirdNumber, setThirdNumber] = useState("");
+  const [userAnswer, setUserAnswer] = useState("");
 
   function findAnswer(firstNumber, secondNumber, thirdNumber, mathOperator) {
     let result;
@@ -33,12 +36,8 @@ function GamePlay({ sliderValue, gameSelector }) {
     }
 
     console.log("The result is: ", result);
-    console.log("Third: ", thirdNumber);
+    // console.log("Third: ", thirdNumber);
   }
-
-  // useEffect(() => {
-  //   findAnswer();
-  // }, [firstNumber, secondNumber, thirdNumber]);
 
   return (
     <>
@@ -60,7 +59,19 @@ function GamePlay({ sliderValue, gameSelector }) {
               thirdNumber={thirdNumber}
               mathOperator={mathOperator}
             />
-            <div className="answerBox"> = ____</div>
+            <div className="answerBox">
+              <h3> = </h3>
+              <Box
+                component="form"
+                sx={{
+                  "& > :not(style)": { m: 1, width: "150px" },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField id="filled-basic" label="Filled" variant="filled" />
+              </Box>
+            </div>
           </div>
           <div className="answerSubmit">
             <button

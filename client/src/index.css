@@ -139,8 +139,16 @@ nav {
   padding: 5px;
   margin: 5px;
   font-size: 35px;
+  align-items: center;
+  justify-content: center;
 }
 
 .answerBox {
   padding-left: 10px;
+  display: flex;
+}
+
+.questionBox {
+  display: flex;
+  flex-wrap: nowrap;
 }

@@ -194,7 +194,7 @@ function NumberGenerator({
             getDivisionEquation(divNumberAnswer, divNumberMultiple);
             break;
           case 5:
-            setDivNumberAnswer(getRandomNumber(5, 10));
+            setDivNumberAnswer(getRandomNumber(5, 12));
             setDivNumberMultiple(getRandomNumber(20, 50));
             getDivisionEquation(divNumberAnswer, divNumberMultiple);
             break;
@@ -208,7 +208,8 @@ function NumberGenerator({
       {firstNumber} {mathOperator} {secondNumber}
       {sliderValue === 5 && gameSelector != "division" && (
         <>
-          &nbsp;{mathOperator} {thirdNumber}
+          {" "}
+          {mathOperator} {thirdNumber}{" "}
         </>
       )}
     </div>
