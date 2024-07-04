@@ -80,7 +80,6 @@ function GamePlay({ sliderValue, gameSelector }) {
                       backgroundColor: "white",
                       fontFamily: "Schoolbell",
                       fontSize: "30px",
-                      borderColor: "purple",
                     },
                     "& .MuiInputLabel-root": {
                       fontFamily: "Schoolbell",
