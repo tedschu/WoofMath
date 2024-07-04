@@ -24,23 +24,20 @@ function GamePlay({ sliderValue, gameSelector }) {
       case "+":
         result = firstNumber + secondNumber;
         if (thirdNumber && sliderValue === 5) result += thirdNumber;
-        setQuestionResult(parseInt(result));
         break;
       case "-":
         result = firstNumber - secondNumber;
         if (thirdNumber && sliderValue === 5) result -= thirdNumber;
-        setQuestionResult(parseInt(result));
         break;
       case "*":
         result = firstNumber * secondNumber;
         if (thirdNumber && sliderValue === 5) result *= thirdNumber;
-        setQuestionResult(parseInt(result));
         break;
       case "/":
         result = firstNumber / secondNumber;
-        setQuestionResult(parseInt(result));
         break;
     }
+    setQuestionResult(parseInt(result));
   }
 
   // User input field (answer) results
