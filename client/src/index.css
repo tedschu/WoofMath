@@ -143,8 +143,12 @@ nav {
   justify-content: center;
 }
 
+.equalSpace {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .answerBox {
-  padding-left: 10px;
   display: flex;
   align-items: center;
 }

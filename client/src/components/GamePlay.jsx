@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import NumberGenerator from "./NumberGenerator";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 
 function GamePlay({ sliderValue, gameSelector }) {
   const [questionCount, setQuestionCount] = useState(1);
@@ -39,6 +38,14 @@ function GamePlay({ sliderValue, gameSelector }) {
     // console.log("Third: ", thirdNumber);
   }
 
+  // User input field (answer) results
+  const setAnswer = (e) => {
+    setUserAnswer(e.target.value);
+    //console.log(value);
+  };
+
+  console.log(userAnswer);
+
   return (
     <>
       <div className="gamePlayContainer">
@@ -59,35 +66,15 @@ function GamePlay({ sliderValue, gameSelector }) {
               thirdNumber={thirdNumber}
               mathOperator={mathOperator}
             />
-            <div className="answerBox">
+            <div className="equalSpace">
               <h4> = </h4>
-              <Box
-                component="form"
-                sx={{
-                  "& > :not(style)": { m: 1, width: "150px" },
-                  backgroundColor: "white",
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <TextField
-                  id="outlined-basic"
-                  label="Your answer..."
-                  variant="outlined"
-                  sx={{
-                    backgroundColor: "white",
-                    "& .MuiOutlinedInput-root": {
-                      backgroundColor: "white",
-                      fontFamily: "Schoolbell",
-                      fontSize: "30px",
-                    },
-                    "& .MuiInputLabel-root": {
-                      fontFamily: "Schoolbell",
-                      top: "10%",
-                    },
-                  }}
-                />
-              </Box>
+            </div>
+            <div className="answerBox">
+              <input
+                type="number"
+                placeholder="Your answer..."
+                onChange={setAnswer}
+              />
             </div>
           </div>
           <div className="answerSubmit">
