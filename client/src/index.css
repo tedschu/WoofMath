@@ -225,7 +225,7 @@ button {
   text-align: center;
 }
 
-.loginInputs {
+.loginForm {
   display: flex;
   flex-direction: column;
 }

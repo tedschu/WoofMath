@@ -154,13 +154,13 @@ function NumberGenerator({
           case 5:
             // randomly determines whether first or second number is triple digit
             if (getRandomNumber(0, 1) === 0) {
-              setFirstNumber(getRandomNumber(1, 500));
-              setSecondNumber(getRandomNumber(10, 99));
-              setThirdNumber(getRandomNumber(1, 200));
+              setFirstNumber(getRandomNumber(1, 100));
+              setSecondNumber(getRandomNumber(10, 50));
+              setThirdNumber(getRandomNumber(1, 150));
             } else {
-              setFirstNumber(getRandomNumber(10, 500));
-              setSecondNumber(getRandomNumber(1, 99));
-              setThirdNumber(getRandomNumber(1, 99));
+              setFirstNumber(getRandomNumber(2, 20));
+              setSecondNumber(getRandomNumber(10, 200));
+              setThirdNumber(getRandomNumber(1, 50));
             }
             break;
         }
