@@ -66,6 +66,17 @@ function GamePlay({ sliderValue, gameSelector }) {
     }
   }, [submitted, userAnswer, questionResult]);
 
+  // Increments questionCount when user hits "next question"
+  // Using functions passed to a setter (rather than directly setting value) ensures that the most
+  // up-to-date value of state is used, lessening the need for useEffect dependencies.
+  // Use functional updates when your new state depends on the previous state
+  function handleQuestionCount() {
+    setQuestionCount((prevCount) => prevCount + 1);
+    setUserAnswer("");
+    setGotRight(false);
+    setGotWrong(false);
+  }
+
   // console.log("userAnswer: ", userAnswer, typeof userAnswer);
   // console.log("questionResult: ", questionResult, typeof questionResult);
 
@@ -88,6 +99,7 @@ function GamePlay({ sliderValue, gameSelector }) {
               secondNumber={secondNumber}
               thirdNumber={thirdNumber}
               mathOperator={mathOperator}
+              questionCount={questionCount}
             />
             <div className="equalSpace">
               <h4> = </h4>
@@ -96,6 +108,7 @@ function GamePlay({ sliderValue, gameSelector }) {
               <input
                 type="number"
                 placeholder="Your answer..."
+                value={userAnswer}
                 onChange={setAnswer}
               />
             </div>
@@ -126,7 +139,9 @@ function GamePlay({ sliderValue, gameSelector }) {
             </div>
           )}
 
-          <button className="nextQuestion">Next question, please!</button>
+          <button className="nextQuestion" onClick={handleQuestionCount}>
+            Next question, please!
+          </button>
 
           <button className="saveSession">Done for now. Save!</button>
         </div>

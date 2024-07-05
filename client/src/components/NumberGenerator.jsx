@@ -14,6 +14,7 @@ function NumberGenerator({
   secondNumber,
   thirdNumber,
   mathOperator,
+  questionCount,
 }) {
   // for the division equations specifically
   // Uses an "answer" (ex. 2) and a "multiple" (ex. 5) to generate a result (10)
@@ -201,7 +202,7 @@ function NumberGenerator({
         }
         break;
     }
-  }, [sliderValue, gameSelector]);
+  }, [sliderValue, gameSelector, questionCount]);
 
   return (
     <div className="questionsBox">
