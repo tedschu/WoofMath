@@ -205,3 +205,27 @@ button {
 .saveSession {
   margin: 25px;
 }
+
+/* LOGIN AND REGISTER STYLING */
+
+.loginPageContainer {
+  display: flex;
+  background: lightgrey;
+  justify-content: center;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  background: lightcyan;
+  width: 70%;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.loginInputs {
+  display: flex;
+  flex-direction: column;
+}
