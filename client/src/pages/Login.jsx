@@ -29,7 +29,7 @@ function Login() {
   // Uses isLoggedIn state setter to pass "true" to parent state in App.jsx
   async function loginCheck(loginForm) {
     const response = await fetch(
-      "../../../server/auth/login", //relative path to login (see vite.config)
+      "/auth/login", //path to login (see vite.config)
       {
         method: "POST",
         headers: {
@@ -42,7 +42,8 @@ function Login() {
       }
     );
 
-    console.log(response);
+    const data = await response.json();
+    console.log("Login worked! ", data);
     // update to await response
     // .then((response) => response.json())
     // .then((result) => {
