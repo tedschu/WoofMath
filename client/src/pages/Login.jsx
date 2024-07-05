@@ -3,7 +3,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Login({ setIsLoggedIn, isLoggedIn, loginForm, setLoginForm }) {
+function Login({
+  setIsLoggedIn,
+  isLoggedIn,
+  loginForm,
+  setLoginForm,
+  setUserId,
+}) {
   const [loginFailed, setLoginFailed] = useState(false);
 
   const navigate = useNavigate();
@@ -19,7 +25,7 @@ function Login({ setIsLoggedIn, isLoggedIn, loginForm, setLoginForm }) {
   // Submit button
   const submit = (event) => {
     event.preventDefault();
-    console.log(loginForm);
+    //console.log("This is loginForm: ", loginForm);
     loginCheck(loginForm);
   };
 
@@ -44,13 +50,12 @@ function Login({ setIsLoggedIn, isLoggedIn, loginForm, setLoginForm }) {
 
       const data = await response.json();
 
-      console.log(data.token);
-
       if (!response.ok) {
         throw new Error("Login failed");
         setLoginFailed(true);
       } else {
         localStorage.setItem("token", data.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
+        setUserId(data.id);
         setIsLoggedIn(true);
         setLoginFailed(false);
         navigate("/");

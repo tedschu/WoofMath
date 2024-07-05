@@ -1,10 +1,10 @@
 -- CreateTable
 CREATE TABLE "Score" (
     "id" SERIAL NOT NULL,
-    "addition_score" INTEGER,
-    "subtraction_score" INTEGER,
-    "multiplication_score" INTEGER,
-    "division_score" INTEGER,
+    "addition_score" INTEGER DEFAULT 0,
+    "subtraction_score" INTEGER DEFAULT 0,
+    "multiplication_score" INTEGER DEFAULT 0,
+    "division_score" INTEGER DEFAULT 0,
     "user_id" INTEGER NOT NULL,
 
     CONSTRAINT "Score_pkey" PRIMARY KEY ("id")

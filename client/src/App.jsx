@@ -17,13 +17,38 @@ function App() {
     username: "",
     password: "",
   });
+  const [userId, setUserId] = useState("");
+  const [userScore, setUserScore] = useState(0);
+  const [userBadges, setUserBadges] = useState({
+    dog: false,
+    hippo: false,
+    shield_dog: false,
+    frog: false,
+    dove: false,
+    cat: false,
+    fish: false,
+    cow: false,
+  });
 
   return (
     <>
       <Nav isLoggedIn={isLoggedIn} loginForm={loginForm} />
 
       <Routes>
-        <Route index element={<Game />} />
+        <Route
+          index
+          element={
+            <Game
+              isLoggedIn={isLoggedIn}
+              loginForm={loginForm}
+              userScore={userScore}
+              setUserScore={setUserScore}
+              userBadges={userBadges}
+              setUserBadges={setUserBadges}
+              userId={userId}
+            />
+          }
+        />
         <Route path="/me" element={<Me />} />
         <Route path="/register" element={<Register />} />
         <Route
@@ -34,6 +59,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               loginForm={loginForm}
               setLoginForm={setLoginForm}
+              setUserId={setUserId}
             />
           }
         />

@@ -88,7 +88,7 @@ router.post("/login", async (req, res) => {
           },
           process.env.JWT_SECRET
         );
-        res.send({ token: token });
+        res.send({ token: token, id: userMatch.id });
       }
     }
   } catch (error) {

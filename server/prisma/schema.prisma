@@ -15,10 +15,10 @@ datasource db {
 
 model Score {
   id   Int   @id @default(autoincrement())
-  addition_score  Int?
-  subtraction_score  Int?
-  multiplication_score  Int?
-  division_score  Int?
+  addition_score  Int? @default(0)
+  subtraction_score  Int?  @default(0)
+  multiplication_score  Int? @default(0)
+  division_score  Int? @default(0)
   user User @relation(fields: [user_id], references: [id])
   user_id Int @unique
 }

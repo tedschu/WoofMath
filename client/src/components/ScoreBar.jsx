@@ -3,7 +3,40 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function ScoreBar() {
+function ScoreBar({
+  isLoggedIn,
+  loginForm,
+  userScore,
+  setUserScore,
+  userBadges,
+  setUserBadges,
+  sliderValue,
+  gameSelector,
+  userId,
+}) {
+  console.log("This is the userId: ", userId);
+
+  // Get user's score and badges from DB
+  // Set into state (userScore, userBadges)
+  // Post to DB every time there's a submit button, or on "done for now, save" ???
+
+  // gets user's score from DB
+  useEffect(() => {
+    async function getUserScoreAndBadges() {
+      const response = await fetch("/api/users/" + userId, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(
+        "This is what we're getting back from DB on score: ",
+        data.score
+      );
+    }
+    getUserScoreAndBadges();
+  }, []);
+
   return (
     <>
       <div className="scoreBarContainer">

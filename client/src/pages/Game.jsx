@@ -7,13 +7,31 @@ import Slider from "../components/Slider";
 import GamePlay from "../components/GamePlay";
 import GameSelector from "../components/GameSelector";
 
-function Game() {
+function Game({
+  isLoggedIn,
+  loginForm,
+  userScore,
+  setUserScore,
+  userBadges,
+  setUserBadges,
+  userId,
+}) {
   const [sliderValue, setSliderValue] = useState(1);
   const [gameSelector, setGameSelector] = useState("addition");
 
   return (
     <>
-      <ScoreBar />
+      <ScoreBar
+        isLoggedIn={isLoggedIn}
+        loginForm={loginForm}
+        userScore={userScore}
+        setUserScore={setUserScore}
+        userBadges={userBadges}
+        setUserBadges={setUserBadges}
+        sliderValue={sliderValue}
+        gameSelector={gameSelector}
+        userId={userId}
+      />
 
       <GameSelector setGameSelector={setGameSelector} />
 
