@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
 
-function Nav() {
+function Nav({ isLoggedIn, loginForm }) {
+  const username = loginForm.username;
+
   return (
     <>
       <nav>
@@ -15,9 +17,11 @@ function Nav() {
 
         <div className="navTitle">WoofMath</div>
 
-        <Link to={"/me"} className="navUser">
-          <h3>Hello, Jasper!</h3>
-        </Link>
+        {isLoggedIn && (
+          <Link to={"/me"} className="navUser">
+            <h3>Hello, {username}!</h3>
+          </Link>
+        )}
       </nav>
     </>
   );

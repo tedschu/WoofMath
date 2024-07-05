@@ -12,17 +12,31 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 
 function App() {
-  //const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginForm, setLoginForm] = useState({
+    username: "",
+    password: "",
+  });
 
   return (
     <>
-      <Nav />
+      <Nav isLoggedIn={isLoggedIn} loginForm={loginForm} />
 
       <Routes>
         <Route index element={<Game />} />
         <Route path="/me" element={<Me />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+              loginForm={loginForm}
+              setLoginForm={setLoginForm}
+            />
+          }
+        />
       </Routes>
     </>
   );

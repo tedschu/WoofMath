@@ -3,11 +3,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
-  const [loginForm, setLoginForm] = useState({
-    username: "",
-    password: "",
-  });
+function Login({ setIsLoggedIn, isLoggedIn, loginForm, setLoginForm }) {
+  const [loginFailed, setLoginFailed] = useState(false);
+
+  const navigate = useNavigate();
 
   // Handles form values AND updates loginForm state
   const setFormValues = (event) => {
@@ -28,22 +27,39 @@ function Login() {
   // Posts login form data to API AND validates whether user exists
   // Uses isLoggedIn state setter to pass "true" to parent state in App.jsx
   async function loginCheck(loginForm) {
-    const response = await fetch(
-      "/auth/login", //path to login (see vite.config)
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: loginForm.username,
-          password: loginForm.password,
-        }),
-      }
-    );
+    try {
+      const response = await fetch(
+        "/auth/login", //path to login (see vite.config)
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: loginForm.username,
+            password: loginForm.password,
+          }),
+        }
+      );
 
-    const data = await response.json();
-    console.log("Login worked! ", data);
+      const data = await response.json();
+
+      console.log(data.token);
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+        setLoginFailed(true);
+      } else {
+        localStorage.setItem("token", data.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
+        setIsLoggedIn(true);
+        setLoginFailed(false);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error during login", error);
+      setLoginFailed(true);
+    }
+
     // update to await response
     // .then((response) => response.json())
     // .then((result) => {
@@ -60,6 +76,8 @@ function Login() {
     // })
     // .catch(console.error);
   }
+
+  console.log(loginFailed);
 
   return (
     <>
@@ -92,6 +110,7 @@ function Login() {
               />
               <button>Log in</button>
             </form>
+            {loginFailed && <h3>Oops. There was a problem with your login.</h3>}
           </div>
           <h4>
             Wait...I don't have an account! No worries,{" "}
