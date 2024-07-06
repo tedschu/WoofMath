@@ -30,6 +30,9 @@ function App() {
     cow: false,
   });
 
+  const token = localStorage.getItem("token");
+  console.log("This is the token: ", token);
+
   return (
     <>
       <Nav isLoggedIn={isLoggedIn} loginForm={loginForm} />
