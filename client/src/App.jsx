@@ -30,8 +30,13 @@ function App() {
     cow: false,
   });
 
-  const token = localStorage.getItem("token");
-  console.log("This is the token: ", token);
+  function checkToken() {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }
 
   return (
     <>

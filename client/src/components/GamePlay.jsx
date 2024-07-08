@@ -77,6 +77,12 @@ function GamePlay({ sliderValue, gameSelector }) {
     setGotWrong(false);
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    findAnswer();
+    setSubmitted(true);
+  };
+
   // console.log("userAnswer: ", userAnswer, typeof userAnswer);
   // console.log("questionResult: ", questionResult, typeof questionResult);
 
@@ -87,44 +93,48 @@ function GamePlay({ sliderValue, gameSelector }) {
           <h2>Sounds great. Let's go! [tooltip]</h2>
           <h3>Question {questionCount}:</h3>
 
-          <div className="questionContainer">
-            <NumberGenerator
-              sliderValue={sliderValue}
-              gameSelector={gameSelector}
-              setFirstNumber={setFirstNumber}
-              setSecondNumber={setSecondNumber}
-              setThirdNumber={setThirdNumber}
-              setMathOperator={setMathOperator}
-              firstNumber={firstNumber}
-              secondNumber={secondNumber}
-              thirdNumber={thirdNumber}
-              mathOperator={mathOperator}
-              questionCount={questionCount}
-            />
-            <div className="equalSpace">
-              <h4> = </h4>
-            </div>
-            <div className="answerBox">
-              <input
-                type="number"
-                placeholder="Your answer..."
-                value={userAnswer}
-                onChange={setAnswer}
+          <form onSubmit={handleSubmit}>
+            <div className="questionContainer">
+              <NumberGenerator
+                sliderValue={sliderValue}
+                gameSelector={gameSelector}
+                setFirstNumber={setFirstNumber}
+                setSecondNumber={setSecondNumber}
+                setThirdNumber={setThirdNumber}
+                setMathOperator={setMathOperator}
+                firstNumber={firstNumber}
+                secondNumber={secondNumber}
+                thirdNumber={thirdNumber}
+                mathOperator={mathOperator}
+                questionCount={questionCount}
               />
+              <div className="equalSpace">
+                <h4> = </h4>
+              </div>
+              <div className="answerBox">
+                <input
+                  type="number"
+                  placeholder="Your answer..."
+                  value={userAnswer}
+                  onChange={setAnswer}
+                />
+              </div>
             </div>
-          </div>
-          {/* SUBMIT BUTTON */}
-          <div className="answerSubmit">
-            <button
-              className="submitButton"
-              onClick={() => {
-                findAnswer();
-                setSubmitted(true);
-              }}
-            >
-              Submit
-            </button>
-          </div>
+            {/* SUBMIT BUTTON */}
+            <div className="answerSubmit">
+              <button
+                className="submitButton"
+                // onClick={() => {
+                //   findAnswer();
+                //   setSubmitted(true);
+                // }}
+                type="submit"
+                // autoFocus
+              >
+                Submit
+              </button>
+            </div>
+          </form>
 
           {/* Prompt based on response goes here (e.g. "yay, you got it right") see MUI components */}
           <div className="answerAlert"></div>
