@@ -14,8 +14,6 @@ function ScoreBar({
   gameSelector,
   userId,
 }) {
-  console.log("This is the userId: ", userId);
-
   // Get user's score and badges from DB
   // Set into state (userScore, userBadges)
   // Post to DB every time there's a submit button, or on "done for now, save" ???
@@ -29,10 +27,6 @@ function ScoreBar({
         },
       });
       const data = await response.json();
-      console.log(
-        "This is what we're getting back from DB on score: ",
-        data.score
-      );
     }
     getUserScoreAndBadges();
   }, []);

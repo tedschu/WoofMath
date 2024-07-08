@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Router, Routes } from "react-router-dom";
 import React from "react";
 
@@ -29,14 +29,25 @@ function App() {
     fish: false,
     cow: false,
   });
+  const [token, setToken] = useState("");
 
-  function checkToken() {
-    const token = localStorage.getItem("token");
+  // Verifies that a user is loggedIn (checks for token)
+  // IF token exists: update setters (isLoggedIn, badges, userscore, userId)
+  // IF token doesn't exist, navigate to /login
 
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  }
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     setIsLoggedIn(true);
+  //     setToken(localStorage.getItem("token"));
+  //     setUserId(localStorage.getItem("userId"));
+  //     getUserData();
+  //   }
+  // }, []);
+
+  // const getUserData = async () => {
+  //   try {
+  //   } catch (error) {}
+  // };
 
   return (
     <>

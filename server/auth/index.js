@@ -26,7 +26,7 @@ router.post("/register", async (req, res) => {
     const token = jwt.sign(
       {
         exp: Math.floor(Date.now() / 1000) + 60 * 60 * 48,
-        data: { id: newUser.id },
+        data: { id: newUser.id, username: newUser.username },
       },
       process.env.JWT_SECRET
     );
@@ -84,7 +84,7 @@ router.post("/login", async (req, res) => {
         const token = jwt.sign(
           {
             exp: Math.floor(Date.now() / 1000) + 60 * 60 * 48,
-            data: { id: userMatch.id },
+            data: { id: userMatch.id, username: userMatch.username },
           },
           process.env.JWT_SECRET
         );

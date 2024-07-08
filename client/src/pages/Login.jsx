@@ -55,6 +55,7 @@ function Login({
         setLoginFailed(true);
       } else {
         localStorage.setItem("token", data.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
+        localStorage.setItem("userId", data.id); // SETS USER ID INTO LOCALSTORAGE TO HELP WITH RENDERING USER DATA ON GAME AND ACCOUNT PAGES
         setUserId(data.id);
         setIsLoggedIn(true);
         setLoginFailed(false);
