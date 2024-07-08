@@ -15,7 +15,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({
     username: "",
-    password: "",
   });
   const [userId, setUserId] = useState("");
   const [userScore, setUserScore] = useState(0);
@@ -55,10 +54,11 @@ function App() {
           const data = await response.json();
           console.log(data);
 
-          // if (response.ok) {
-          // const data = await response.json();
-          //   setUserScore(data.)
-          // }
+          if (response.ok) {
+            setUserInfo({
+              username: data.username,
+            });
+          }
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
@@ -68,6 +68,7 @@ function App() {
     }
   }, []);
 
+  console.log(userInfo);
   return (
     <>
       <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />

@@ -6,10 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
 
 function Nav({ isLoggedIn, userInfo }) {
-  const username = userInfo.username;
-
-  console.log(userInfo);
-
   return (
     <>
       <nav>
@@ -19,9 +15,9 @@ function Nav({ isLoggedIn, userInfo }) {
 
         <div className="navTitle">WoofMath</div>
 
-        {isLoggedIn && (
+        {isLoggedIn && userInfo && userInfo.username && (
           <Link to={"/me"} className="navUser">
-            <h3>Hello, {username}!</h3>
+            <h3>Hello, {userInfo.username}!</h3>
           </Link>
         )}
       </nav>
