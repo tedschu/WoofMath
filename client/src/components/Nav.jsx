@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
 
-function Nav({ isLoggedIn, loginForm }) {
-  const username = loginForm.username;
+function Nav({ isLoggedIn, userInfo }) {
+  const username = userInfo.username;
+
+  console.log(userInfo);
 
   return (
     <>

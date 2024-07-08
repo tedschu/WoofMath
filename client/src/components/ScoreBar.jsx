@@ -18,18 +18,18 @@ function ScoreBar({
   // Set into state (userScore, userBadges)
   // Post to DB every time there's a submit button, or on "done for now, save" ???
 
-  // gets user's score from DB
-  useEffect(() => {
-    async function getUserScoreAndBadges() {
-      const response = await fetch("/api/users/" + userId, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-    }
-    getUserScoreAndBadges();
-  }, []);
+  // // gets user's score from DB
+  // useEffect(() => {
+  //   async function getUserScoreAndBadges() {
+  //     const response = await fetch("/api/users/" + userId, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const data = await response.json();
+  //   }
+  //   getUserScoreAndBadges();
+  // }, []);
 
   return (
     <>

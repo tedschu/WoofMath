@@ -13,7 +13,7 @@ import Login from "./pages/Login";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginForm, setLoginForm] = useState({
+  const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
   });
@@ -35,23 +35,42 @@ function App() {
   // IF token exists: update setters (isLoggedIn, badges, userscore, userId)
   // IF token doesn't exist, navigate to /login
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     setIsLoggedIn(true);
-  //     setToken(localStorage.getItem("token"));
-  //     setUserId(localStorage.getItem("userId"));
-  //     getUserData();
-  //   }
-  // }, []);
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setIsLoggedIn(true);
+      setToken(storedToken);
+      setUserId(localStorage.getItem("userId"));
 
-  // const getUserData = async () => {
-  //   try {
-  //   } catch (error) {}
-  // };
+      const getUserData = async () => {
+        try {
+          const response = await fetch("/api/users/me", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${storedToken}`,
+            },
+          });
+
+          const data = await response.json();
+          console.log(data);
+
+          // if (response.ok) {
+          // const data = await response.json();
+          //   setUserScore(data.)
+          // }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+
+      getUserData();
+    }
+  }, []);
 
   return (
     <>
-      <Nav isLoggedIn={isLoggedIn} loginForm={loginForm} />
+      <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />
 
       <Routes>
         <Route
@@ -59,7 +78,7 @@ function App() {
           element={
             <Game
               isLoggedIn={isLoggedIn}
-              loginForm={loginForm}
+              userInfo={userInfo}
               userScore={userScore}
               setUserScore={setUserScore}
               userBadges={userBadges}
@@ -76,8 +95,8 @@ function App() {
             <Login
               setIsLoggedIn={setIsLoggedIn}
               isLoggedIn={isLoggedIn}
-              loginForm={loginForm}
-              setLoginForm={setLoginForm}
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
               setUserId={setUserId}
             />
           }

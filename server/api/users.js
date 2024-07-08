@@ -44,7 +44,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Gets a single user
+// WORKS: Gets a single user
 // validate and find user info
 router.get("/me", verifyToken, async (req, res) => {
   try {

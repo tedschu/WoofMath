@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 function Login({
   setIsLoggedIn,
   isLoggedIn,
-  loginForm,
-  setLoginForm,
   setUserId,
+  userInfo,
+  setUserInfo,
 }) {
   const [loginFailed, setLoginFailed] = useState(false);
 
@@ -16,9 +16,9 @@ function Login({
 
   // Handles form values AND updates loginForm state
   const setFormValues = (event) => {
-    const newObj = { ...loginForm };
+    const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
-    setLoginForm(newObj);
+    setUserInfo(newObj);
     //console.log(loginForm);
   };
 
@@ -26,13 +26,13 @@ function Login({
   const submit = (event) => {
     event.preventDefault();
     //console.log("This is loginForm: ", loginForm);
-    loginCheck(loginForm);
+    loginCheck(userInfo);
   };
 
   // *************
   // Posts login form data to API AND validates whether user exists
   // Uses isLoggedIn state setter to pass "true" to parent state in App.jsx
-  async function loginCheck(loginForm) {
+  async function loginCheck(userInfo) {
     try {
       const response = await fetch(
         "/auth/login", //path to login (see vite.config)
@@ -42,8 +42,8 @@ function Login({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username: loginForm.username,
-            password: loginForm.password,
+            username: userInfo.username,
+            password: userInfo.password,
           }),
         }
       );
@@ -83,7 +83,7 @@ function Login({
     // .catch(console.error);
   }
 
-  console.log(loginFailed);
+  //console.log(loginFailed);
 
   return (
     <>
@@ -104,14 +104,14 @@ function Login({
                 type="text"
                 placeholder="Username..."
                 name="username"
-                value={loginForm.username}
+                value={userInfo.username}
                 onChange={setFormValues}
               />
               <input
                 type="password"
                 placeholder="Password..."
                 name="password"
-                value={loginForm.password}
+                value={userInfo.password}
                 onChange={setFormValues}
               />
               <button>Log in</button>

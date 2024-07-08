@@ -20,6 +20,19 @@ router.post("/register", async (req, res) => {
         password: hashPassword,
         total_logins: 1,
         last_login: new Date().toISOString(),
+        score: {
+          create: {
+            addition_score: 0,
+            subtraction_score: 0,
+            multiplication_score: 0,
+            division_score: 0,
+          },
+        },
+        badge: {
+          create: {
+            hippo: true,
+          },
+        },
       },
     });
 
