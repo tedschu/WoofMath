@@ -17,7 +17,14 @@ function App() {
     username: "",
   });
   const [userId, setUserId] = useState("");
-  const [userScore, setUserScore] = useState(0);
+  const [userScore, setUserScore] = useState({
+    addition_score: 0,
+    subtraction_score: 0,
+    multiplication_score: 0,
+    division_score: 0,
+    total_score: 0,
+  });
+  const [totalScore, setTotalScore] = useState(0);
   const [userBadges, setUserBadges] = useState({
     dog: false,
     hippo: false,
@@ -54,10 +61,22 @@ function App() {
           const data = await response.json();
           console.log(data);
 
+          // SET ALL STATE VALUES HERE (SCORES, BADGES, USER INFO, ETC.)
           if (response.ok) {
             setUserInfo({
               username: data.username,
+              name: data.name,
+              birth_year: data.birth_year,
+              email: data.email,
             });
+            setUserScore(data.score);
+            setUserBadges(data.badge);
+            setTotalScore(
+              parseInt(data.score.addition_score) +
+                parseInt(data.score.subtraction_score) +
+                parseInt(data.score.multiplication_score) +
+                parseInt(data.score.division_score)
+            );
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
@@ -68,7 +87,7 @@ function App() {
     }
   }, []);
 
-  console.log(userInfo);
+  console.log(totalScore);
   return (
     <>
       <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />
@@ -84,11 +103,15 @@ function App() {
               setUserScore={setUserScore}
               userBadges={userBadges}
               setUserBadges={setUserBadges}
-              userId={userId}
+              totalScore={totalScore}
+              setTotalScore={setTotalScore}
             />
           }
         />
-        <Route path="/me" element={<Me />} />
+        <Route
+          path="/me"
+          element={<Me isLoggedIn={isLoggedIn} userInfo={userInfo} />}
+        />
         <Route path="/register" element={<Register />} />
         <Route
           path="/login"
@@ -98,7 +121,6 @@ function App() {
               isLoggedIn={isLoggedIn}
               userInfo={userInfo}
               setUserInfo={setUserInfo}
-              setUserId={setUserId}
             />
           }
         />

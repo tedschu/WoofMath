@@ -3,13 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Login({
-  setIsLoggedIn,
-  isLoggedIn,
-  setUserId,
-  userInfo,
-  setUserInfo,
-}) {
+function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   const [loginFailed, setLoginFailed] = useState(false);
 
   const navigate = useNavigate();
@@ -56,7 +50,7 @@ function Login({
       } else {
         localStorage.setItem("token", data.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
         localStorage.setItem("userId", data.id); // SETS USER ID INTO LOCALSTORAGE TO HELP WITH RENDERING USER DATA ON GAME AND ACCOUNT PAGES
-        setUserId(data.id);
+        //setUserId(data.id);
         setIsLoggedIn(true);
         setLoginFailed(false);
         navigate("/");

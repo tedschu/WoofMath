@@ -12,7 +12,9 @@ function ScoreBar({
   setUserBadges,
   sliderValue,
   gameSelector,
-  userId,
+  userInfo,
+  totalScore,
+  setTotalScore,
 }) {
   // Get user's score and badges from DB
   // Set into state (userScore, userBadges)
@@ -34,7 +36,7 @@ function ScoreBar({
   return (
     <>
       <div className="scoreBarContainer">
-        <div className="scores">Scores</div>
+        <div className="scores">Score is {totalScore}</div>
 
         <div className="badges">Badges</div>
       </div>

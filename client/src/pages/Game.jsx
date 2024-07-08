@@ -14,7 +14,9 @@ function Game({
   setUserScore,
   userBadges,
   setUserBadges,
-  userId,
+  userInfo,
+  totalScore,
+  setTotalScore,
 }) {
   const [sliderValue, setSliderValue] = useState(1);
   const [gameSelector, setGameSelector] = useState("addition");
@@ -30,7 +32,9 @@ function Game({
         setUserBadges={setUserBadges}
         sliderValue={sliderValue}
         gameSelector={gameSelector}
-        userId={userId}
+        userInfo={userInfo}
+        totalScore={totalScore}
+        setTotalScore={setTotalScore}
       />
 
       <GameSelector setGameSelector={setGameSelector} />
