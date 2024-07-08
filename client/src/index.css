@@ -199,11 +199,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Remove arrows for Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
 /* BUTTON STYLING */
 
 button {
