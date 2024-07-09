@@ -87,7 +87,7 @@ function App() {
     }
   }, []);
 
-  console.log(totalScore);
+  //console.log(totalScore);
   return (
     <>
       <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />

@@ -117,6 +117,7 @@ function GamePlay({ sliderValue, gameSelector }) {
                   placeholder="Your answer..."
                   value={userAnswer}
                   onChange={setAnswer}
+                  onWheel={(e) => e.target.blur()}
                 />
               </div>
             </div>
