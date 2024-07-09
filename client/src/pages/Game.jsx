@@ -41,7 +41,12 @@ function Game({
 
       <Slider setSliderValue={setSliderValue} sliderValue={sliderValue} />
 
-      <GamePlay sliderValue={sliderValue} gameSelector={gameSelector} />
+      <GamePlay
+        sliderValue={sliderValue}
+        gameSelector={gameSelector}
+        userScore={userScore}
+        setUserScore={setUserScore}
+      />
     </>
   );
 }

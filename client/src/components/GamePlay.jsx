@@ -1,11 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import NumberGenerator from "./NumberGenerator";
-import Box from "@mui/material/Box";
 
-function GamePlay({ sliderValue, gameSelector }) {
+function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
   const [questionCount, setQuestionCount] = useState(1);
   const [mathOperator, setMathOperator] = useState("+");
   const [firstNumber, setFirstNumber] = useState("");
@@ -53,11 +50,20 @@ function GamePlay({ sliderValue, gameSelector }) {
     if (userAnswer === questionResult) {
       setGotRight(true);
       setGotWrong(false);
+      // FUNCTION TO SET USERSCORE WILL GO HERE
+      // Takes in math type and slider states
+      // Sets point values based on those states (e.g. addition: 1 equals 5 points, divion: 5 = 12 points)
+      // Updates userScore and passes the update to the DB
     } else {
       setGotWrong(true);
       setGotRight(false);
     }
   }
+
+  // function addPoints() {
+  //   switch(mathOperator) {
+  //     case     }
+  // }
 
   useEffect(() => {
     if (submitted) {
