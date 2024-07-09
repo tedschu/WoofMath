@@ -14,6 +14,8 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
   //State values for conditional user alerts AND to pass points to DB (if gotRight )
   const [gotRight, setGotRight] = useState(false);
   const [gotWrong, setGotWrong] = useState(false);
+  // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
+  const [addToScore, setAddToScore] = useState(0);
 
   // Determines the correct answer to the generated question AND stores value in questionResult
   // Compares userAnswer to questionResult to determine if answer is correct
@@ -60,10 +62,11 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
     }
   }
 
-  // function addPoints() {
-  //   switch(mathOperator) {
-  //     case     }
-  // }
+  function addPoints() {
+    switch (mathOperator) {
+      case "+":
+    }
+  }
 
   useEffect(() => {
     if (submitted) {
@@ -89,6 +92,12 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
     setSubmitted(true);
   };
 
+  console.log(
+    "This is the userScore: ",
+    userScore,
+    "This is addToScore: ",
+    addToScore
+  );
   // console.log("userAnswer: ", userAnswer, typeof userAnswer);
   // console.log("questionResult: ", questionResult, typeof questionResult);
 
@@ -113,6 +122,7 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
                 thirdNumber={thirdNumber}
                 mathOperator={mathOperator}
                 questionCount={questionCount}
+                setAddToScore={setAddToScore}
               />
               <div className="equalSpace">
                 <h4> = </h4>

@@ -15,6 +15,7 @@ function NumberGenerator({
   thirdNumber,
   mathOperator,
   questionCount,
+  setAddToScore,
 }) {
   // for the division equations specifically
   // Uses an "answer" (ex. 2) and a "multiple" (ex. 5) to generate a result (10)
@@ -60,6 +61,7 @@ function NumberGenerator({
           case 1:
             setFirstNumber(getRandomNumber(1, 9));
             setSecondNumber(getRandomNumber(1, 9));
+            setAddToScore(5);
             break;
           case 2:
             // randomly determines whether first or second number is double digit
@@ -70,10 +72,12 @@ function NumberGenerator({
               setFirstNumber(getRandomNumber(1, 9));
               setSecondNumber(getRandomNumber(10, 99));
             }
+            setAddToScore(6);
             break;
           case 3:
             setFirstNumber(getRandomNumber(10, 99));
             setSecondNumber(getRandomNumber(10, 99));
+            setAddToScore(7);
             break;
           case 4:
             // randomly determines whether first or second number is triple digit
@@ -84,11 +88,13 @@ function NumberGenerator({
               setFirstNumber(getRandomNumber(100, 999));
               setSecondNumber(getRandomNumber(10, 99));
             }
+            setAddToScore(8);
             break;
           case 5:
             setFirstNumber(getRandomNumber(1, 999));
             setSecondNumber(getRandomNumber(1, 999));
             setThirdNumber(getRandomNumber(1, 999));
+            setAddToScore(9);
             break;
         }
         break;
