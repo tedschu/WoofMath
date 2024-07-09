@@ -66,11 +66,11 @@ router.get("/me", verifyToken, async (req, res) => {
 });
 
 // Deletes a user
-router.delete("/:id", async (req, res) => {
+router.delete("/", verifyToken, async (req, res) => {
   try {
     const user = await prisma.user.delete({
       where: {
-        id: parseInt(req.params.id),
+        id: parseInt(req.user),
       },
     });
     res.send(user);
@@ -81,13 +81,13 @@ router.delete("/:id", async (req, res) => {
 });
 
 // Update a user (ex update email or password)
-router.put("/:id", async (req, res) => {
+router.put("/", verifyToken, async (req, res) => {
   try {
     const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
 
     const user = await prisma.user.update({
       where: {
-        id: parseInt(req.params.id),
+        id: parseInt(req.user),
       },
       data: {
         name: req.body.name,
@@ -105,3 +105,5 @@ router.put("/:id", async (req, res) => {
 });
 
 module.exports = router;
+
+module.exports.verifyToken = verifyToken;

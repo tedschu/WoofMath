@@ -152,8 +152,6 @@ function GamePlay({ sliderValue, gameSelector }) {
           <button className="nextQuestion" onClick={handleQuestionCount}>
             Next question, please!
           </button>
-
-          <button className="saveSession">Done for now. Save!</button>
         </div>
       </div>
     </>
