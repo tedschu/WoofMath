@@ -20,6 +20,8 @@ router.get("/", async (req, res) => {
 });
 
 // updates a score
+
+// CONSOLIDATE THIS INTO .USERS FILE? WOULD MAKE SOURCING USER_ID SIMPLER (ALTERNATIVE IS TO DUPLICATE TOKEN CALL FUNCTION)
 router.put("/user/:user_id", async (req, res) => {
   try {
     const score = await prisma.score.update({

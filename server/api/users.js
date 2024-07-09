@@ -105,5 +105,3 @@ router.put("/", verifyToken, async (req, res) => {
 });
 
 module.exports = router;
-
-module.exports.verifyToken = verifyToken;

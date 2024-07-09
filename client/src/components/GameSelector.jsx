@@ -6,7 +6,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 export default function GameSelector({ setGameSelector }) {
-  const [alignment, setAlignment] = React.useState("addition");
+  const [alignment, setAlignment] = useState("addition");
 
   const handleChange = (event, newAlignment) => {
     if (newAlignment != null) {
