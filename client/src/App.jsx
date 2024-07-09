@@ -16,7 +16,6 @@ function App() {
   const [userInfo, setUserInfo] = useState({
     username: "",
   });
-  const [userId, setUserId] = useState("");
   const [userScore, setUserScore] = useState({
     addition_score: 0,
     subtraction_score: 0,
@@ -46,8 +45,9 @@ function App() {
     if (storedToken) {
       setIsLoggedIn(true);
       setToken(storedToken);
-      setUserId(localStorage.getItem("userId"));
+      //setUserId(localStorage.getItem("userId"));
 
+      // Gets all relevant user data (user info, scores, badges) and stores in state for usage throughout the app
       const getUserData = async () => {
         try {
           const response = await fetch("/api/users/me", {
