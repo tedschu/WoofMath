@@ -35,7 +35,7 @@ nav {
   justify-content: start;
   align-items: center;
   padding-left: 15px;
-  color: rgb(86, 64, 255);
+  color: rgb(68, 68, 179);
 }
 
 .navTitle {
@@ -57,15 +57,18 @@ nav {
 
 .scoreBarContainer {
   background: rgb(237, 237, 237);
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   grid-template-columns: [first] 50% [line2] 50%;
-  height: 75px;
+  height: 125px;
   border-bottom: 1px solid rgb(232, 232, 232);
   padding: 5px;
 }
 
 .scores {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -74,6 +77,16 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.badgeEnabled {
+  color: rgb(68, 68, 179);
+  margin: 7px;
+}
+
+.badgeDisabled {
+  color: rgb(165, 165, 165);
+  margin: 7px;
 }
 
 /* GAME SELECTION and SLIDER STYLING */
@@ -193,8 +206,8 @@ nav {
 }
 
 /* Remove arrows for Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -240,4 +253,17 @@ button {
 .loginForm {
   display: flex;
   flex-direction: column;
+}
+
+/* ********** */
+/* MEDIA QUERIES FOR DESKTOP SIZING */
+@media screen and (min-width: 900px) {
+  .scoreBarContainer {
+    background: rgb(237, 237, 237);
+    display: grid;
+    grid-template-columns: [first] 50% [line2] 50%;
+    height: 85px;
+    border-bottom: 1px solid rgb(232, 232, 232);
+    padding: 5px;
+  }
 }
