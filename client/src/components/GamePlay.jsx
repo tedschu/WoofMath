@@ -1,8 +1,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import NumberGenerator from "./NumberGenerator";
+import { useParams } from "react-router-dom";
 
-function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
+function GamePlay({
+  sliderValue,
+  gameSelector,
+  userScore,
+  setUserScore,
+  userInfo,
+  setTotalScore,
+  gotRight,
+  gotWrong,
+  setGotRight,
+  setGotWrong,
+}) {
   const [questionCount, setQuestionCount] = useState(1);
   const [mathOperator, setMathOperator] = useState("+");
   const [firstNumber, setFirstNumber] = useState("");
@@ -11,9 +23,7 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
   const [userAnswer, setUserAnswer] = useState("");
   const [questionResult, setQuestionResult] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  //State values for conditional user alerts AND to pass points to DB (if gotRight )
-  const [gotRight, setGotRight] = useState(false);
-  const [gotWrong, setGotWrong] = useState(false);
+
   // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
   const [addToScore, setAddToScore] = useState(0);
 
@@ -53,20 +63,80 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
       setGotRight(true);
       setGotWrong(false);
       // FUNCTION TO SET USERSCORE WILL GO HERE
-      // Takes in math type and slider states
-      // Sets point values based on those states (e.g. addition: 1 equals 5 points, divion: 5 = 12 points)
-      // Updates userScore and passes the update to the DB
+      setUserScore((prevScore) => {
+        const updatedScores = getUpdatedScores(
+          gameSelector,
+          addToScore,
+          prevScore
+        );
+        postUserScore(updatedScores);
+        return { ...prevScore, ...updatedScores };
+      });
     } else {
       setGotWrong(true);
       setGotRight(false);
     }
   }
 
-  function addPoints() {
-    switch (mathOperator) {
-      case "+":
+  // console.log(mathOperator);
+  // console.log(sliderValue);
+  // console.log(addToScore);
+  // console.log("This is userScore: ", userScore);
+
+  // Function to create an object for the score that's being updated (ex. addition) to pass into body / update DB
+  function getUpdatedScores(gameSelector, addToScore, currentScore) {
+    const updatedScores = {};
+    switch (gameSelector) {
+      case "addition":
+        updatedScores.addition_score = addToScore + currentScore.addition_score;
+        break;
+      case "subtraction":
+        updatedScores.subtraction_score =
+          addToScore + currentScore.subtraction_score;
+        break;
+      case "multiplication":
+        updatedScores.multiplication_score =
+          addToScore + currentScore.multiplication_score;
+        break;
+      case "division":
+        updatedScores.division_score = addToScore + currentScore.division_score;
+        break;
     }
+    return updatedScores;
   }
+
+  // Function to pass the updated score to the database, update scores state values for gameplay
+  const postUserScore = async (updatedScores) => {
+    try {
+      // const updatedScores = getUpdatedScores(gameSelector, addToScore);
+      const storedToken = localStorage.getItem("token");
+
+      const response = await fetch(`/api/users/${userInfo.id}/score`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${storedToken}`,
+        },
+        body: JSON.stringify(updatedScores),
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      // SET ALL STATE VALUES HERE (SCORES, BADGES, USER INFO, ETC.)
+      if (response.ok) {
+        //setUserBadges(data.badge);
+        setTotalScore(
+          data.addition_score +
+            data.subtraction_score +
+            data.multiplication_score +
+            data.division_score
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
 
   useEffect(() => {
     if (submitted) {
@@ -92,15 +162,6 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
     setSubmitted(true);
   };
 
-  console.log(
-    "This is the userScore: ",
-    userScore,
-    "This is addToScore: ",
-    addToScore
-  );
-  // console.log("userAnswer: ", userAnswer, typeof userAnswer);
-  // console.log("questionResult: ", questionResult, typeof questionResult);
-
   return (
     <>
       <div className="gamePlayContainer">
@@ -123,6 +184,8 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
                 mathOperator={mathOperator}
                 questionCount={questionCount}
                 setAddToScore={setAddToScore}
+                setGotRight={setGotRight}
+                setGotWrong={setGotWrong}
               />
               <div className="equalSpace">
                 <h4> = </h4>
@@ -157,7 +220,7 @@ function GamePlay({ sliderValue, gameSelector, userScore, setUserScore }) {
           <div className="answerAlert"></div>
           {gotRight && (
             <div className="rightAnswerAlert">
-              <h4>Yay! You got it right!</h4>
+              <h4>Yay! You got it right! That's +{addToScore} points!</h4>
             </div>
           )}
           {gotWrong && (

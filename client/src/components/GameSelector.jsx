@@ -5,13 +5,19 @@ import { useNavigate } from "react-router-dom";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-export default function GameSelector({ setGameSelector }) {
+export default function GameSelector({
+  setGameSelector,
+  setGotRight,
+  setGotWrong,
+}) {
   const [alignment, setAlignment] = useState("addition");
 
   const handleChange = (event, newAlignment) => {
     if (newAlignment != null) {
       setAlignment(newAlignment);
       setGameSelector(newAlignment);
+      setGotRight(false);
+      setGotWrong(false);
     }
   };
 

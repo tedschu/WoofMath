@@ -59,11 +59,12 @@ function App() {
           });
 
           const data = await response.json();
-          console.log(data);
+          //console.log(data);
 
           // SET ALL STATE VALUES HERE (SCORES, BADGES, USER INFO, ETC.)
           if (response.ok) {
             setUserInfo({
+              id: data.id,
               username: data.username,
               name: data.name,
               birth_year: data.birth_year,
@@ -77,6 +78,7 @@ function App() {
                 parseInt(data.score.multiplication_score) +
                 parseInt(data.score.division_score)
             );
+            console.log(data);
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
@@ -87,7 +89,7 @@ function App() {
     }
   }, []);
 
-  //console.log(totalScore);
+  //console.log(userInfo);
   return (
     <>
       <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />

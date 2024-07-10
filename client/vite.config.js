@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       "/auth": "http://localhost:8080/",
       "/api": "http://localhost:8080/",
-      "/users": "http://localhost:8080/",
+      // "/users": "http://localhost:8080/",
     },
   },
 });

@@ -20,9 +20,16 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-export default function DiscreteSlider({ setSliderValue, sliderValue }) {
+export default function DiscreteSlider({
+  setSliderValue,
+  sliderValue,
+  setGotRight,
+  setGotWrong,
+}) {
   const handleSliderChange = (event, newValue) => {
     setSliderValue(newValue);
+    setGotRight(false);
+    setGotWrong(false);
   };
 
   //console.log(sliderValue);

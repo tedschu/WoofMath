@@ -20,6 +20,9 @@ function Game({
 }) {
   const [sliderValue, setSliderValue] = useState(1);
   const [gameSelector, setGameSelector] = useState("addition");
+  //State values for conditional user alerts AND to pass points to DB (if gotRight )
+  const [gotRight, setGotRight] = useState(false);
+  const [gotWrong, setGotWrong] = useState(false);
 
   return (
     <>
@@ -37,15 +40,30 @@ function Game({
         setTotalScore={setTotalScore}
       />
 
-      <GameSelector setGameSelector={setGameSelector} />
+      <GameSelector
+        setGameSelector={setGameSelector}
+        setGotRight={setGotRight}
+        setGotWrong={setGotWrong}
+      />
 
-      <Slider setSliderValue={setSliderValue} sliderValue={sliderValue} />
+      <Slider
+        setSliderValue={setSliderValue}
+        sliderValue={sliderValue}
+        setGotRight={setGotRight}
+        setGotWrong={setGotWrong}
+      />
 
       <GamePlay
         sliderValue={sliderValue}
         gameSelector={gameSelector}
         userScore={userScore}
         setUserScore={setUserScore}
+        userInfo={userInfo}
+        setTotalScore={setTotalScore}
+        gotRight={gotRight}
+        gotWrong={gotWrong}
+        setGotRight={setGotRight}
+        setGotWrong={setGotWrong}
       />
     </>
   );
