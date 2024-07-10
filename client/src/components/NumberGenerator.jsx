@@ -94,7 +94,7 @@ function NumberGenerator({
             setFirstNumber(getRandomNumber(1, 999));
             setSecondNumber(getRandomNumber(1, 999));
             setThirdNumber(getRandomNumber(1, 999));
-            setAddToScore(9);
+            setAddToScore(10);
             break;
         }
         break;
@@ -126,7 +126,7 @@ function NumberGenerator({
             setFirstNumber(getRandomNumber(500, 999));
             setSecondNumber(getRandomNumber(1, 300));
             setThirdNumber(getRandomNumber(1, 200));
-            setAddToScore(10);
+            setAddToScore(11);
             break;
         }
         break;
@@ -174,12 +174,12 @@ function NumberGenerator({
               setFirstNumber(getRandomNumber(1, 100));
               setSecondNumber(getRandomNumber(10, 50));
               setThirdNumber(getRandomNumber(1, 150));
-              setAddToScore(11);
+              setAddToScore(12);
             } else {
               setFirstNumber(getRandomNumber(2, 20));
               setSecondNumber(getRandomNumber(10, 200));
               setThirdNumber(getRandomNumber(1, 50));
-              setAddToScore(11);
+              setAddToScore(12);
             }
             break;
         }
@@ -221,7 +221,7 @@ function NumberGenerator({
             setDivNumberAnswer(getRandomNumber(5, 12));
             setDivNumberMultiple(getRandomNumber(20, 50));
             getDivisionEquation(divNumberAnswer, divNumberMultiple);
-            setAddToScore(12);
+            setAddToScore(13);
             break;
         }
         break;

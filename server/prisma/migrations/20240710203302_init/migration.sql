@@ -18,6 +18,10 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "security_question_1" TEXT NOT NULL,
+    "security_question_2" TEXT NOT NULL,
+    "security_answer_1" TEXT NOT NULL,
+    "security_answer_2" TEXT NOT NULL,
     "total_logins" INTEGER NOT NULL,
     "last_login" TIMESTAMP(3) NOT NULL,
 

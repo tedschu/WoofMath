@@ -30,6 +30,10 @@ model User {
   email String
   username String @unique
   password String
+  security_question_1 String
+  security_question_2 String
+  security_answer_1 String
+  security_answer_2 String
   total_logins Int
   last_login DateTime
   score Score?

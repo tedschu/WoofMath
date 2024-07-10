@@ -4,7 +4,16 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
+  const [registerError, setRegisterError] = useState(false);
+
   const navigate = useNavigate();
+
+  const securityQuestions = [
+    "What is the name of your pet?",
+    "What is your middle name?",
+    "What is your favorite ice cream flavor?",
+    "What is your lucky number?",
+  ];
 
   // Handles form values AND updates loginForm state
   const setFormValues = (event) => {
@@ -17,7 +26,19 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   // Submit button
   const submit = (event) => {
     event.preventDefault();
-    registerUser(userInfo);
+
+    if (
+      userInfo.name &&
+      userInfo.birth_year &&
+      userInfo.email &&
+      userInfo.username &&
+      userInfo.password
+    ) {
+      registerUser(userInfo);
+      setRegisterError(false);
+    } else {
+      setRegisterError(true);
+    }
   };
 
   //console.log(userInfo.name);
@@ -56,7 +77,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
         navigate("/");
       }
     } catch (error) {
-      console.error("Error during login", error);
+      console.error("Error during registration", error);
     }
   }
 
@@ -64,58 +85,97 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
 
   return (
     <>
-      <div className="loginPageContainer">
-        <div className="loginContainer">
+      <div className="registerPageContainer">
+        <div className="registerContainer">
           <h2>Hey, you!</h2>
           <p>
             Welcome to WoofMath, a game where you can practice math and earn
             points + super cool animal badges as you go along. The more math you
             do, the more badges you get!
           </p>
+          <br></br>
 
           <p>Create a free account below to begin playing. </p>
 
-          <div className="loginInputs">
-            <form action="" className="loginForm" onSubmit={submit}>
-              <input
-                type="text"
-                placeholder="Your first name..."
-                name="name"
-                value={userInfo.name}
-                onChange={setFormValues}
-              />
-              <input
-                type="text"
-                placeholder="The year you were born..."
-                name="birth_year"
-                value={userInfo.birth_year}
-                onChange={setFormValues}
-              />
-              <input
-                type="text"
-                placeholder="Email (or parent's email)..."
-                name="email"
-                value={userInfo.email}
-                onChange={setFormValues}
-              />
-              <input
-                type="text"
-                placeholder="Username (what shall we call you)..."
-                name="username"
-                value={userInfo.username}
-                onChange={setFormValues}
-              />
-              <input
-                type="password"
-                placeholder="Password..."
-                name="password"
-                value={userInfo.password}
-                onChange={setFormValues}
-              />
-              <button>Create your account</button>
-            </form>
-            {/* {loginFailed && <h3>Oops. There was a problem with your login.</h3>} */}
-          </div>
+          <form action="" className="registerForm" onSubmit={submit}>
+            <input
+              type="text"
+              placeholder="Your first name..."
+              name="name"
+              value={userInfo.name}
+              onChange={setFormValues}
+            />
+            <input
+              type="text"
+              placeholder="The year you were born..."
+              name="birth_year"
+              value={userInfo.birth_year}
+              onChange={setFormValues}
+            />
+            <input
+              type="text"
+              placeholder="Email (or parent's email)..."
+              name="email"
+              value={userInfo.email}
+              onChange={setFormValues}
+            />
+            <input
+              type="text"
+              placeholder="Username (what shall we call you)..."
+              name="username"
+              value={userInfo.username}
+              onChange={setFormValues}
+            />
+            <input
+              type="password"
+              placeholder="Password..."
+              name="password"
+              value={userInfo.password}
+              onChange={setFormValues}
+            />
+            <h3>Please also answer a few security questions.</h3>
+            <p>
+              Why? If you ever forget your password, you can reset it by
+              answering these questions.{" "}
+            </p>
+
+            <input
+              list="security_question_1"
+              type="text"
+              placeholder="Security question 1..."
+              name="security_question_1"
+              value={userInfo.security_question_1}
+              onChange={setFormValues}
+            />
+            <input
+              type="text"
+              placeholder="Answer to question 1..."
+              name="security_answer_1"
+              value={userInfo.security_answer_1}
+              onChange={setFormValues}
+            />
+            <input
+              type="text"
+              placeholder="Security question 2..."
+              name="security_question_2"
+              value={userInfo.security_question_2}
+              onChange={setFormValues}
+            />
+            <input
+              type="text"
+              placeholder="Answer to question 2..."
+              name="security_answer_2"
+              value={userInfo.security_answer_2}
+              onChange={setFormValues}
+            />
+            <button>Create your account</button>
+          </form>
+          {registerError && (
+            <h3 className="registerFail">
+              Oops. There was a problem with your registration.
+              <br></br>Make sure you've filled out all the fields.
+            </h3>
+          )}
         </div>
       </div>
     </>

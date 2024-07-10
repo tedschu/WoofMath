@@ -70,6 +70,8 @@ function GamePlay({
           prevScore
         );
         postUserScore(updatedScores);
+        setUserAnswer("");
+        //handleQuestionCount();   // REMOVE COMMENT TO MOVE TO NEXT QUESTION ON RIGHT ANSWER / SUBMIT BUTTON
         return { ...prevScore, ...updatedScores };
       });
     } else {

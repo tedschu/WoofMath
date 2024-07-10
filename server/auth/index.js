@@ -18,6 +18,10 @@ router.post("/register", async (req, res) => {
         email: req.body.email,
         username: req.body.username,
         password: hashPassword,
+        security_question_1,
+        security_answer_1,
+        security_question_2,
+        security_answer_2,
         total_logins: 1,
         last_login: new Date().toISOString(),
         score: {
