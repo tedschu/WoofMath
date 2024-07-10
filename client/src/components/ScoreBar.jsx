@@ -21,22 +21,7 @@ function ScoreBar({
   totalScore,
   setTotalScore,
 }) {
-  // Get user's score and badges from DB
-  // Set into state (userScore, userBadges)
-  // Post to DB every time there's a submit button, or on "done for now, save" ???
-
-  // // gets user's score from DB
-  // useEffect(() => {
-  //   async function getUserScoreAndBadges() {
-  //     const response = await fetch("/api/users/" + userId, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     const data = await response.json();
-  //   }
-  //   getUserScoreAndBadges();
-  // }, []);
+  console.log(userScore);
 
   return (
     <>
@@ -46,7 +31,10 @@ function ScoreBar({
             <h3>Your total score is {totalScore}</h3>
           </div>
           <div className="individualScores">
-            Addition: 474 | Subtraction: 23 | Multiplication: 0 | Division: 0
+            Addition: {userScore.addition_score} | Subtraction:{" "}
+            {userScore.subtraction_score} | Multiplication:{" "}
+            {userScore.multiplication_score} | Division:{" "}
+            {userScore.division_score}
           </div>
         </div>
 

@@ -8,12 +8,11 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
 
   const navigate = useNavigate();
 
-  // Handles form values AND updates loginForm state
+  // Handles form values
   const setFormValues = (event) => {
     const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
     setUserInfo(newObj);
-    //console.log(loginForm);
   };
 
   // Submit button
@@ -59,22 +58,6 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
       console.error("Error during login", error);
       setLoginFailed(true);
     }
-
-    // update to await response
-    // .then((response) => response.json())
-    // .then((result) => {
-    //   console.log(result);
-    //   console.log(result.token);
-    //   <Nav login={true} />;
-    //   if (!result.token) {
-    //     setloginError(true);
-    //   } else {
-    //     localStorage.setItem("token", result.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
-    //     navigate("/");
-    //     setloginError(false);
-    //   }
-    // })
-    // .catch(console.error);
   }
 
   //console.log(loginFailed);

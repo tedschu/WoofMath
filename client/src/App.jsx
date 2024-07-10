@@ -14,7 +14,11 @@ import Login from "./pages/Login";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({
+    name: "",
+    birth_year: "",
+    email: "",
     username: "",
+    password: "",
   });
   const [userScore, setUserScore] = useState({
     addition_score: 0,
@@ -78,7 +82,7 @@ function App() {
                 parseInt(data.score.multiplication_score) +
                 parseInt(data.score.division_score)
             );
-            console.log(data);
+            // console.log(data);
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
@@ -112,9 +116,26 @@ function App() {
         />
         <Route
           path="/me"
-          element={<Me isLoggedIn={isLoggedIn} userInfo={userInfo} />}
+          element={
+            <Me
+              isLoggedIn={isLoggedIn}
+              userInfo={userInfo}
+              userScore={userScore}
+              totalScore={totalScore}
+            />
+          }
         />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/register"
+          element={
+            <Register
+              setIsLoggedIn={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
+            />
+          }
+        />
         <Route
           path="/login"
           element={
