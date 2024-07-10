@@ -32,7 +32,11 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
       userInfo.birth_year &&
       userInfo.email &&
       userInfo.username &&
-      userInfo.password
+      userInfo.password &&
+      userInfo.security_answer_1 &&
+      userInfo.security_answer_2 &&
+      userInfo.security_question_1 &&
+      userInfo.security_question_2
     ) {
       registerUser(userInfo);
       setRegisterError(false);
@@ -60,6 +64,10 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
             email: userInfo.email,
             username: userInfo.username,
             password: userInfo.password,
+            security_question_1: userInfo.security_question_1,
+            security_answer_1: userInfo.security_answer_1,
+            security_question_2: userInfo.security_question_2,
+            security_answer_2: userInfo.security_answer_2,
           }),
         }
       );
@@ -138,15 +146,21 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
               Why? If you ever forget your password, you can reset it by
               answering these questions.{" "}
             </p>
-
-            <input
-              list="security_question_1"
-              type="text"
-              placeholder="Security question 1..."
+            <select
               name="security_question_1"
-              value={userInfo.security_question_1}
+              value={userInfo.security_question_1 || ""}
               onChange={setFormValues}
-            />
+            >
+              <option value="" disabled>
+                Select a security question...
+              </option>
+              {securityQuestions.map((question, index) => (
+                <option key={index} value={question}>
+                  {question}
+                </option>
+              ))}
+            </select>
+
             <input
               type="text"
               placeholder="Answer to question 1..."
@@ -154,13 +168,20 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
               value={userInfo.security_answer_1}
               onChange={setFormValues}
             />
-            <input
-              type="text"
-              placeholder="Security question 2..."
+            <select
               name="security_question_2"
-              value={userInfo.security_question_2}
+              value={userInfo.security_question_2 || ""}
               onChange={setFormValues}
-            />
+            >
+              <option value="" disabled>
+                Select a security question...
+              </option>
+              {securityQuestions.map((question, index) => (
+                <option key={index} value={question}>
+                  {question}
+                </option>
+              ))}
+            </select>
             <input
               type="text"
               placeholder="Answer to question 2..."
