@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   const [registerError, setRegisterError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -28,20 +29,23 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     event.preventDefault();
 
     if (
-      userInfo.name &&
-      userInfo.birth_year &&
-      userInfo.email &&
-      userInfo.username &&
-      userInfo.password &&
-      userInfo.security_answer_1 &&
-      userInfo.security_answer_2 &&
-      userInfo.security_question_1 &&
+      userInfo.name ||
+      userInfo.birth_year ||
+      userInfo.email ||
+      userInfo.username ||
+      userInfo.password ||
+      userInfo.security_answer_1 ||
+      userInfo.security_answer_2 ||
+      userInfo.security_question_1 ||
       userInfo.security_question_2
     ) {
       registerUser(userInfo);
       setRegisterError(false);
     } else {
       setRegisterError(true);
+      setErrorMessage(
+        "Oops. That didn't work. Make sure you've filled out all the fields."
+      );
     }
   };
 
@@ -76,7 +80,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
       console.log(data);
 
       if (!response.ok) {
-        throw new Error("Registration failed.");
+        throw new Error(data.error || "Registration failed.");
       } else {
         localStorage.setItem("token", data.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
         localStorage.setItem("userId", data.user.id); // SETS USER ID INTO LOCALSTORAGE TO HELP WITH RENDERING USER DATA ON GAME AND ACCOUNT PAGES
@@ -86,6 +90,8 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
       }
     } catch (error) {
       console.error("Error during registration", error);
+      setRegisterError(true);
+      setErrorMessage(error.message);
     }
   }
 
@@ -204,7 +210,8 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
           {registerError && (
             <h3 className="registerFail">
               Oops. There was a problem with your registration.
-              <br></br>Make sure you've filled out all the fields.
+              <br></br>
+              {errorMessage}
             </h3>
           )}
         </div>

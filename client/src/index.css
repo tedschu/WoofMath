@@ -57,11 +57,11 @@ nav {
 
 .scoreBarContainer {
   background: rgb(237, 237, 237);
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   grid-template-columns: [first] 50% [line2] 50%;
-  height: 125px;
   border-bottom: 1px solid rgb(232, 232, 232);
   padding: 5px;
 }
@@ -87,6 +87,22 @@ nav {
 .badgeDisabled {
   color: rgb(165, 165, 165);
   margin: 7px;
+}
+
+.eachBadge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 55px;
+  text-align: center;
+  height: 88px;
+}
+
+.eachBadge > h3 {
+  font-size: 14px;
+  height: 40px;
 }
 
 /* GAME SELECTION and SLIDER STYLING */
@@ -187,17 +203,23 @@ nav {
 }
 
 .rightAnswerAlert {
-  color: rgb(7, 187, 7);
+  color: rgb(0, 164, 0);
   margin-top: 10px;
-  padding: 0 10px;
+  padding: 10px 10px;
   font-size: 18px;
+  background-color: rgb(194, 255, 194);
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: 6px;
 }
 
 .wrongAnswerAlert {
-  color: rgb(250, 109, 109);
+  color: rgb(215, 49, 49);
   margin-top: 10px;
-  padding: 0 10px;
+  padding: 10px 10px;
   font-size: 18px;
+  background-color: rgb(255, 215, 215);
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: 6px;
 }
 
 .answerSubmit {
@@ -212,23 +234,24 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* BUTTON STYLING */
-
-button {
-  padding: 0 10px;
-  font-size: 18px;
-}
-
 .submitButton {
   margin: 5px;
+  background-color: green;
+  color: white;
 }
 
 .nextQuestion {
   margin: 15px;
 }
 
-.saveSession {
-  margin: 25px;
+/* BUTTON STYLING */
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  margin: 10px;
 }
 
 /* LOGIN AND REGISTER STYLING */
@@ -253,6 +276,27 @@ button {
 .loginForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginForm > input {
+  height: 50px;
+  width: 210px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  font-family: "Schoolbell";
+  font-size: 20px;
+  margin: 7px;
+}
+
+.loginForm > button {
+  margin: 12px 0px;
+  height: 50px;
+  width: 100px;
+  border: 1px solid gray;
+  border-radius: 6px;
 }
 
 .registerPageContainer {
@@ -330,6 +374,31 @@ p {
 
 .securityQuestionsContainer {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.securityQuestionsContainer > input {
+  height: 50px;
+  width: 210px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  font-family: "Schoolbell";
+  font-size: 20px;
+}
+
+/* ACCOUNT PAGE STYLING */
+.accountPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.purple {
+  color: rgb(68, 68, 179);
 }
 
 /* ********** */
@@ -339,7 +408,7 @@ p {
     background: rgb(237, 237, 237);
     display: grid;
     grid-template-columns: [first] 50% [line2] 50%;
-    height: 85px;
+    height: 105px;
     border-bottom: 1px solid rgb(232, 232, 232);
     padding: 5px;
   }

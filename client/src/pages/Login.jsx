@@ -73,28 +73,27 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
             do, the more badges you get!
           </p>
 
-          <p>Login to begin.</p>
+          <p>Log in to begin.</p>
 
-          <div className="loginInputs">
-            <form action="" className="loginForm" onSubmit={submit}>
-              <input
-                type="text"
-                placeholder="Username..."
-                name="username"
-                value={userInfo.username}
-                onChange={setFormValues}
-              />
-              <input
-                type="password"
-                placeholder="Password..."
-                name="password"
-                value={userInfo.password}
-                onChange={setFormValues}
-              />
-              <button>Log in</button>
-            </form>
-            {loginFailed && <h3>Oops. There was a problem with your login.</h3>}
-          </div>
+          <form action="" className="loginForm" onSubmit={submit}>
+            <input
+              type="text"
+              placeholder="Username..."
+              name="username"
+              value={userInfo.username}
+              onChange={setFormValues}
+            />
+            <input
+              type="password"
+              placeholder="Password..."
+              name="password"
+              value={userInfo.password}
+              onChange={setFormValues}
+            />
+            <button>Log in</button>
+          </form>
+          {loginFailed && <h3>Oops. There was a problem with your login.</h3>}
+
           <h4>
             Wait...I don't have an account! No worries,{" "}
             <Link to={"/register"}>create a free account here. </Link>

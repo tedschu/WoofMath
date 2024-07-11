@@ -37,18 +37,38 @@ function ScoreBar({
         </div>
 
         <div className="badges">
-          <FontAwesomeIcon icon={faHippo} size={"2x"} className="badgeEnabled">
-            {" "}
-          </FontAwesomeIcon>
-          <FontAwesomeIcon icon={faFrog} size={"2x"} className="badgeEnabled">
-            {" "}
-          </FontAwesomeIcon>
-          <FontAwesomeIcon icon={faDove} size={"2x"} className="badgeDisabled">
-            {" "}
-          </FontAwesomeIcon>
-          <FontAwesomeIcon icon={faCat} size={"2x"} className="badgeDisabled">
-            {" "}
-          </FontAwesomeIcon>
+          <div className="eachBadge">
+            <FontAwesomeIcon
+              icon={faHippo}
+              size={"2x"}
+              className="badgeEnabled"
+            >
+              {" "}
+            </FontAwesomeIcon>
+            <h3>100</h3>
+          </div>
+          <div className="eachBadge">
+            <FontAwesomeIcon icon={faFrog} size={"2x"} className="badgeEnabled">
+              {" "}
+            </FontAwesomeIcon>
+            <h3>500</h3>
+          </div>
+          <div className="eachBadge">
+            <FontAwesomeIcon
+              icon={faDove}
+              size={"2x"}
+              className="badgeDisabled"
+            >
+              {" "}
+            </FontAwesomeIcon>
+            <h3>1,000 (MATH)</h3>
+          </div>
+          <div className="eachBadge">
+            <FontAwesomeIcon icon={faCat} size={"2x"} className="badgeDisabled">
+              {" "}
+            </FontAwesomeIcon>
+            <h3>2,000</h3>
+          </div>
         </div>
       </div>
     </>

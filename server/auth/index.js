@@ -10,6 +10,43 @@ const prisma = new PrismaClient();
 // Creates a new user via registration, adds a token
 router.post("/register", async (req, res) => {
   try {
+    const {
+      name,
+      birth_year,
+      email,
+      username,
+      password,
+      security_question_1,
+      security_answer_1,
+      security_question_2,
+      security_answer_2,
+    } = req.body;
+
+    // Checks to see if username already exists
+    const existingUser = await prisma.user.findUnique({
+      where: { username: username },
+    });
+
+    if (existingUser) {
+      return res.status(400).json({ error: "Username already exists." });
+    }
+
+    if (
+      !name ||
+      !birth_year ||
+      !email ||
+      !username ||
+      !password ||
+      !security_question_1 ||
+      !security_answer_1 ||
+      !security_question_2 ||
+      !security_answer_2
+    ) {
+      return res
+        .status(400)
+        .json({ error: "Make sure you've filled out all fields." });
+    }
+
     const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
     const newUser = await prisma.user.create({
       data: {
@@ -61,7 +98,7 @@ router.post("/register", async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.stat(500).json({ error: "Registration failed" });
   }
 });
