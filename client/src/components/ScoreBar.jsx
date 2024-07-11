@@ -21,8 +21,6 @@ function ScoreBar({
   totalScore,
   setTotalScore,
 }) {
-  console.log(userScore);
-
   return (
     <>
       <div className="scoreBarContainer">

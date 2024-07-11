@@ -60,7 +60,6 @@ function GamePlay({
 
   function checkResult() {
     if (userAnswer === questionResult) {
-      setGotRight(true);
       setGotWrong(false);
       // FUNCTION TO SET USERSCORE WILL GO HERE
       setUserScore((prevScore) => {
@@ -71,7 +70,8 @@ function GamePlay({
         );
         postUserScore(updatedScores);
         setUserAnswer("");
-        //handleQuestionCount();   // REMOVE COMMENT TO MOVE TO NEXT QUESTION ON RIGHT ANSWER / SUBMIT BUTTON
+        handleQuestionCount(); // REMOVE COMMENT TO MOVE TO NEXT QUESTION ON RIGHT ANSWER / SUBMIT BUTTON
+        setGotRight(true);
         return { ...prevScore, ...updatedScores };
       });
     } else {
@@ -79,11 +79,6 @@ function GamePlay({
       setGotRight(false);
     }
   }
-
-  // console.log(mathOperator);
-  // console.log(sliderValue);
-  // console.log(addToScore);
-  // console.log("This is userScore: ", userScore);
 
   // Function to create an object for the score that's being updated (ex. addition) to pass into body / update DB
   function getUpdatedScores(gameSelector, addToScore, currentScore) {
@@ -164,12 +159,25 @@ function GamePlay({
     setSubmitted(true);
   };
 
+  // Controls alert when question was right. Visible for 3 seconds.
+  useEffect(() => {
+    let timer;
+    if (gotRight) {
+      timer = setTimeout(() => {
+        setGotRight(false);
+      }, 3000);
+    }
+    return () => clearTimeout(timer);
+  }, [gotRight]);
+
   return (
     <>
       <div className="gamePlayContainer">
         <div className="gamePlay">
           <h2>Sounds great. Let's go! [tooltip]</h2>
-          <h3>Question {questionCount}:</h3>
+          <h3>
+            Here's question #{questionCount} (for {addToScore} points):
+          </h3>
 
           <form onSubmit={handleSubmit}>
             <div className="questionContainer">
@@ -232,7 +240,7 @@ function GamePlay({
           )}
 
           <button className="nextQuestion" onClick={handleQuestionCount}>
-            Next question, please!
+            Skip this question :)
           </button>
         </div>
       </div>

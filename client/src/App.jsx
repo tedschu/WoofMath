@@ -95,7 +95,7 @@ function App() {
 
       getUserData();
     }
-  }, []);
+  }, [isLoggedIn]); // SET TO ISLOGGEDIN TO ENSURE RELOAD POST LOGIN AND REGISTRATION
 
   //console.log(userInfo);
   return (

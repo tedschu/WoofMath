@@ -294,10 +294,15 @@ select {
   font-family: "Schoolbell";
 }
 
+label {
+  font-size: 15px;
+}
+
 .registerForm input::placeholder,
 select:invalid {
   font-size: 17px;
   color: rgb(140, 140, 140);
+  font-style: italic;
 }
 
 select {
@@ -321,6 +326,10 @@ select {
 .registerForm > h3,
 p {
   font-size: 18px;
+}
+
+.securityQuestionsContainer {
+  display: flex;
 }
 
 /* ********** */

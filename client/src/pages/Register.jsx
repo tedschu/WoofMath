@@ -106,37 +106,42 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
           <p>Create a free account below to begin playing. </p>
 
           <form action="" className="registerForm" onSubmit={submit}>
+            <label htmlFor="name">Your first name:</label>
             <input
               type="text"
-              placeholder="Your first name..."
+              placeholder="example: Charlie"
               name="name"
               value={userInfo.name}
               onChange={setFormValues}
             />
+            <label htmlFor="birth_year">The year you were born:</label>
             <input
               type="text"
-              placeholder="The year you were born..."
+              placeholder="example: 2014"
               name="birth_year"
               value={userInfo.birth_year}
               onChange={setFormValues}
             />
+            <label htmlFor="email">Email (or parent's email):</label>
             <input
               type="text"
-              placeholder="Email (or parent's email)..."
+              placeholder="name@example.com"
               name="email"
               value={userInfo.email}
               onChange={setFormValues}
             />
+            <label htmlFor="username">Username (what shall we call you):</label>
             <input
               type="text"
-              placeholder="Username (what shall we call you)..."
+              placeholder="example: Count Woofula"
               name="username"
               value={userInfo.username}
               onChange={setFormValues}
             />
+            <label htmlFor="password">Password:</label>
             <input
               type="password"
-              placeholder="Password..."
+              placeholder="(...something you can remember)"
               name="password"
               value={userInfo.password}
               onChange={setFormValues}
@@ -146,49 +151,54 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
               Why? If you ever forget your password, you can reset it by
               answering these questions.{" "}
             </p>
-            <select
-              name="security_question_1"
-              value={userInfo.security_question_1 || ""}
-              onChange={setFormValues}
-            >
-              <option value="" disabled>
-                Select a security question...
-              </option>
-              {securityQuestions.map((question, index) => (
-                <option key={index} value={question}>
-                  {question}
-                </option>
-              ))}
-            </select>
 
-            <input
-              type="text"
-              placeholder="Answer to question 1..."
-              name="security_answer_1"
-              value={userInfo.security_answer_1}
-              onChange={setFormValues}
-            />
-            <select
-              name="security_question_2"
-              value={userInfo.security_question_2 || ""}
-              onChange={setFormValues}
-            >
-              <option value="" disabled>
-                Select a security question...
-              </option>
-              {securityQuestions.map((question, index) => (
-                <option key={index} value={question}>
-                  {question}
+            <div className="securityQuestionsContainer">
+              <select
+                name="security_question_1"
+                value={userInfo.security_question_1 || ""}
+                onChange={setFormValues}
+              >
+                <option value="" disabled>
+                  Select a security question #1...
                 </option>
-              ))}
-            </select>
-            <input
-              type="text"
-              placeholder="Answer to question 2..."
-              name="security_answer_2"
-              value={userInfo.security_answer_2}
-              onChange={setFormValues}
-            />
+                {securityQuestions.map((question, index) => (
+                  <option key={index} value={question}>
+                    {question}
+                  </option>
+                ))}
+              </select>
+
+              <input
+                type="text"
+                placeholder="Answer to question #1..."
+                name="security_answer_1"
+                value={userInfo.security_answer_1}
+                onChange={setFormValues}
+              />
+            </div>
+            <div className="securityQuestionsContainer">
+              <select
+                name="security_question_2"
+                value={userInfo.security_question_2 || ""}
+                onChange={setFormValues}
+              >
+                <option value="" disabled>
+                  Select a security question...
+                </option>
+                {securityQuestions.map((question, index) => (
+                  <option key={index} value={question}>
+                    {question}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="text"
+                placeholder="Answer to question 2..."
+                name="security_answer_2"
+                value={userInfo.security_answer_2}
+                onChange={setFormValues}
+              />
+            </div>
             <button>Create your account</button>
           </form>
           {registerError && (
