@@ -239,8 +239,8 @@ function GamePlay({
             </div>
           )}
 
-          <button className="nextQuestion" onClick={handleQuestionCount}>
-            Skip this question :)
+          <button className="buttonGrayText" onClick={handleQuestionCount}>
+            Skip this question
           </button>
         </div>
       </div>

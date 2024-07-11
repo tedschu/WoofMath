@@ -89,6 +89,16 @@ nav {
   margin: 7px;
 }
 
+.badgeDogDisabled {
+  color: rgb(209, 200, 125);
+  margin: 7px;
+}
+
+.badgeDogEnabled {
+  color: rgb(223, 190, 0);
+  margin: 7px;
+}
+
 .eachBadge {
   display: flex;
   flex-direction: column;
@@ -240,10 +250,6 @@ input[type="number"]::-webkit-inner-spin-button {
   color: white;
 }
 
-.nextQuestion {
-  margin: 15px;
-}
-
 /* BUTTON STYLING */
 
 button {
@@ -252,6 +258,10 @@ button {
   border: 1px solid lightgray;
   border-radius: 6px;
   margin: 10px;
+}
+
+.buttonGrayText {
+  color: gray;
 }
 
 /* LOGIN AND REGISTER STYLING */
@@ -399,6 +409,10 @@ p {
 
 .purple {
   color: rgb(68, 68, 179);
+}
+
+.getBackButton {
+  background-color: rgb(220, 254, 220);
 }
 
 /* ********** */

@@ -7,6 +7,9 @@ import { faHippo } from "@fortawesome/free-solid-svg-icons";
 import { faFrog } from "@fortawesome/free-solid-svg-icons";
 import { faDove } from "@fortawesome/free-solid-svg-icons";
 import { faCat } from "@fortawesome/free-solid-svg-icons";
+import { faFish } from "@fortawesome/free-solid-svg-icons";
+import { faCow } from "@fortawesome/free-solid-svg-icons";
+import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
 
 function ScoreBar({
   isLoggedIn,
@@ -21,6 +24,10 @@ function ScoreBar({
   totalScore,
   setTotalScore,
 }) {
+  // Needs a function to set badges based on score thresholds
+  // If a badge score threshold is met, set badge to "true" in DB and apply badgeEnabled styling
+  // Do this via switch statements by point threshold levels? e.g. if (totalScore > 1000) set Hippo to true, apply styling
+
   return (
     <>
       <div className="scoreBarContainer">
@@ -45,13 +52,13 @@ function ScoreBar({
             >
               {" "}
             </FontAwesomeIcon>
-            <h3>100</h3>
+            <h3>100 (total)</h3>
           </div>
           <div className="eachBadge">
-            <FontAwesomeIcon icon={faFrog} size={"2x"} className="badgeEnabled">
+            <FontAwesomeIcon icon={faCow} size={"2x"} className="badgeEnabled">
               {" "}
             </FontAwesomeIcon>
-            <h3>500</h3>
+            <h3>500 (total)</h3>
           </div>
           <div className="eachBadge">
             <FontAwesomeIcon
@@ -61,13 +68,43 @@ function ScoreBar({
             >
               {" "}
             </FontAwesomeIcon>
-            <h3>1,000 (MATH)</h3>
+            <h3>500 (in each)</h3>
+          </div>
+          <div className="eachBadge">
+            <FontAwesomeIcon
+              icon={faFrog}
+              size={"2x"}
+              className="badgeDisabled"
+            >
+              {" "}
+            </FontAwesomeIcon>
+            <h3>2,000</h3>
+          </div>
+          <div className="eachBadge">
+            <FontAwesomeIcon
+              icon={faFish}
+              size={"2x"}
+              className="badgeDisabled"
+            >
+              {" "}
+            </FontAwesomeIcon>
+            <h3>3,000</h3>
           </div>
           <div className="eachBadge">
             <FontAwesomeIcon icon={faCat} size={"2x"} className="badgeDisabled">
               {" "}
             </FontAwesomeIcon>
-            <h3>2,000</h3>
+            <h3>5,000</h3>
+          </div>
+          <div className="eachBadge">
+            <FontAwesomeIcon
+              icon={faShieldDog}
+              size={"2x"}
+              className="badgeDogDisabled"
+            >
+              {" "}
+            </FontAwesomeIcon>
+            <h3>10,000</h3>
           </div>
         </div>
       </div>

@@ -5,10 +5,16 @@ import { useNavigate } from "react-router-dom";
 import ScoreBar from "../components/ScoreBar";
 
 function Me({ userInfo, userScore, totalScore }) {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     window.location.reload();
+  };
+
+  const navHome = () => {
+    navigate("/");
   };
 
   console.log(userInfo);
@@ -48,9 +54,14 @@ function Me({ userInfo, userScore, totalScore }) {
           <span className="purple">{userInfo.security_answer_2}</span>
         </li>
 
+        <button className="getBackButton" onClick={navHome}>
+          Get back to playing!
+        </button>
         <button onClick={handleLogout}>Log out</button>
         <button>Change my password</button>
-        <button>Delete my account</button>
+        <button>Contact us / share feedback</button>
+
+        <button className="buttonGrayText">Delete my account</button>
       </div>
     </>
   );
