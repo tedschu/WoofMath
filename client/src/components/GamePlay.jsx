@@ -14,6 +14,8 @@ function GamePlay({
   gotWrong,
   setGotRight,
   setGotWrong,
+  userBadges,
+  setUserBadges,
 }) {
   const [questionCount, setQuestionCount] = useState(1);
   const [mathOperator, setMathOperator] = useState("+");
@@ -26,6 +28,9 @@ function GamePlay({
 
   // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
   const [addToScore, setAddToScore] = useState(0);
+
+  // Binary state value to control whether to run postUserBadge, update DB, and setUserBadges
+  const [hasNewBadge, setHasNewBadge] = useState(false);
 
   // Determines the correct answer to the generated question AND stores value in questionResult
   // Compares userAnswer to questionResult to determine if answer is correct
@@ -70,7 +75,7 @@ function GamePlay({
         );
         postUserScore(updatedScores);
         setUserAnswer("");
-        handleQuestionCount(); // REMOVE COMMENT TO MOVE TO NEXT QUESTION ON RIGHT ANSWER / SUBMIT BUTTON
+        handleQuestionCount(); // ensures next question loads automatically upon rightAnswer
         setGotRight(true);
         return { ...prevScore, ...updatedScores };
       });
@@ -79,6 +84,11 @@ function GamePlay({
       setGotRight(false);
     }
   }
+
+  // ******** Does postUserBadge need to go here?
+  // e.g. set hasNewBadge state (if points have hit a threshold)
+  // IF hasNewBadge = true, postUserBadge to DB and setUserBadge just as setUserScore is doing above
+  // Needs function to set thresholds and setters (e.g. case userScore = 500)
 
   // Function to create an object for the score that's being updated (ex. addition) to pass into body / update DB
   function getUpdatedScores(gameSelector, addToScore, currentScore) {
@@ -169,6 +179,9 @@ function GamePlay({
     }
     return () => clearTimeout(timer);
   }, [gotRight]);
+
+  // Logic for determining when to update userBadges state, run postUserBadges function
+  // (1) specify when hasNewBadge is true based on thresholds, (2) pass the value to be updated in postUserBadges (e.g. cow: true)
 
   return (
     <>

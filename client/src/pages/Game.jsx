@@ -60,10 +60,13 @@ function Game({
         setUserScore={setUserScore}
         userInfo={userInfo}
         setTotalScore={setTotalScore}
+        totalScore={totalScore}
         gotRight={gotRight}
         gotWrong={gotWrong}
         setGotRight={setGotRight}
         setGotWrong={setGotWrong}
+        userBadges={userBadges}
+        setUserBadges={setUserBadges}
       />
     </>
   );

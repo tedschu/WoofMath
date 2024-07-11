@@ -102,4 +102,20 @@ router.put("/:user_id/score", verifyToken, async (req, res) => {
   }
 });
 
+// UPdates a badge for a given user (e.g. on submit button in gamePlay)
+router.put("/:user_id/badge", verifyToken, async (req, res) => {
+  try {
+    const badge = await prisma.badge.update({
+      where: {
+        user_id: parseInt(req.user),
+      },
+      data: req.body,
+    });
+    res.send(badge);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;
