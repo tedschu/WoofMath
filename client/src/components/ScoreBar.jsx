@@ -25,8 +25,18 @@ function ScoreBar({
   setTotalScore,
 }) {
   // Needs a function to set badges based on score thresholds
-  // If a badge score threshold is met, set badge to "true" in DB and apply badgeEnabled styling
+  // If a badge score threshold is met, set badge to "true" in DB, apply badgeEnabled styling, throw an alert window
   // Do this via switch statements by point threshold levels? e.g. if (totalScore > 1000) set Hippo to true, apply styling
+
+  console.log(totalScore);
+  switch (totalScore) {
+    case totalScore > 100:
+      setUserBadges.hippo(true);
+      // other logic e.g. database call
+      break;
+  }
+
+  console.log(userBadges);
 
   return (
     <>
@@ -48,14 +58,18 @@ function ScoreBar({
             <FontAwesomeIcon
               icon={faHippo}
               size={"2x"}
-              className="badgeEnabled"
+              className={userBadges.hippo ? "badgeEnabled" : "badgeDisabled"}
             >
               {" "}
             </FontAwesomeIcon>
             <h3>100 (total)</h3>
           </div>
           <div className="eachBadge">
-            <FontAwesomeIcon icon={faCow} size={"2x"} className="badgeEnabled">
+            <FontAwesomeIcon
+              icon={faCow}
+              size={"2x"}
+              className={userBadges.cow ? "badgeEnabled" : "badgeDisabled"}
+            >
               {" "}
             </FontAwesomeIcon>
             <h3>500 (total)</h3>
@@ -64,7 +78,7 @@ function ScoreBar({
             <FontAwesomeIcon
               icon={faDove}
               size={"2x"}
-              className="badgeDisabled"
+              className={userBadges.dove ? "badgeEnabled" : "badgeDisabled"}
             >
               {" "}
             </FontAwesomeIcon>
@@ -74,7 +88,7 @@ function ScoreBar({
             <FontAwesomeIcon
               icon={faFrog}
               size={"2x"}
-              className="badgeDisabled"
+              className={userBadges.frog ? "badgeEnabled" : "badgeDisabled"}
             >
               {" "}
             </FontAwesomeIcon>
@@ -84,14 +98,18 @@ function ScoreBar({
             <FontAwesomeIcon
               icon={faFish}
               size={"2x"}
-              className="badgeDisabled"
+              className={userBadges.fish ? "badgeEnabled" : "badgeDisabled"}
             >
               {" "}
             </FontAwesomeIcon>
             <h3>3,000</h3>
           </div>
           <div className="eachBadge">
-            <FontAwesomeIcon icon={faCat} size={"2x"} className="badgeDisabled">
+            <FontAwesomeIcon
+              icon={faCat}
+              size={"2x"}
+              className={userBadges.cat ? "badgeEnabled" : "badgeDisabled"}
+            >
               {" "}
             </FontAwesomeIcon>
             <h3>5,000</h3>
@@ -100,7 +118,9 @@ function ScoreBar({
             <FontAwesomeIcon
               icon={faShieldDog}
               size={"2x"}
-              className="badgeDogDisabled"
+              className={
+                userBadges.shield_dog ? "badgeDogEnabled" : "badgeDogDisabled"
+              }
             >
               {" "}
             </FontAwesomeIcon>
