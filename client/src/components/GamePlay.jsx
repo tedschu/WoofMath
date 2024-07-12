@@ -30,9 +30,6 @@ function GamePlay({
   // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
   const [addToScore, setAddToScore] = useState(0);
 
-  // Binary state value to control whether to run postUserBadge, update DB, and setUserBadges
-  const [hasNewBadge, setHasNewBadge] = useState(false);
-
   // Determines the correct answer to the generated question AND stores value in questionResult
   // Compares userAnswer to questionResult to determine if answer is correct
   function findAnswer() {
@@ -78,9 +75,19 @@ function GamePlay({
         setUserAnswer("");
         handleQuestionCount(); // ensures next question loads automatically upon rightAnswer
         setGotRight(true);
+
         return { ...prevScore, ...updatedScores };
       });
-      getUpdatedBadges()
+      // Determines whether there is a new qualifying badge, and returns an object (updatedBadges) to pass to API
+      const updatedBadges = getUpdatedBadges();
+      // IF there is an updatedBadge, sets userBadges state and then posts to DB
+      if (Object.keys(updatedBadges).length > 0) {
+        setUserBadges((prevBadges) => ({
+          ...prevBadges,
+          ...updatedBadges,
+        }));
+        postUserBadges(updatedBadges);
+      }
     } else {
       setGotWrong(true);
       setGotRight(false);
@@ -125,7 +132,7 @@ function GamePlay({
       });
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       // SET ALL STATE VALUES HERE (SCORES, BADGES, USER INFO, ETC.)
       if (response.ok) {
@@ -178,34 +185,72 @@ function GamePlay({
   }, [gotRight]);
 
   // Logic for determining when to update userBadges state, run postUserBadges function
-  // (1) specify when hasNewBadge is true based on thresholds, (2) pass the value to be updated in postUserBadges (e.g. cow: true)
-  
-  
+  // Passes the value to be updated in postUserBadges (e.g. cow: true)
+
   function getUpdatedBadges() {
     const updatedBadge = {};
-    
+
     if (totalScore > 100 && !userBadges.hippo) {
       updatedBadge.hippo = true;
     } else if (totalScore > 500 && !userBadges.cow) {
       updatedBadge.cow = true;
-    } else if (totalScore > 1000 && !userBadges.dove) {
+    } else if (totalScore > 1030 && !userBadges.dove) {
       updatedBadge.dove = true;
-    } else if (totalScore > 1000 && userScore.addition_score > 250 && userScore.subtraction_score > 250 && userScore.multiplication_score > 250 && userScore.division_score > 250 && !userBadges.frog) {
+    } else if (
+      totalScore > 1000 &&
+      userScore.addition_score > 250 &&
+      userScore.subtraction_score > 250 &&
+      userScore.multiplication_score > 250 &&
+      userScore.division_score > 250 &&
+      !userBadges.frog
+    ) {
       updatedBadge.frog = true;
     } else if (totalScore > 2000 && !userBadges.fish) {
       updatedBadge.fish = true;
-    } else if (totalScore > 5000 && userScore.addition_score > 500 && userScore.subtraction_score > 500 && userScore.multiplication_score > 500 && userScore.division_score > 500 && !userBadges.cat) {
+    } else if (
+      totalScore > 5000 &&
+      userScore.addition_score > 500 &&
+      userScore.subtraction_score > 500 &&
+      userScore.multiplication_score > 500 &&
+      userScore.division_score > 500 &&
+      !userBadges.cat
+    ) {
       updatedBadge.cat = true;
     } else if (totalScore > 10000) {
       updatedBadge.shield_dog = true;
     }
-  }
-    
-    
-    
+    return updatedBadge;
   }
 
+  // Function to pass the updated score to the database, update scores state values for gameplay
+  const postUserBadges = async (updatedBadges) => {
+    try {
+      // const updatedScores = getUpdatedScores(gameSelector, addToScore);
+      const storedToken = localStorage.getItem("token");
 
+      const response = await fetch(`/api/users/${userInfo.id}/badge`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${storedToken}`,
+        },
+        body: JSON.stringify(updatedBadges),
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      // SET ALL STATE VALUES HERE (SCORES, BADGES, USER INFO, ETC.)
+      if (response.ok) {
+        //setUserBadges(data.badge);
+        console.log(data);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  // console.log(hasNewBadge);
 
   return (
     <>

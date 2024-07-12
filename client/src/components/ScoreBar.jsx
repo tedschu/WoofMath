@@ -24,26 +24,6 @@ function ScoreBar({
   totalScore,
   setTotalScore,
 }) {
-  // Needs a function to set badges based on score thresholds
-  // If a badge score threshold is met, set badge to "true" in DB, apply badgeEnabled styling, throw an alert window
-  // Do this via switch statements by point threshold levels? e.g. if (totalScore > 1000) set Hippo to true, apply styling
-
-  //   console.log(totalScore);
-
-  //   useEffect(() => {
-  //     switch (totalScore) {
-  //       case (totalScore = 0):
-  //         setUserBadges({
-  //           cow: true,
-  //           hippo: true,
-  //         });
-  //         // other logic e.g. database call
-  //         break;
-  //     }
-  //   },
-  // [totalScore]
-  // )
-
   return (
     <>
       <div className="scoreBarContainer">
@@ -88,7 +68,7 @@ function ScoreBar({
             >
               {" "}
             </FontAwesomeIcon>
-            <h3>500 (in each)</h3>
+            <h3>1,000</h3>
           </div>
           <div className="eachBadge">
             <FontAwesomeIcon

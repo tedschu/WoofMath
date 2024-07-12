@@ -48,6 +48,8 @@ function App() {
   // IF token exists: update setters (isLoggedIn, badges, userscore, userId)
   // IF token doesn't exist, navigate to /login
 
+  console.log("Userbadges:", userBadges);
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
@@ -130,6 +132,7 @@ function App() {
               userInfo={userInfo}
               userScore={userScore}
               totalScore={totalScore}
+              userBadges={userBadges}
             />
           }
         />

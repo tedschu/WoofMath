@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ScoreBar from "../components/ScoreBar";
 
-function Me({ userInfo, userScore, totalScore }) {
+function Me({ userInfo, userScore, totalScore, userBadges }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,7 +20,11 @@ function Me({ userInfo, userScore, totalScore }) {
   console.log(userInfo);
   return (
     <>
-      <ScoreBar userScore={userScore} totalScore={totalScore} />
+      <ScoreBar
+        userScore={userScore}
+        totalScore={totalScore}
+        userBadges={userBadges}
+      />
 
       <div className="accountPageContainer">
         <h2>Welcome! Here's what you've shared with us:</h2>
