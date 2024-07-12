@@ -9,13 +9,14 @@ function GamePlay({
   userScore,
   setUserScore,
   userInfo,
-  setTotalScore,
   gotRight,
   gotWrong,
   setGotRight,
   setGotWrong,
   userBadges,
   setUserBadges,
+  totalScore,
+  setTotalScore,
 }) {
   const [questionCount, setQuestionCount] = useState(1);
   const [mathOperator, setMathOperator] = useState("+");
@@ -79,16 +80,12 @@ function GamePlay({
         setGotRight(true);
         return { ...prevScore, ...updatedScores };
       });
+      getUpdatedBadges()
     } else {
       setGotWrong(true);
       setGotRight(false);
     }
   }
-
-  // ******** Does postUserBadge need to go here?
-  // e.g. set hasNewBadge state (if points have hit a threshold)
-  // IF hasNewBadge = true, postUserBadge to DB and setUserBadge just as setUserScore is doing above
-  // Needs function to set thresholds and setters (e.g. case userScore = 500)
 
   // Function to create an object for the score that's being updated (ex. addition) to pass into body / update DB
   function getUpdatedScores(gameSelector, addToScore, currentScore) {
@@ -182,6 +179,33 @@ function GamePlay({
 
   // Logic for determining when to update userBadges state, run postUserBadges function
   // (1) specify when hasNewBadge is true based on thresholds, (2) pass the value to be updated in postUserBadges (e.g. cow: true)
+  
+  
+  function getUpdatedBadges() {
+    const updatedBadge = {};
+    
+    if (totalScore > 100 && !userBadges.hippo) {
+      updatedBadge.hippo = true;
+    } else if (totalScore > 500 && !userBadges.cow) {
+      updatedBadge.cow = true;
+    } else if (totalScore > 1000 && !userBadges.dove) {
+      updatedBadge.dove = true;
+    } else if (totalScore > 1000 && userScore.addition_score > 250 && userScore.subtraction_score > 250 && userScore.multiplication_score > 250 && userScore.division_score > 250 && !userBadges.frog) {
+      updatedBadge.frog = true;
+    } else if (totalScore > 2000 && !userBadges.fish) {
+      updatedBadge.fish = true;
+    } else if (totalScore > 5000 && userScore.addition_score > 500 && userScore.subtraction_score > 500 && userScore.multiplication_score > 500 && userScore.division_score > 500 && !userBadges.cat) {
+      updatedBadge.cat = true;
+    } else if (totalScore > 10000) {
+      updatedBadge.shield_dog = true;
+    }
+  }
+    
+    
+    
+  }
+
+
 
   return (
     <>
