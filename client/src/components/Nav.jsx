@@ -20,6 +20,12 @@ function Nav({ isLoggedIn, userInfo }) {
             <h3>Hello, {userInfo.username}!</h3>
           </Link>
         )}
+
+        {!isLoggedIn && (
+          <Link to={"/login"} className="navUser">
+            <h3>Log in or sign up to play!</h3>
+          </Link>
+        )}
       </nav>
     </>
   );

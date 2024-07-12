@@ -4,20 +4,54 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ScoreBar from "../components/ScoreBar";
 
-function Me({ userInfo, userScore, totalScore, userBadges }) {
+function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     window.location.reload();
+    //navigate("/");
   };
 
   const navHome = () => {
     navigate("/");
   };
 
-  console.log(userInfo);
+  function handleDelete() {
+    const confirmation = window.confirm(
+      "Are you sure you want to delete this account?"
+    );
+
+    if (confirmation) {
+      deleteUserAccount();
+    }
+  }
+
+  const deleteUserAccount = async () => {
+    try {
+      // const updatedScores = getUpdatedScores(gameSelector, addToScore);
+      const storedToken = localStorage.getItem("token");
+
+      const response = await fetch(`/api/users/${userInfo.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${storedToken}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data);
+        handleLogout();
+      }
+    } catch (error) {
+      console.error("Error removing this user:", error);
+    }
+  };
+
   return (
     <>
       <ScoreBar
@@ -61,11 +95,16 @@ function Me({ userInfo, userScore, totalScore, userBadges }) {
         <button className="getBackButton" onClick={navHome}>
           Get back to playing!
         </button>
-        <button onClick={handleLogout}>Log out</button>
-        <button>Change my password</button>
         <button>Contact us / share feedback</button>
 
-        <button className="buttonGrayText">Delete my account</button>
+        {isLoggedIn && (
+          <>
+            <button onClick={handleLogout}>Log out</button>
+            <button className="buttonGrayText" onClick={handleDelete}>
+              Delete my account
+            </button>
+          </>
+        )}
       </div>
     </>
   );

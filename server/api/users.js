@@ -50,15 +50,29 @@ router.get("/me", verifyToken, async (req, res) => {
 // Deletes a user
 router.delete("/:id", verifyToken, async (req, res) => {
   try {
-    const user = await prisma.user.delete({
+    const userId = parseInt(req.user);
+
+    await prisma.score.deleteMany({
+      where: { user_id: userId },
+    });
+
+    await prisma.badge.deleteMany({
+      where: { user_id: userId },
+    });
+
+    await prisma.game_state.deleteMany({
+      where: { user_id: userId },
+    });
+
+    const deletedUser = await prisma.user.delete({
       where: {
-        id: parseInt(req.user),
+        id: userId,
       },
     });
-    res.send(user);
+    res.send(deletedUser);
   } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
+    console.error(error);
+    res.status(500).json({ error: "Failed to delete user." });
   }
 });
 
