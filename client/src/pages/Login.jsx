@@ -3,13 +3,18 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import RecoverModal from "../components/RecoverModal";
+import ResetPassModal from "../components/ResetPassModal";
 
 function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   const [loginFailed, setLoginFailed] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRecoverModalOpen, setIsRecoverModalOpen] = useState(false);
+  const [isResetPassModalOpen, setIsResetPassModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openRecoverModal = () => setIsRecoverModalOpen(true);
+  const closeRecoverModal = () => setIsRecoverModalOpen(false);
+
+  const openResetPassModal = () => setIsResetPassModalOpen(true);
+  const closeResetPassModal = () => setIsResetPassModalOpen(false);
 
   const navigate = useNavigate();
 
@@ -100,18 +105,19 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
           {loginFailed && (
             <>
               <h3>Oops. There was a problem with your login.</h3>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  openModal();
-                }}
-              >
-                Forgot your username or password? Let's help you out.
-              </a>
+              <button onClick={openRecoverModal}>Find my username</button>
+              <button onClick={openResetPassModal}>Reset my password</button>
+
               <RecoverModal
-                isOpen={isModalOpen}
-                onClose={closeModal}
+                isRecoverOpen={isRecoverModalOpen}
+                onRecoverClose={closeRecoverModal}
+                userInfo={userInfo}
+                setUserInfo={setUserInfo}
+              />
+
+              <ResetPassModal
+                isResetPassOpen={isResetPassModalOpen}
+                onResetPassClose={closeResetPassModal}
                 userInfo={userInfo}
                 setUserInfo={setUserInfo}
               />

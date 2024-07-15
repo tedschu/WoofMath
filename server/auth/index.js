@@ -151,7 +151,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// WORKS: Gets a single user
 // validate and find user info
 router.get("/find-username/:email", async (req, res) => {
   try {
@@ -170,6 +169,67 @@ router.get("/find-username/:email", async (req, res) => {
         .json({ message: "No user was found with this email" });
     }
     res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+// Returns security questions for a given username
+// Part of password recovery process
+router.get("/get-questions/:username", async (req, res) => {
+  try {
+    const users = await prisma.user.findUnique({
+      where: {
+        username: req.params.username,
+      },
+      select: {
+        security_question_1: true,
+        security_question_2: true,
+      },
+    });
+
+    if (users.length === 0) {
+      return res.status(404).json({ message: "This username does not exist" });
+    }
+    res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+// Takes in a user's security answer inputs and verifies if they match
+router.post("/check-answers/", async (req, res) => {
+  try {
+    console.log("Request body: ", req.body);
+    //gets username and security answers
+    const { username, security_answer_1, security_answer_2 } = req.body;
+
+    //checks if the user exists
+    const answerMatch = await prisma.user.findUnique({
+      where: { username },
+      select: {
+        security_answer_1: true,
+        security_answer_2: true,
+        username: true,
+      },
+    });
+
+    if (!answerMatch) {
+      return res.status(400).json({ message: "User not found." });
+    }
+
+    if (
+      security_answer_1.toLowerCase() ==
+        answerMatch.security_answer_1.toLowerCase() &&
+      security_answer_2.toLowerCase() ==
+        answerMatch.security_answer_2.toLowerCase()
+    ) {
+      return res.json({ username: answerMatch.username });
+    } else {
+      return res.status(400).json({ message: "Your answers don't match." });
+    }
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

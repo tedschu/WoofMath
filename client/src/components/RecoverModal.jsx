@@ -3,10 +3,16 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function RecoverModal({ isOpen, onClose, userInfo, setUserInfo }) {
-  if (!isOpen) return null;
+function RecoverModal({
+  isRecoverOpen,
+  onRecoverClose,
+  userInfo,
+  setUserInfo,
+}) {
+  if (!isRecoverOpen) return null;
 
   const [returnedUsers, setReturnedUsers] = useState([]);
+  const [noUsers, setNoUsers] = useState(false);
 
   // Handles form values AND updates loginForm state
   const setFormValues = (event) => {
@@ -39,10 +45,19 @@ function RecoverModal({ isOpen, onClose, userInfo, setUserInfo }) {
         const usernamesArray = data.map((user) => user.username);
 
         setReturnedUsers(usernamesArray);
+
+        if (usernamesArray.length === 0) {
+          setNoUsers(true);
+        } else {
+          setNoUsers(false);
+        }
       } else {
         console.error("Error fetching usernames", data);
+        setNoUsers(true);
       }
-    } catch (error) {}
+    } catch (error) {
+      setNoUsers(true);
+    }
   };
 
   console.log(returnedUsers);
@@ -52,6 +67,7 @@ function RecoverModal({ isOpen, onClose, userInfo, setUserInfo }) {
       <div className="modalOverlay">
         <div className="modalContent">
           <h2>Let's start by finding your account.</h2>
+
           <form action="" className="registerForm" onSubmit={submit}>
             <label htmlFor="name">
               What was the email used to create the account(s)?
@@ -66,20 +82,20 @@ function RecoverModal({ isOpen, onClose, userInfo, setUserInfo }) {
             <button>Submit</button>
           </form>
 
-          {returnedUsers.length > 0 ? (
-            <div>
+          {returnedUsers.length > 0 && (
+            <div className="login_returnedUsers">
               <p>Usernames for this email:</p>
               <ul>
                 {returnedUsers.map((username, index) => {
-                  <li key={index}>{username}</li>;
+                  return <li key={index}>{username}</li>;
                 })}
               </ul>
             </div>
-          ) : (
-            <p> No usernames were found for this email. </p>
           )}
 
-          <button className="modalClose" onClick={onClose}>
+          {noUsers && <p> No usernames were found for this email. </p>}
+
+          <button className="modalClose" onClick={onRecoverClose}>
             {" "}
             Close
           </button>

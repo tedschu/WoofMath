@@ -444,6 +444,10 @@ p {
   cursor: pointer;
 }
 
+.login_returnedUsers > ul {
+  list-style-type: none;
+}
+
 /* ********** */
 /* MEDIA QUERIES FOR DESKTOP SIZING */
 @media screen and (min-width: 900px) {
