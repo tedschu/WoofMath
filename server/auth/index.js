@@ -200,7 +200,7 @@ router.get("/get-questions/:username", async (req, res) => {
 });
 
 const maxAnswerAttempts = 4;
-let answerAttempts;
+let answerAttempts = 0;
 
 // Takes in a user's security answer inputs and verifies if they match
 router.post("/check-answers", async (req, res) => {
@@ -228,7 +228,7 @@ router.post("/check-answers", async (req, res) => {
     if (!answerMatch) {
       return res.status(400).json({ message: "User not found." });
     }
-    console.log(answerAttempts);
+    console.log("answerAttempts: ", answerAttempts);
 
     if (
       security_answer_1.toLowerCase() ==
@@ -236,7 +236,7 @@ router.post("/check-answers", async (req, res) => {
       security_answer_2.toLowerCase() ==
         answerMatch.security_answer_2.toLowerCase()
     ) {
-      return res.json({ username: answerMatch.username });
+      return res.json({ message: "Success", username: answerMatch.username });
     } else {
       answerAttempts++;
       return res.status(400).json({ message: "Your answers don't match." });

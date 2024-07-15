@@ -13,6 +13,8 @@ function ResetPassModal({
 
   const [resetStep, setResetStep] = useState(1);
   const [securityQuestions, setSecurityQuestions] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Handles form values AND updates loginForm state
   const setFormValues = (event) => {
@@ -76,33 +78,50 @@ function ResetPassModal({
       });
 
       const data = await response.json();
-      console.log(response);
+
       if (!response.ok) {
-        throw new Error(`HTTP error, status: " ${response.status}`);
+        setErrorMessage(data.message);
       } else {
         setResetStep(3);
       }
-
-      console.log("Response data: ", data);
-
-      //   if (!response.ok) {
-      //     throw new Error("Login failed");
-      //     setLoginFailed(true);
-      //   } else {
-      //     localStorage.setItem("token", data.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
-      //     localStorage.setItem("userId", data.id); // SETS USER ID INTO LOCALSTORAGE TO HELP WITH RENDERING USER DATA ON GAME AND ACCOUNT PAGES
-      //     //setUserId(data.id);
-      //     setIsLoggedIn(true);
-      //     setLoginFailed(false);
-      //     navigate("/");
-      //   }
     } catch (error) {
       console.error("Error during login", error);
       //setLoginFailed(true);
     }
   }
 
-  //console.log(securityQuestions);
+  const passwordSubmit = (event) => {
+    event.preventDefault();
+    updatePassword(userInfo);
+  };
+
+  async function updatePassword(userInfo) {
+    try {
+      const response = await fetch("/auth/reset-password", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: userInfo.username,
+          password: userInfo.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrorMessage(data.message);
+      } else {
+        setSuccessMessage(
+          "You've updated your password. Close this window to log back in."
+        );
+      }
+    } catch (error) {
+      console.error("Error during login", error);
+      //setLoginFailed(true);
+    }
+  }
 
   return (
     <>
@@ -161,13 +180,34 @@ function ResetPassModal({
             </>
           )}
 
+          {errorMessage && <h3>{errorMessage}</h3>}
+
           {resetStep === 3 && (
             <>
               <h3>
                 Awesome, {userInfo.username}. Please set your new password:
               </h3>
+
+              <form
+                action=""
+                className="registerForm"
+                onSubmit={passwordSubmit}
+              >
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  placeholder="(...something you can remember)"
+                  name="password"
+                  value={userInfo.password}
+                  onChange={setFormValues}
+                />
+
+                <button>Update password</button>
+              </form>
             </>
           )}
+
+          {successMessage && <h3>{successMessage}</h3>}
 
           <button className="modalClose" onClick={onResetPassClose}>
             {" "}
