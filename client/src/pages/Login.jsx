@@ -2,9 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import RecoverModal from "../components/RecoverModal";
 
 function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   const [loginFailed, setLoginFailed] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const navigate = useNavigate();
 
@@ -60,7 +65,7 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     }
   }
 
-  //console.log(loginFailed);
+  console.log(userInfo);
 
   return (
     <>
@@ -92,7 +97,26 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
             />
             <button>Log in</button>
           </form>
-          {loginFailed && <h3>Oops. There was a problem with your login.</h3>}
+          {loginFailed && (
+            <>
+              <h3>Oops. There was a problem with your login.</h3>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openModal();
+                }}
+              >
+                Forgot your username or password? Let's help you out.
+              </a>
+              <RecoverModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                userInfo={userInfo}
+                setUserInfo={setUserInfo}
+              />
+            </>
+          )}
 
           <h4>
             Wait...I don't have an account! No worries,{" "}

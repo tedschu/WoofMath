@@ -21,11 +21,11 @@ function Nav({ isLoggedIn, userInfo }) {
           </Link>
         )}
 
-        {!isLoggedIn && (
+        {/* {!isLoggedIn && (
           <Link to={"/login"} className="navUser">
             <h3>Log in or sign up to play!</h3>
           </Link>
-        )}
+        )} */}
       </nav>
     </>
   );

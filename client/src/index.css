@@ -415,6 +415,35 @@ p {
   background-color: rgb(220, 254, 220);
 }
 
+/* STYLING FOR FORGOT PASSWORD MODAL */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.modalClose {
+  float: right;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
 /* ********** */
 /* MEDIA QUERIES FOR DESKTOP SIZING */
 @media screen and (min-width: 900px) {

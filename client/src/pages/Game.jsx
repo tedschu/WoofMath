@@ -24,6 +24,17 @@ function Game({
   const [gotRight, setGotRight] = useState(false);
   const [gotWrong, setGotWrong] = useState(false);
 
+  const navigate = useNavigate();
+
+  // If a user is not signed in (no token) they are redirected to the login page.
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
   return (
     <>
       <ScoreBar

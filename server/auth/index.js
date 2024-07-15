@@ -151,4 +151,29 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// WORKS: Gets a single user
+// validate and find user info
+router.get("/find-username/:email", async (req, res) => {
+  try {
+    const users = await prisma.user.findMany({
+      where: {
+        email: req.params.email,
+      },
+      select: {
+        username: true,
+      },
+    });
+
+    if (users.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No user was found with this email" });
+    }
+    res.send(users);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;
