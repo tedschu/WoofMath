@@ -199,12 +199,21 @@ router.get("/get-questions/:username", async (req, res) => {
   }
 });
 
+const maxAnswerAttempts = 4;
+let answerAttempts;
+
 // Takes in a user's security answer inputs and verifies if they match
-router.post("/check-answers/", async (req, res) => {
+router.post("/check-answers", async (req, res) => {
   try {
     console.log("Request body: ", req.body);
     //gets username and security answers
     const { username, security_answer_1, security_answer_2 } = req.body;
+
+    if (answerAttempts >= maxAnswerAttempts) {
+      return res.status(400).json({
+        message: "You have maxed out your answer attempts. Try again later.",
+      });
+    }
 
     //checks if the user exists
     const answerMatch = await prisma.user.findUnique({
@@ -219,6 +228,7 @@ router.post("/check-answers/", async (req, res) => {
     if (!answerMatch) {
       return res.status(400).json({ message: "User not found." });
     }
+    console.log(answerAttempts);
 
     if (
       security_answer_1.toLowerCase() ==
@@ -228,8 +238,36 @@ router.post("/check-answers/", async (req, res) => {
     ) {
       return res.json({ username: answerMatch.username });
     } else {
+      answerAttempts++;
       return res.status(400).json({ message: "Your answers don't match." });
     }
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+// Allows user to reset password
+router.put("/reset-password", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    if (req.body.password.length == 0) {
+      return res
+        .status(400)
+        .json({ message: "Make sure you enter a new password." });
+    }
+
+    const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
+
+    const updatePassword = await prisma.user.update({
+      where: { username: username },
+      data: {
+        password: hashPassword,
+      },
+    });
+
+    res.json({ message: "Password successfully updated." });
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

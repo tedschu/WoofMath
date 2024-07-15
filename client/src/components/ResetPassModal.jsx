@@ -76,8 +76,9 @@ function ResetPassModal({
       });
 
       const data = await response.json();
+      console.log(response);
       if (!response.ok) {
-        throw new Error(`HTTP error, status:" ${response.status}`);
+        throw new Error(`HTTP error, status: " ${response.status}`);
       } else {
         setResetStep(3);
       }
