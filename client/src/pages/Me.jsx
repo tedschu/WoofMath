@@ -57,57 +57,59 @@ function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
     <>
       <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />
 
-      <ScoreBar
-        userScore={userScore}
-        totalScore={totalScore}
-        userBadges={userBadges}
-      />
+      <div className="mainContainer">
+        <ScoreBar
+          userScore={userScore}
+          totalScore={totalScore}
+          userBadges={userBadges}
+        />
 
-      <div className="accountPageContainer">
-        <h2>Welcome! Here's what you've shared with us:</h2>
-        <li>
-          Name: <span className="purple">{userInfo.name}</span>
-        </li>
-        <li>
-          Email: <span className="purple">{userInfo.email}</span>
-        </li>
-        <li>
-          Year you were born:{" "}
-          <span className="purple">{userInfo.birth_year}</span>
-        </li>
-        <li>
-          Username: <span className="purple">{userInfo.username}</span>
-        </li>
-        <li>
-          Security question #1:{" "}
-          <span className="purple">{userInfo.security_question_1}</span>
-        </li>
-        <li>
-          Security answer #1:{" "}
-          <span className="purple">{userInfo.security_answer_1}</span>
-        </li>
-        <li>
-          Security question #2:{" "}
-          <span className="purple">{userInfo.security_question_2}</span>
-        </li>
-        <li>
-          Security answer #2:{" "}
-          <span className="purple">{userInfo.security_answer_2}</span>
-        </li>
+        <div className="accountPageContainer">
+          <h2>Welcome! Here's what you've shared with us:</h2>
+          <li>
+            Name: <span className="purple">{userInfo.name}</span>
+          </li>
+          <li>
+            Email: <span className="purple">{userInfo.email}</span>
+          </li>
+          <li>
+            Year you were born:{" "}
+            <span className="purple">{userInfo.birth_year}</span>
+          </li>
+          <li>
+            Username: <span className="purple">{userInfo.username}</span>
+          </li>
+          <li>
+            Security question #1:{" "}
+            <span className="purple">{userInfo.security_question_1}</span>
+          </li>
+          <li>
+            Security answer #1:{" "}
+            <span className="purple">{userInfo.security_answer_1}</span>
+          </li>
+          <li>
+            Security question #2:{" "}
+            <span className="purple">{userInfo.security_question_2}</span>
+          </li>
+          <li>
+            Security answer #2:{" "}
+            <span className="purple">{userInfo.security_answer_2}</span>
+          </li>
 
-        <button className="getBackButton" onClick={navHome}>
-          Get back to playing!
-        </button>
-        <button>Contact us / share feedback</button>
+          <button className="getBackButton" onClick={navHome}>
+            Get back to playing!
+          </button>
+          <button>Contact us / share feedback</button>
 
-        {isLoggedIn && (
-          <>
-            <button onClick={handleLogout}>Log out</button>
-            <button className="buttonGrayText" onClick={handleDelete}>
-              Delete my account
-            </button>
-          </>
-        )}
+          {isLoggedIn && (
+            <>
+              <button onClick={handleLogout}>Log out</button>
+              <button className="buttonGrayText" onClick={handleDelete}>
+                Delete my account
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </>
   );

@@ -13,7 +13,7 @@ function Nav({ isLoggedIn, userInfo }) {
           <FontAwesomeIcon icon={faShieldDog} size={"3x"} />
         </Link>
 
-        <div className="navTitle">WoofMath</div>
+        <div className="navTitle">Woof Math</div>
 
         {isLoggedIn && userInfo && userInfo.username && (
           <Link to={"/me"} className="navUser">
