@@ -9,7 +9,11 @@ function Welcome() {
     <>
       <div className="welcomePageContainer">
         <div className="welcomeLogoContainer">
-          <img src={woofMathLogo} alt="WoofMath logo" />
+          <img
+            src={woofMathLogo}
+            className="woofMathLogo"
+            alt="WoofMath logo"
+          />
         </div>
 
         <div className="welcomeContentContainer">

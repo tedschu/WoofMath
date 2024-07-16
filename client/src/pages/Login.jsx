@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import RecoverModal from "../components/RecoverModal";
 import ResetPassModal from "../components/ResetPassModal";
+import woofMathLogo from "../assets/woofmath_logo_1.png";
 
 function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   const [loginFailed, setLoginFailed] = useState(false);
@@ -76,6 +77,12 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     <>
       <div className="loginPageContainer">
         <div className="loginContainer">
+          <img
+            src={woofMathLogo}
+            alt="WoofMath logo"
+            className="woofMathLogo"
+          />
+
           <h2>Hey, you!</h2>
           <p>
             Welcome to WoofMath, a game where you can practice math and earn
