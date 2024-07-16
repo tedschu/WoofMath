@@ -6,6 +6,7 @@ import ScoreBar from "../components/ScoreBar";
 import Slider from "../components/Slider";
 import GamePlay from "../components/GamePlay";
 import GameSelector from "../components/GameSelector";
+import Nav from "../components/Nav";
 
 function Game({
   isLoggedIn,
@@ -37,6 +38,8 @@ function Game({
 
   return (
     <>
+      <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />
+
       <ScoreBar
         isLoggedIn={isLoggedIn}
         loginForm={loginForm}

@@ -70,7 +70,7 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     }
   }
 
-  console.log(userInfo);
+  //console.log(userInfo);
 
   return (
     <>

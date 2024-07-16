@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ScoreBar from "../components/ScoreBar";
+import Nav from "../components/Nav";
 
 function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
   const navigate = useNavigate();
@@ -54,6 +55,8 @@ function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
 
   return (
     <>
+      <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />
+
       <ScoreBar
         userScore={userScore}
         totalScore={totalScore}

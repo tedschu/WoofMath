@@ -10,6 +10,7 @@ import Game from "./pages/Game";
 import Me from "./pages/Me";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Welcome from "./pages/Welcome";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -104,7 +105,7 @@ function App() {
   //console.log(userInfo);
   return (
     <>
-      <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} />
+      {/* <Nav isLoggedIn={isLoggedIn} userInfo={userInfo} /> */}
 
       <Routes>
         <Route
@@ -156,6 +157,7 @@ function App() {
             />
           }
         />
+        <Route path="/welcome" element={<Welcome />} />
       </Routes>
     </>
   );

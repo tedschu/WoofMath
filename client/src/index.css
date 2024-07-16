@@ -12,9 +12,9 @@
   font-family: Schoolbell;
 }
 
-#root {
+/* #root {
   padding-top: 70px;
-}
+} */
 
 /* NAV BAR STYLING */
 nav {
@@ -56,7 +56,7 @@ nav {
 /* SCOREBAR STYLING */
 
 .scoreBarContainer {
-  background: rgb(237, 237, 237);
+  /* background: rgb(237, 237, 237); */
   height: 150px;
   display: flex;
   flex-direction: column;
@@ -119,7 +119,6 @@ nav {
 .gameSelectContainer {
   display: flex;
   flex-direction: column;
-  background-color: rgb(191, 238, 238);
   justify-content: center;
   align-items: center;
   padding: 10px;
@@ -142,7 +141,6 @@ nav {
 .sliderContainer {
   display: flex;
   flex-direction: column;
-  background-color: rgb(217, 252, 252);
   justify-content: center;
   align-items: center;
   padding: 10px;
@@ -157,7 +155,6 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(253, 234, 232);
   padding: 10px;
 }
 
@@ -264,18 +261,28 @@ button {
   color: gray;
 }
 
+/* WELCOME PAGE STYLING */
+.welcomePageContainer {
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(#d4492b, #ec9c52);
+  height: 100vh;
+}
+
 /* LOGIN AND REGISTER STYLING */
 
 .loginPageContainer {
   display: flex;
-  background: lightgrey;
+
+  /* background: #d4492b; */
   justify-content: center;
+  background-image: linear-gradient(#d4492b, #ec9c52);
+  height: 100vh;
 }
 
 .loginContainer {
   display: flex;
   flex-direction: column;
-  background: lightcyan;
   width: 70%;
   margin-top: 50px;
   justify-content: center;
@@ -452,7 +459,7 @@ p {
 /* MEDIA QUERIES FOR DESKTOP SIZING */
 @media screen and (min-width: 900px) {
   .scoreBarContainer {
-    background: rgb(237, 237, 237);
+    /* background: rgb(237, 237, 237); */
     display: grid;
     grid-template-columns: [first] 50% [line2] 50%;
     height: 105px;
