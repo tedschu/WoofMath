@@ -27,6 +27,15 @@ h4 {
   font-size: 20px;
 }
 
+h1 {
+  font-size: 30px;
+}
+
+label {
+  font-size: 18px;
+  color: white;
+}
+
 /* #root {
   padding-top: 70px;
 } */
@@ -148,12 +157,14 @@ nav {
 }
 
 .navLogo {
-  font-size: 15px;
   display: flex;
   justify-content: start;
   align-items: center;
   padding-left: 15px;
-  color: rgb(68, 68, 179);
+}
+
+.navLogo > img {
+  width: 55px;
 }
 
 .navTitle {
@@ -418,6 +429,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .link {
   text-decoration: none;
+  color: #2d779a;
 }
 
 .recoverButtonContainer {
@@ -428,20 +440,23 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .registerPageContainer {
   display: flex;
-  background: lightgrey;
+
+  /* background: #d4492b; */
   justify-content: center;
+  background-image: linear-gradient(#d4492b, #ec9c52);
+  height: 100vh;
 }
 
-.registerContainer {
+.registerContentContainer {
   display: flex;
   flex-direction: column;
-  background: lightcyan;
   width: 70%;
-  margin-top: 50px;
+
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 20px;
+  color: white;
 }
 
 .registerForm {
@@ -462,11 +477,7 @@ select {
   padding: 8px;
   border: 1px solid lightgray;
   border-radius: 6px;
-  font-family: "Schoolbell";
-}
-
-label {
-  font-size: 15px;
+  font-family: "Patrick Hand";
 }
 
 .registerForm input::placeholder,
@@ -491,7 +502,9 @@ select {
 
 .registerFail {
   font-size: 20px;
-  color: red;
+  color: rgb(151, 0, 0);
+  background-color: rgb(248, 194, 194);
+  padding: 10px;
 }
 
 .registerForm > h3,
@@ -546,19 +559,24 @@ p {
 }
 
 .modalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: white;
   padding: 20px;
   border-radius: 5px;
   max-width: 500px;
   width: 100%;
+  color: black;
 }
 
 .modalClose {
   float: right;
-  border: none;
+  border: 1px solid lightgray;
   background: none;
   font-size: 18px;
   cursor: pointer;
+  width: 100px;
 }
 
 .login_returnedUsers > ul {

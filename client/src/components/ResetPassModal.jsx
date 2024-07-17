@@ -139,7 +139,7 @@ function ResetPassModal({
                 value={userInfo.username}
                 onChange={setFormValues}
               />
-              <button>Submit</button>
+              <button className="recover button">Submit</button>
             </form>
           )}
 
@@ -175,7 +175,7 @@ function ResetPassModal({
                   value={userInfo.security_answer_2}
                   onChange={setFormValues}
                 />
-                <button>Submit</button>
+                <button className="recover button">Submit</button>
               </form>
             </>
           )}

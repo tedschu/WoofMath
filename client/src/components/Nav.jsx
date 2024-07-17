@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
+import woofMathLogo from "../assets/woofmath_logo_1.png";
 
 function Nav({ isLoggedIn, userInfo }) {
   return (
     <>
       <nav>
         <Link to={"/"} className="navLogo">
-          <FontAwesomeIcon icon={faShieldDog} size={"3x"} />
+          <img src={woofMathLogo} alt="" />
         </Link>
 
         <div className="navTitle">Woof Math</div>

@@ -100,15 +100,8 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   return (
     <>
       <div className="registerPageContainer">
-        <div className="registerContainer">
-          <h2>Hey, you!</h2>
-          <p>
-            Welcome to WoofMath, a game where you can practice math and earn
-            points + super cool animal badges as you go along. The more math you
-            do, the more badges you get!
-          </p>
-          <br></br>
-
+        <div className="registerContentContainer">
+          <h1>Hey, you!</h1>
           <p>Create a free account below to begin playing. </p>
 
           <form action="" className="registerForm" onSubmit={submit}>

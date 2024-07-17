@@ -66,7 +66,7 @@ function RecoverModal({
     <>
       <div className="modalOverlay">
         <div className="modalContent">
-          <h2>Let's start by finding your account.</h2>
+          <h2>Let's get your username.</h2>
 
           <form action="" className="registerForm" onSubmit={submit}>
             <label htmlFor="name">
@@ -79,7 +79,7 @@ function RecoverModal({
               value={userInfo.email}
               onChange={setFormValues}
             />
-            <button>Submit</button>
+            <button className="button recover">Submit</button>
           </form>
 
           {returnedUsers.length > 0 && (

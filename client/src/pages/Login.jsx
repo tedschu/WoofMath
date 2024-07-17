@@ -78,7 +78,11 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     <>
       <div className="loginPageContainer">
         <div className="loginContainer">
-          <img src={bernese} alt="Bernese" className="woofMathLogo" />
+          <img
+            src={woofMathLogo}
+            alt="WoofMath logo"
+            className="woofMathLogo"
+          />
 
           <div className="loginContentContainer">
             <h1>Hey, you! Welcome back.</h1>
@@ -132,7 +136,9 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
 
           <h4>
             Don't have an account? No worries,{" "}
-            <Link to={"/register"}>create a free account here. </Link>
+            <Link className="link" to={"/register"}>
+              sign up.{" "}
+            </Link>
           </h4>
         </div>
       </div>
