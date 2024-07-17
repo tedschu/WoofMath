@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import RecoverModal from "../components/RecoverModal";
 import ResetPassModal from "../components/ResetPassModal";
 import woofMathLogo from "../assets/woofmath_logo_1.png";
+import bernese from "../assets/bernese_login.png";
 
 function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   const [loginFailed, setLoginFailed] = useState(false);
@@ -77,20 +78,12 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     <>
       <div className="loginPageContainer">
         <div className="loginContainer">
-          <img
-            src={woofMathLogo}
-            alt="WoofMath logo"
-            className="woofMathLogo"
-          />
+          <img src={bernese} alt="Bernese" className="woofMathLogo" />
 
-          <h2>Hey, you!</h2>
-          <p>
-            Welcome to WoofMath, a game where you can practice math and earn
-            points + super cool animal badges as you go along. The more math you
-            do, the more badges you get!
-          </p>
-
-          <p>Log in to begin.</p>
+          <div className="loginContentContainer">
+            <h1>Hey, you! Welcome back.</h1>
+            <p>Log in to start playing.</p>
+          </div>
 
           <form action="" className="loginForm" onSubmit={submit}>
             <input
@@ -107,13 +100,19 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
               value={userInfo.password}
               onChange={setFormValues}
             />
-            <button>Log in</button>
+            <button className="button login">LOG IN</button>
           </form>
           {loginFailed && (
             <>
-              <h3>Oops. There was a problem with your login.</h3>
-              <button onClick={openRecoverModal}>Find my username</button>
-              <button onClick={openResetPassModal}>Reset my password</button>
+              <h4>Oops. There was a problem with your login.</h4>
+              <div className="recoverButtonContainer">
+                <button className="button recover" onClick={openRecoverModal}>
+                  Find my username
+                </button>
+                <button className="button recover" onClick={openResetPassModal}>
+                  Reset password
+                </button>
+              </div>
 
               <RecoverModal
                 isRecoverOpen={isRecoverModalOpen}
@@ -132,7 +131,7 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
           )}
 
           <h4>
-            Wait...I don't have an account! No worries,{" "}
+            Don't have an account? No worries,{" "}
             <Link to={"/register"}>create a free account here. </Link>
           </h4>
         </div>

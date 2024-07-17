@@ -23,10 +23,10 @@ function Welcome() {
             The more math you do, the more badges you get!
           </p>
           <Link to={"/login"}>
-            <button className="welcomeButton login">LOGIN</button>
+            <button className="button login">LOGIN</button>
           </Link>
           <Link to={"/register"}>
-            <button className="welcomeButton signup">SIGN UP</button>
+            <button className="button signup">SIGN UP</button>
           </Link>
         </div>
       </div>

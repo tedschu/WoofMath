@@ -16,10 +16,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Patrick Hand";
+  font-size: 22px;
 }
 
 .mainContainer {
   padding-top: 70px;
+}
+
+h4 {
+  font-size: 20px;
 }
 
 /* #root {
@@ -40,17 +45,7 @@ button {
   color: gray;
 }
 
-/* WELCOME PAGE STYLING */
-.welcomePageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-image: linear-gradient(#cb4527, #ec9c52);
-  height: 100vh;
-}
-
-.welcomeButton.login {
+.button.login {
   width: 250px;
   border-radius: 10px;
   background-image: linear-gradient(#0085bd, #71afcb);
@@ -59,7 +54,7 @@ button {
   border: none;
 }
 
-.welcomeButton.signup {
+.button.signup {
   width: 250px;
   background: transparent;
   border-radius: 10px;
@@ -68,21 +63,44 @@ button {
   border: 1px solid #0085bd;
 }
 
-.loginButton {
+.button.recover {
+  width: 180px;
+  background: lightgray;
+  border-radius: 10px;
+  color: black;
+  font-size: 20px;
+  /* border: 1px solid #cb4527; */
+}
+
+.button.recover:hover {
+  background: darkgray;
+}
+
+/* .loginButton {
   width: 250px;
   border-radius: 12px;
   background-image: linear-gradient(#0085bd, #71afcb);
   color: white;
   font-size: 25px;
   border: none;
-}
+} */
 
-.welcomeButton.login:hover {
+.button.login:hover {
   background-image: linear-gradient(#006894, #006d9f);
 }
 
-.welcomeButton.signup:hover {
+.button.signup:hover {
   background: #cb4527;
+}
+
+/* WELCOME PAGE STYLING */
+.welcomePageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(#cb4527, #ec9c52);
+  height: 100vh;
 }
 
 .welcomeLogoContainer {
@@ -363,10 +381,11 @@ input[type="number"]::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   width: 70%;
-  margin-top: 50px;
+
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: white;
 }
 
 .loginForm {
@@ -374,25 +393,37 @@ input[type="number"]::-webkit-inner-spin-button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 .loginForm > input {
   height: 50px;
-  width: 210px;
+  width: 250px;
   padding: 8px;
   border: 1px solid lightgray;
   border-radius: 6px;
-  font-family: "Schoolbell";
+  font-family: "Patrick Hand";
   font-size: 20px;
   margin: 7px;
+  background-image: linear-gradient(#a6d5ea, #c8e8f7);
 }
 
-.loginForm > button {
-  margin: 12px 0px;
-  height: 50px;
-  width: 100px;
-  border: 1px solid gray;
-  border-radius: 6px;
+.loginContentContainer {
+  margin: 20px;
+}
+
+.loginContentContainer > h1 {
+  font-size: 30px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.recoverButtonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .registerPageContainer {
