@@ -34,9 +34,9 @@ function ScoreBar({
   return (
     <>
       <div className="scoreBarContainer">
-        <div className="scores">
+        <div className="scoresContainer">
           <div className="totalScores">
-            <h3>Your total score is {totalScore}</h3>
+            <h2>Your total score is: {totalScore}</h2>
           </div>
           <div className="individualScores">
             Addition: {userScore.addition_score} | Subtraction:{" "}

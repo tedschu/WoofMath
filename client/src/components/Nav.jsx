@@ -18,7 +18,7 @@ function Nav({ isLoggedIn, userInfo }) {
 
         {isLoggedIn && userInfo && userInfo.username && (
           <Link to={"/me"} className="navUser">
-            <h3>Hello, {userInfo.username}!</h3>
+            <h4>Hello, {userInfo.username}!</h4>
           </Link>
         )}
 
