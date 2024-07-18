@@ -43,14 +43,13 @@ model User {
 
 model Badge {
   id Int @id @default(autoincrement())
-  dog Boolean? @default(false)
-  hippo Boolean? @default(false)
-  shield_dog Boolean? @default(false)
-  frog Boolean? @default(false)
-  dove Boolean? @default(false)
+  bernese Boolean? @default(false)
+  boxer Boolean? @default(false)
   cat Boolean? @default(false)
-  fish Boolean? @default(false)
-  cow Boolean? @default(false)
+  chihuahua Boolean? @default(false)
+  golden Boolean? @default(false)
+  husky Boolean? @default(false)
+  goldendoodle_trophy Boolean? @default(false)
   user User @relation(fields: [user_id], references: [id])
   user_id Int @unique
 }

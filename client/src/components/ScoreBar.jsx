@@ -10,6 +10,7 @@ import { faCat } from "@fortawesome/free-solid-svg-icons";
 import { faFish } from "@fortawesome/free-solid-svg-icons";
 import { faCow } from "@fortawesome/free-solid-svg-icons";
 import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
+import badge_bernese from "../assets/badges/badge_bernese.png";
 
 function ScoreBar({
   isLoggedIn,
@@ -39,7 +40,10 @@ function ScoreBar({
           </div>
         </div>
 
-        <div className="badges">
+        <div className="badgesContainer">
+          <div className="eachBadge">
+            <img src={badge_bernese} alt="" />
+          </div>
           <div className="eachBadge">
             <FontAwesomeIcon
               icon={faHippo}

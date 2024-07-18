@@ -203,7 +203,7 @@ nav {
   align-items: center;
 }
 
-.badges {
+.badgesContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -243,6 +243,12 @@ nav {
 .eachBadge > h3 {
   font-size: 14px;
   height: 40px;
+}
+
+.eachBadge > img {
+  width: 70px;
+  filter: grayscale(100%);
+  opacity: 60%;
 }
 
 /* GAME SELECTION and SLIDER STYLING */

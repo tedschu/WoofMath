@@ -31,14 +31,13 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Badge" (
     "id" SERIAL NOT NULL,
-    "dog" BOOLEAN DEFAULT false,
-    "hippo" BOOLEAN DEFAULT false,
-    "shield_dog" BOOLEAN DEFAULT false,
-    "frog" BOOLEAN DEFAULT false,
-    "dove" BOOLEAN DEFAULT false,
+    "bernese" BOOLEAN DEFAULT false,
+    "boxer" BOOLEAN DEFAULT false,
     "cat" BOOLEAN DEFAULT false,
-    "fish" BOOLEAN DEFAULT false,
-    "cow" BOOLEAN DEFAULT false,
+    "chihuahua" BOOLEAN DEFAULT false,
+    "golden" BOOLEAN DEFAULT false,
+    "husky" BOOLEAN DEFAULT false,
+    "goldendoodle_trophy" BOOLEAN DEFAULT false,
     "user_id" INTEGER NOT NULL,
 
     CONSTRAINT "Badge_pkey" PRIMARY KEY ("id")
