@@ -30,9 +30,8 @@ async function main() {
 
   await prisma.badge.create({
     data: {
-      dog: true,
-      hippo: true,
-      shield_dog: true,
+      bernese: true,
+      boxer: true,
       user_id: testUser.id,
     },
   });
@@ -69,10 +68,7 @@ async function main() {
 
   await prisma.badge.create({
     data: {
-      dog: true,
-      hippo: true,
-      shield_dog: true,
-      dove: true,
+      bernese: true,
       user_id: secondUser.id,
     },
   });

@@ -190,23 +190,23 @@ function GamePlay({
   function getUpdatedBadges() {
     const updatedBadge = {};
 
-    if (totalScore > 100 && !userBadges.hippo) {
-      updatedBadge.hippo = true;
-    } else if (totalScore > 500 && !userBadges.cow) {
-      updatedBadge.cow = true;
-    } else if (totalScore > 1030 && !userBadges.dove) {
-      updatedBadge.dove = true;
+    if (totalScore > 100 && !userBadges.bernese) {
+      updatedBadge.bernese = true;
+    } else if (totalScore > 500 && !userBadges.chihuahua) {
+      updatedBadge.chihuahua = true;
+    } else if (totalScore > 1000 && !userBadges.boxer) {
+      updatedBadge.boxer = true;
     } else if (
       totalScore > 1000 &&
       userScore.addition_score > 250 &&
       userScore.subtraction_score > 250 &&
       userScore.multiplication_score > 250 &&
       userScore.division_score > 250 &&
-      !userBadges.frog
+      !userBadges.husky
     ) {
-      updatedBadge.frog = true;
-    } else if (totalScore > 2000 && !userBadges.fish) {
-      updatedBadge.fish = true;
+      updatedBadge.husky = true;
+    } else if (totalScore > 2000 && !userBadges.golden) {
+      updatedBadge.golden = true;
     } else if (
       totalScore > 5000 &&
       userScore.addition_score > 500 &&
@@ -217,7 +217,8 @@ function GamePlay({
     ) {
       updatedBadge.cat = true;
     } else if (totalScore > 10000) {
-      updatedBadge.shield_dog = true;
+      updatedBadge.goldendoodle_trophy = true;
+      !userBadges.goldendoodle_trophy;
     }
     return updatedBadge;
   }

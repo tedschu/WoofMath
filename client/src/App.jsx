@@ -34,14 +34,13 @@ function App() {
   });
   const [totalScore, setTotalScore] = useState(0);
   const [userBadges, setUserBadges] = useState({
-    dog: false,
-    hippo: false,
-    shield_dog: false,
-    frog: false,
-    dove: false,
+    bernese: false,
+    boxer: false,
     cat: false,
-    fish: false,
-    cow: false,
+    chihuahua: false,
+    golden: false,
+    husky: false,
+    goldendoodle_trophy: false,
   });
   const [token, setToken] = useState("");
 

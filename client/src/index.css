@@ -187,13 +187,11 @@ nav {
 
 .scoreBarContainer {
   /* background: rgb(237, 237, 237); */
-  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   grid-template-columns: [first] 50% [line2] 50%;
   border-bottom: 1px solid rgb(232, 232, 232);
-  padding: 5px;
 }
 
 .scores {
@@ -215,8 +213,8 @@ nav {
 }
 
 .badgeDisabled {
-  color: rgb(165, 165, 165);
-  margin: 7px;
+  filter: grayscale(100%);
+  opacity: 60%;
 }
 
 .badgeDogDisabled {
@@ -235,20 +233,15 @@ nav {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 55px;
   text-align: center;
-  height: 88px;
 }
 
 .eachBadge > h3 {
   font-size: 14px;
-  height: 40px;
 }
 
 .eachBadge > img {
   width: 70px;
-  filter: grayscale(100%);
-  opacity: 60%;
 }
 
 /* GAME SELECTION and SLIDER STYLING */
@@ -596,8 +589,6 @@ p {
     /* background: rgb(237, 237, 237); */
     display: grid;
     grid-template-columns: [first] 50% [line2] 50%;
-    height: 105px;
     border-bottom: 1px solid rgb(232, 232, 232);
-    padding: 5px;
   }
 }

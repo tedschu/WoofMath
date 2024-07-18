@@ -71,7 +71,7 @@ router.post("/register", async (req, res) => {
         },
         badge: {
           create: {
-            hippo: true,
+            bernese: false,
           },
         },
       },

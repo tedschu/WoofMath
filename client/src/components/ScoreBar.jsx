@@ -11,6 +11,12 @@ import { faFish } from "@fortawesome/free-solid-svg-icons";
 import { faCow } from "@fortawesome/free-solid-svg-icons";
 import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
 import badge_bernese from "../assets/badges/badge_bernese.png";
+import badge_chihuahua from "../assets/badges/badge_chihuahua.png";
+import badge_boxer from "../assets/badges/badge_boxer.png";
+import badge_husky from "../assets/badges/badge_husky.png";
+import badge_golden from "../assets/badges/badge_golden.png";
+import badge_cat from "../assets/badges/badge_cat.png";
+import badge_goldendoodle_trophy from "../assets/badges/goldendoodle_trophy_color.png";
 
 function ScoreBar({
   isLoggedIn,
@@ -42,78 +48,65 @@ function ScoreBar({
 
         <div className="badgesContainer">
           <div className="eachBadge">
-            <img src={badge_bernese} alt="" />
+            <img
+              src={badge_bernese}
+              alt=""
+              className={userBadges.bernese ? "badgeEnabled" : "badgeDisabled"}
+            />
+            <h3>100</h3>
           </div>
           <div className="eachBadge">
-            <FontAwesomeIcon
-              icon={faHippo}
-              size={"2x"}
-              className={userBadges.hippo ? "badgeEnabled" : "badgeDisabled"}
-            >
-              {" "}
-            </FontAwesomeIcon>
-            <h3>100 (total)</h3>
+            <img
+              src={badge_chihuahua}
+              alt=""
+              className={
+                userBadges.chihuahua ? "badgeEnabled" : "badgeDisabled"
+              }
+            />
+            <h3>500</h3>
           </div>
           <div className="eachBadge">
-            <FontAwesomeIcon
-              icon={faCow}
-              size={"2x"}
-              className={userBadges.cow ? "badgeEnabled" : "badgeDisabled"}
-            >
-              {" "}
-            </FontAwesomeIcon>
-            <h3>500 (total)</h3>
-          </div>
-          <div className="eachBadge">
-            <FontAwesomeIcon
-              icon={faDove}
-              size={"2x"}
-              className={userBadges.dove ? "badgeEnabled" : "badgeDisabled"}
-            >
-              {" "}
-            </FontAwesomeIcon>
+            <img
+              src={badge_boxer}
+              alt=""
+              className={userBadges.boxer ? "badgeEnabled" : "badgeDisabled"}
+            />
             <h3>1,000</h3>
           </div>
           <div className="eachBadge">
-            <FontAwesomeIcon
-              icon={faFrog}
-              size={"2x"}
-              className={userBadges.frog ? "badgeEnabled" : "badgeDisabled"}
-            >
-              {" "}
-            </FontAwesomeIcon>
+            <img
+              src={badge_husky}
+              alt=""
+              className={userBadges.husky ? "badgeEnabled" : "badgeDisabled"}
+            />
+            <h3>1,000 E</h3>
+          </div>
+          <div className="eachBadge">
+            <img
+              src={badge_golden}
+              alt=""
+              className={userBadges.golden ? "badgeEnabled" : "badgeDisabled"}
+            />
             <h3>2,000</h3>
           </div>
           <div className="eachBadge">
-            <FontAwesomeIcon
-              icon={faFish}
-              size={"2x"}
-              className={userBadges.fish ? "badgeEnabled" : "badgeDisabled"}
-            >
-              {" "}
-            </FontAwesomeIcon>
-            <h3>3,000</h3>
-          </div>
-          <div className="eachBadge">
-            <FontAwesomeIcon
-              icon={faCat}
-              size={"2x"}
+            <img
+              src={badge_cat}
+              alt=""
               className={userBadges.cat ? "badgeEnabled" : "badgeDisabled"}
-            >
-              {" "}
-            </FontAwesomeIcon>
+            />
             <h3>5,000</h3>
           </div>
           <div className="eachBadge">
-            <FontAwesomeIcon
-              icon={faShieldDog}
-              size={"2x"}
+            <img
+              src={badge_goldendoodle_trophy}
+              alt=""
               className={
-                userBadges.shield_dog ? "badgeDogEnabled" : "badgeDogDisabled"
+                userBadges.goldendoodle_trophy
+                  ? "badgeEnabled"
+                  : "badgeDisabled"
               }
-            >
-              {" "}
-            </FontAwesomeIcon>
+            />
             <h3>10,000</h3>
           </div>
         </div>
