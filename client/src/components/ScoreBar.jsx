@@ -35,37 +35,30 @@ function ScoreBar({
     <>
       <div className="scoreBarContainer">
         <div className="scoresContainer">
-          <div className="totalScores">
-            <h2>
-              Your total score: <span className="scoreFont">{totalScore}</span>
-            </h2>
+          {/* <div className="totalScores"> */}
+          <div className="totalScore">
+            <h1 className="scoreFont">{totalScore}</h1>
+            <h5>TOTAL SCORE</h5>
           </div>
-          <div className="subScoreContainer">
-            <div>
-              Addition:{" "}
-              <span className="individualScores">
-                {userScore.addition_score}
-              </span>
-            </div>
-            <div>
-              Subtraction:{" "}
-              <span className="individualScores">
-                {userScore.subtraction_score}
-              </span>
-            </div>
-            <div>
-              Multiplication:{" "}
-              <span className="individualScores">
-                {userScore.multiplication_score}
-              </span>
-            </div>
-            <div>
-              Division:{" "}
-              <span className="individualScores">
-                {userScore.division_score}
-              </span>
-            </div>
+          {/* </div> */}
+          {/* <div className="subScoreContainer"> */}
+          <div className="individualScores">
+            <h1>{userScore.addition_score}</h1>
+            <h5>ADDITION</h5>
           </div>
+          <div className="individualScores">
+            <h1>{userScore.subtraction_score}</h1>
+            <h5>SUBTRACTION</h5>
+          </div>
+          <div className="individualScores">
+            <h1>{userScore.multiplication_score}</h1>
+            <h5>MULTIPLICATION</h5>
+          </div>
+          <div className="individualScores">
+            <h1>{userScore.division_score}</h1>
+            <h5>DIVISION</h5>
+          </div>
+          {/* </div> */}
         </div>
 
         <div className="badgesContainer">

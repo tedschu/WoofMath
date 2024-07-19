@@ -41,7 +41,11 @@ export default function GameSelector({
           aria-label="Platform"
           required
           sx={{
-            "& .MuiToggleButton-root": buttonStyle,
+            "& .MuiToggleButton-root": {
+              ...buttonStyle,
+              color: "#0085bd",
+              border: "1px solid lightgray",
+            },
           }}
         >
           <ToggleButton value="addition">Addition</ToggleButton>

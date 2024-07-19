@@ -54,6 +54,21 @@ export default function DiscreteSlider({
           sx={{
             "& .MuiSlider-markLabel": {
               fontFamily: "Patrick Hand",
+              color: "#0085bd",
+            },
+            "& .MuiSlider-thumb": {
+              color: "#dd6e55", // This changes the color of the slider circle
+            },
+            "& .MuiSlider-track": {
+              color: "#7dc2e0", // Track color behind slider
+            },
+            "& .MuiSlider-rail": {
+              color: "#a6d5ea", // Track color ahead of slider
+            },
+            "& .MuiSlider-valueLabel": {
+              backgroundColor: "#dd6e55", // This changes the background color of the pop-up indicator
+              color: "white", // This changes the text color in the pop-up indicator
+              fontFamily: "Patrick Hand", // Optional: to match the font of mark labels
             },
           }}
         />

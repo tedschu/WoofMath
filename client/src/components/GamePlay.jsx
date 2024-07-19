@@ -257,9 +257,9 @@ function GamePlay({
     <>
       <div className="gamePlayContainer">
         <div className="gamePlay">
-          <h2>Sounds great. Let's go! [tooltip]</h2>
           <h3>
-            Here's question #{questionCount} (for {addToScore} points):
+            Let's go! Here's question #{questionCount} (for
+            <span className="pointsHighlight"> {addToScore} points</span>):
           </h3>
 
           <form onSubmit={handleSubmit}>
@@ -280,9 +280,7 @@ function GamePlay({
                 setGotRight={setGotRight}
                 setGotWrong={setGotWrong}
               />
-              <div className="equalSpace">
-                <h4> = </h4>
-              </div>
+              <div className="equalSpace">=</div>
               <div className="answerBox">
                 <input
                   type="number"
@@ -290,13 +288,21 @@ function GamePlay({
                   value={userAnswer}
                   onChange={setAnswer}
                   onWheel={(e) => e.target.blur()}
+                  style={{
+                    border: "1px solid #ccc",
+                    outline: "none",
+                    "&:focus": {
+                      border: "2px solid #7dc2e0",
+                      // boxShadow: "0 0 5px rgba(166, 213, 234, 0.5)",
+                    },
+                  }}
                 />
               </div>
             </div>
             {/* SUBMIT BUTTON */}
             <div className="answerSubmit">
               <button
-                className="submitButton"
+                className="button submit"
                 // onClick={() => {
                 //   findAnswer();
                 //   setSubmitted(true);
@@ -304,7 +310,7 @@ function GamePlay({
                 type="submit"
                 // autoFocus
               >
-                Submit
+                SUBMIT
               </button>
             </div>
           </form>
@@ -323,7 +329,7 @@ function GamePlay({
           )}
 
           <button className="buttonGrayText" onClick={handleQuestionCount}>
-            Skip this question
+            SKIP QUESTION
           </button>
         </div>
       </div>
