@@ -53,7 +53,7 @@ export default function DiscreteSlider({
           max={5}
           sx={{
             "& .MuiSlider-markLabel": {
-              fontFamily: "Schoolbell",
+              fontFamily: "Patrick Hand",
             },
           }}
         />

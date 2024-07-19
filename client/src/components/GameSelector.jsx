@@ -22,7 +22,7 @@ export default function GameSelector({
   };
 
   const buttonStyle = {
-    fontFamily: "Schoolbell",
+    fontFamily: "Patrick Hand",
     textTransform: "none",
   };
 

@@ -215,6 +215,36 @@ nav {
   padding: 10px 0;
 }
 
+.totalScores {
+  /* background: rgb(239, 239, 239); */
+  /* border: 1px solid #7dc2e0; */
+  width: 350px;
+  text-align: center;
+  border-radius: 9px;
+}
+
+.scoreFont {
+  color: white;
+  background: #539ab9;
+  padding: 0px 15px;
+  border-radius: 8px;
+  font-size: 28px;
+}
+
+.subScoreContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 0px;
+}
+
+.individualScores {
+  background: rgb(226, 226, 226);
+  border-radius: 8px;
+  padding: 0px 5px;
+}
+
 .badgesContainer {
   display: flex;
   justify-content: center;
@@ -292,7 +322,7 @@ nav {
 }
 
 .sliderBox {
-  font-family: Schoolbell;
+  font-family: "Patrick Hand";
 }
 
 /* GAME PLAY CONTAINER and BOX STYLING */
@@ -539,7 +569,7 @@ p {
   padding: 8px;
   border: 1px solid lightgray;
   border-radius: 6px;
-  font-family: "Schoolbell";
+  font-family: "Patrick Hand";
   font-size: 20px;
 }
 

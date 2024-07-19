@@ -36,13 +36,35 @@ function ScoreBar({
       <div className="scoreBarContainer">
         <div className="scoresContainer">
           <div className="totalScores">
-            <h2>Your total score is: {totalScore}</h2>
+            <h2>
+              Your total score: <span className="scoreFont">{totalScore}</span>
+            </h2>
           </div>
-          <div className="individualScores">
-            Addition: {userScore.addition_score} | Subtraction:{" "}
-            {userScore.subtraction_score} | Multiplication:{" "}
-            {userScore.multiplication_score} | Division:{" "}
-            {userScore.division_score}
+          <div className="subScoreContainer">
+            <div>
+              Addition:{" "}
+              <span className="individualScores">
+                {userScore.addition_score}
+              </span>
+            </div>
+            <div>
+              Subtraction:{" "}
+              <span className="individualScores">
+                {userScore.subtraction_score}
+              </span>
+            </div>
+            <div>
+              Multiplication:{" "}
+              <span className="individualScores">
+                {userScore.multiplication_score}
+              </span>
+            </div>
+            <div>
+              Division:{" "}
+              <span className="individualScores">
+                {userScore.division_score}
+              </span>
+            </div>
           </div>
         </div>
 
