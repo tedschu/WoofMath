@@ -102,7 +102,15 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
       <div className="registerPageContainer">
         <div className="registerContentContainer">
           <h1>Hey, you!</h1>
-          <p>Create a free account below to begin playing. </p>
+          <p>
+            With your parent's permission, create a free account below to begin
+            playing.{" "}
+          </p>
+          <Link to={"/about"}>
+            <h4 className="registerPrivacyNotice">
+              Why are we asking for this information?
+            </h4>{" "}
+          </Link>
 
           <form action="" className="registerForm" onSubmit={submit}>
             <label htmlFor="name">Your first name:</label>
@@ -121,7 +129,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
               value={userInfo.birth_year}
               onChange={setFormValues}
             />
-            <label htmlFor="email">Email (or parent's email):</label>
+            <label htmlFor="email">Your parent's email:</label>
             <input
               type="text"
               placeholder="name@example.com"
@@ -198,7 +206,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
                 onChange={setFormValues}
               />
             </div>
-            <button>Create your account</button>
+            <button className="button login">Create account</button>
           </form>
           {registerError && (
             <h3 className="registerFail">

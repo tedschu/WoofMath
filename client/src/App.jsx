@@ -11,6 +11,7 @@ import Me from "./pages/Me";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Welcome from "./pages/Welcome";
+import About from "./pages/About";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -157,6 +158,7 @@ function App() {
           }
         />
         <Route path="/welcome" element={<Welcome />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </>
   );

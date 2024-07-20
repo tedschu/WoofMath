@@ -52,6 +52,10 @@ a {
   color: white;
 }
 
+p {
+  font-size: 22px;
+}
+
 /* #root {
   padding-top: 70px;
 } */
@@ -71,7 +75,7 @@ button {
 }
 
 .button.login {
-  width: 250px;
+  width: 200px;
   border-radius: 10px;
   background-image: linear-gradient(#0085bd, #71afcb);
   color: white;
@@ -80,7 +84,7 @@ button {
 }
 
 .button.signup {
-  width: 250px;
+  width: 200px;
   background: transparent;
   border-radius: 10px;
   color: white;
@@ -130,6 +134,7 @@ button {
   justify-content: center;
   background-image: linear-gradient(#cb4527, #ec9c52);
   height: 100vh;
+  color: white;
 }
 
 .welcomeLogoContainer {
@@ -161,6 +166,28 @@ button {
 .welcomeContentContainer > h1 {
   font-size: 55px;
   font-family: "Schoolbell";
+}
+
+.welcomeButtonContainer {
+  display: flex;
+}
+
+.welcomeAboutContainer {
+  width: 100%;
+  margin-top: 25px;
+  border-top: 1px solid #a6d5ea;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcomeAbout.content {
+  margin: 10px 0px;
+  background: #a6d5ea;
+  width: 80%;
+  border-radius: 9px;
 }
 
 /* NAV BAR STYLING */
@@ -425,11 +452,6 @@ nav {
   vertical-align: middle;
 }
 
-.answerBox input:focus {
-  border: 1px solid #a6d5ea;
-  box-shadow: 0 0 5px rgba(166, 213, 234, 0.5); /* Optional: add a subtle glow effect */
-}
-
 .questionBox {
   display: flex;
   flex-wrap: nowrap;
@@ -606,6 +628,11 @@ select {
 .registerForm > h3,
 p {
   font-size: 18px;
+}
+
+.registerPrivacyNotice {
+  font-size: 18px;
+  font-style: italic;
 }
 
 .securityQuestionsContainer {

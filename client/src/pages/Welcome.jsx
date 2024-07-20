@@ -22,12 +22,21 @@ function Welcome() {
             Earn points + super cool animal badges as you play a fun math game.
             The more math you do, the more badges you get!
           </p>
-          <Link to={"/login"}>
-            <button className="button login">LOGIN</button>
-          </Link>
-          <Link to={"/register"}>
-            <button className="button signup">SIGN UP</button>
-          </Link>
+
+          <div className="welcomeButtonContainer">
+            <Link to={"/login"}>
+              <button className="button login">LOGIN</button>
+            </Link>
+            <Link to={"/register"}>
+              <button className="button signup">SIGN UP</button>
+            </Link>
+          </div>
+        </div>
+
+        <div className="welcomeAboutContainer">
+          <h1>Learn more about the game...</h1>
+
+          <div className="welcomeAbout content">test</div>
         </div>
       </div>
     </>
