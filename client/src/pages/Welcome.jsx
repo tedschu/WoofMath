@@ -7,7 +7,8 @@ import welcomeDog from "../assets/welcome_dog_large.png";
 import gameplayPic from "../assets/gameplay.png";
 import badge_bernese from "../assets/badges/badge_bernese.png";
 import badge_chihuahua from "../assets/badges/badge_chihuahua.png";
-import badge_goldendoodle_trophy from "../assets/badges/goldendoodle_trophy_color.png";
+import goldendoodle_trophy from "../assets/goldendoodle_trophy_large.png";
+import badge_boxer from "../assets/badges/badge_boxer.png";
 
 function Welcome() {
   return (
@@ -38,9 +39,11 @@ function Welcome() {
           </div>
         </div>
 
-        <div className="welcomeAboutContainer">
+        <div className="welcomeAboutSeparator">
+          {" "}
           <h1>Learn more about the game...</h1>
-
+        </div>
+        <div className="welcomeAboutContainer">
           <div className="welcomeSubContainerTop">
             <div className="welcomeAboutContent">
               <h2>Woof Math was built to make math practice fun.</h2>
@@ -52,7 +55,7 @@ function Welcome() {
               </p>
 
               <br />
-              <h3>It's made for kids. </h3>
+              <h2>It's made for kids. </h2>
               <p>
                 Woof Math is made for kids in elementary school. You decide
                 which kind of math you want to play (for example, addition) and
@@ -65,10 +68,15 @@ function Welcome() {
                 </Link>
               </p>
             </div>
-            <div className="welcomeAboutImageTop">
-              <img src={badge_bernese} alt="" />
-              <img src={badge_chihuahua} alt="" />
-              <img src={badge_goldendoodle_trophy} alt="" />
+            <div className="imageTopContainer">
+              <div className="welcomeAboutImageTop">
+                <img src={badge_bernese} alt="" />
+                <img src={badge_chihuahua} alt="" />
+                <img src={badge_boxer} alt="" />
+              </div>
+              <div className="welcomeAboutImageTop_2">
+                <img src={goldendoodle_trophy} alt="" />
+              </div>
             </div>
           </div>
 

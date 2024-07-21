@@ -178,44 +178,61 @@ button {
 
 .welcomeAboutContainer {
   width: 100%;
-  margin: 20px 0px;
-  border-top: 1px solid #a6d5ea;
-  padding-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.welcomeAboutSeparator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  margin-top: 60px;
+  color: #189fd8;
+  padding: 40px 10px;
+  text-align: center;
+}
+
+.welcomeAboutSeparator > h1 {
+  font-size: 45px;
 }
 
 .welcomeSubContainerTop {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  border-radius: 9px;
-  background: #a6d5ea;
-  border: 1px solid #a6d5ea;
+  /* border-radius: 9px; */
+  background: white;
+  /* border-top: 5px solid #7dc2e0;
+  border-bottom: 5px solid #7dc2e0; */
+
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin: 10px 0px;
+  padding: 0px 30px;
 }
 
 .welcomeSubContainerBottom {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  border-radius: 9px;
-  background: #a6d5ea;
-  border: 1px solid #a6d5ea;
+  width: 100%;
+  background: white;
+
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin: 10px 0px;
+  padding: 70px 30px;
 }
 
 .welcomeAboutContent {
-  background-color: #a6d5ea;
+  /* background-color: #a6d5ea; */
   color: black;
+  width: 90%;
+}
+
+.welcomeAboutContent > h2,
+h3 {
+  color: #189fd8;
 }
 
 .welcomePrivacyNotice {
@@ -226,10 +243,11 @@ button {
 
 .welcomeAboutContent.bottom {
   padding: 15px;
+  width: 70%;
 }
 
 .welcomeAboutContent > ul li {
-  margin: 20px 0px;
+  margin: 30px 0px;
 }
 
 .welcomeAboutImage {
@@ -246,13 +264,32 @@ button {
   margin-top: 10px;
 }
 
+.imageTopContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  gap: 10px;
+}
+
+.welcomeAboutImageTop_2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcomeAboutImageTop_2 > img {
+  width: 100%;
+  max-width: 400px;
+  padding-left: 10px;
+}
+
 .welcomeAboutImageTop > img {
   width: 33%;
 }
 
 .welcomeAboutImageBottom > img {
   width: 100%;
-  box-shadow: 2px 2px 7px rgb(131, 131, 131);
+  box-shadow: 2px 2px 7px #c1c1c1;
   border-radius: 6px;
 }
 
@@ -798,9 +835,7 @@ p {
 
   .welcomeAboutContainer {
     width: 100%;
-    margin: 20px 0px;
-    border-top: 1px solid #a6d5ea;
-    padding-top: 30px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -810,48 +845,41 @@ p {
   .welcomeSubContainerTop {
     display: grid;
     grid-template-columns: [first] 65% [line2] 35%;
-    background-image: url("./assets/gameplay_large.png");
-    background-size: cover;
-    background-color: rgba(203, 230, 243, 0.95); /* #a6d5ea with 70% opacity */
-    background-blend-mode: overlay;
-    background-position: center;
+    padding: 0px 50px;
     width: 100%;
-    /* border-radius: 9px; */
-    /* background-color: #a6d5ea; */
-    border: 1px solid #a6d5ea;
+
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    margin: 10px 0px;
   }
 
   .welcomeSubContainerBottom {
     display: grid;
-    grid-template-columns: [first] 70% [line2] 30%;
+    grid-template-columns: [first] 60% [line2] 40%;
 
-    width: 80%;
-    border-radius: 9px;
-    background: #a6d5ea;
-    border: 1px solid #a6d5ea;
+    background: white;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    margin: 10px 0px;
   }
 
   .welcomeAboutContent {
     display: flex;
     flex-direction: column;
-    background-color: rgba(223, 238, 245, 0.95);
+    /* background-color: rgba(223, 238, 245, 0.95); */
     color: black;
+    padding: 10px;
   }
 
   .welcomeAboutContent.bottom {
     padding-left: 15px;
   }
 
-  .welcomeAboutContent > ul li {
+  /* .welcomeAboutContent > ul li {
     margin: 20px 0px;
+  } */
+
+  .welcomeAboutContent > h2,
+  h3 {
+    color: #189fd8;
   }
 
   .welcomeAboutImage {
@@ -882,7 +910,25 @@ p {
   .welcomeAboutImageBottom > img {
     width: 450px;
     min-width: 400px;
-    box-shadow: 2px 2px 7px rgb(131, 131, 131);
+    box-shadow: 2px 2px 7px rgb(195, 195, 195);
     border-radius: 6px;
+  }
+
+  .imageTopContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0px 10px;
+  }
+
+  .welcomeAboutImageTop_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .welcomeAboutImageTop_2 > img {
+    width: 100%;
+    max-width: 400px;
+    padding-left: 10px;
   }
 }
