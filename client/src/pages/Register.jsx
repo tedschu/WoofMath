@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import woofMathLogo from "../assets/woofmath_logo_1.png";
 
 function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   const [registerError, setRegisterError] = useState(false);
@@ -101,11 +102,12 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     <>
       <div className="registerPageContainer">
         <div className="registerContentContainer">
+          <img src={woofMathLogo} alt="" />
           <h1>Hey, you!</h1>
-          <p>
+          <h2>
             With your parent's permission, create a free account below to begin
             playing.{" "}
-          </p>
+          </h2>
           <Link to={"/about"}>
             <h4 className="registerPrivacyNotice">
               Why are we asking for this information?
@@ -153,7 +155,8 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
               value={userInfo.password}
               onChange={setFormValues}
             />
-            <h3>Please also answer a few security questions.</h3>
+            <br />
+            <h2>Please also answer a few security questions.</h2>
             <p>
               Why? If you ever forget your password, you can reset it by
               answering these questions.{" "}

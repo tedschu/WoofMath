@@ -81,6 +81,7 @@ button {
   color: white;
   font-size: 25px;
   border: none;
+  box-shadow: 2px 2px 6px #828282;
 }
 
 .button.signup {
@@ -90,6 +91,17 @@ button {
   color: white;
   font-size: 25px;
   border: 1px solid #0085bd;
+  box-shadow: 2px 2px 6px #828282;
+}
+
+.button.signup.welcome {
+  width: 200px;
+  background: transparent;
+  border-radius: 10px;
+  color: #0085bd;
+  font-size: 25px;
+  border: 1px solid #0085bd;
+  box-shadow: 2px 2px 6px #c1c1c1;
 }
 
 .button.recover {
@@ -126,21 +138,38 @@ button {
   background: #cb4527;
 }
 
+.button.signup.welcome:hover {
+  background: #cb4527;
+  color: white;
+}
+
 /* WELCOME PAGE STYLING */
 .welcomePageContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(#cb4527, #ec9c52);
+  /* background-image: linear-gradient(#cb4527, #ec9c52); */
   /* height: 100vh; */
   color: white;
+  width: 100%;
+
+  /* padding-top: 50px; */
+}
+
+.welcomeBackground {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 55px 0px;
+  background-image: linear-gradient(#cb4527, #e38c3a);
 }
 
 .welcomeLogoContainer {
   display: flex;
   margin-bottom: 20px;
-  margin-top: 40px;
 }
 
 .woofMathLogo {
@@ -177,11 +206,15 @@ button {
 }
 
 .welcomeAboutContainer {
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: rgb(247, 247, 247);
+  border-radius: 9px;
+  padding: 20px 0px;
+  margin-bottom: 20px;
 }
 
 .welcomeAboutSeparator {
@@ -190,9 +223,8 @@ button {
   align-items: center;
   width: 100%;
   background-color: white;
-  margin-top: 60px;
   color: #189fd8;
-  padding: 40px 10px;
+  padding: 50px 10px 20px 10px;
   text-align: center;
 }
 
@@ -203,10 +235,6 @@ button {
 .welcomeSubContainerTop {
   display: flex;
   flex-direction: column;
-  /* border-radius: 9px; */
-  background: white;
-  /* border-top: 5px solid #7dc2e0;
-  border-bottom: 5px solid #7dc2e0; */
 
   justify-content: center;
   align-items: center;
@@ -217,11 +245,10 @@ button {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: white;
 
   justify-content: center;
   align-items: center;
-  padding: 70px 30px;
+  padding: 70px 30px 0px 30px;
 }
 
 .welcomeAboutContent {
@@ -242,7 +269,12 @@ h3 {
 }
 
 .welcomeAboutContent.bottom {
-  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 15px 15px 0px 15px;
   width: 70%;
 }
 
@@ -665,19 +697,24 @@ input[type="number"]::-webkit-inner-spin-button {
   /* background: #d4492b; */
   justify-content: center;
   background-image: linear-gradient(#d4492b, #ec9c52);
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .registerContentContainer {
   display: flex;
   flex-direction: column;
   width: 70%;
-
+  padding: 40px 0px;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 20px;
   color: white;
+}
+
+.registerContentContainer > img {
+  width: 200px;
+  margin-bottom: 20px;
 }
 
 .registerForm {
@@ -687,6 +724,10 @@ input[type="number"]::-webkit-inner-spin-button {
   align-items: center;
   padding: 10px;
   margin: 10px;
+}
+
+.registerForm > label {
+  font-size: 22px;
 }
 
 .registerForm > input,
@@ -709,7 +750,7 @@ select {
   border: 1px solid lightgray;
   border-radius: 6px;
   font-family: "Patrick Hand";
-  font-size: 20px;
+  font-size: 22px;
   margin: 7px;
   background-image: linear-gradient(#a6d5ea, #c8e8f7);
 }
@@ -755,6 +796,7 @@ p {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .securityQuestionsContainer > input {
@@ -764,7 +806,7 @@ p {
   border: 1px solid lightgray;
   border-radius: 6px;
   font-family: "Patrick Hand";
-  font-size: 20px;
+  font-size: 22px;
   background-image: linear-gradient(#a6d5ea, #c8e8f7);
 }
 
@@ -823,6 +865,44 @@ p {
   list-style-type: none;
 }
 
+/* ABOUT PAGE STYLING */
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutContainer > h1 {
+  color: #0085bd;
+  text-align: center;
+  padding: 0px 10px;
+}
+
+.aboutHeader {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(#cb4527, #e38c3a);
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.aboutHeaderImg {
+  width: 130px;
+}
+
+.aboutContentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: rgb(242, 242, 242);
+  border-radius: 9px;
+  margin: 20px 0px;
+}
+
+/* ***************** */
 /* ********** */
 /* MEDIA QUERIES FOR DESKTOP SIZING */
 @media screen and (min-width: 1050px) {
@@ -834,8 +914,7 @@ p {
   }
 
   .welcomeAboutContainer {
-    width: 100%;
-
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -855,8 +934,6 @@ p {
   .welcomeSubContainerBottom {
     display: grid;
     grid-template-columns: [first] 60% [line2] 40%;
-
-    background: white;
     justify-content: center;
     align-items: center;
   }

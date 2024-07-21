@@ -14,34 +14,36 @@ function Welcome() {
   return (
     <>
       <div className="welcomePageContainer">
-        <div className="welcomeLogoContainer">
-          <img
-            src={woofMathLogo}
-            className="woofMathLogo"
-            alt="WoofMath logo"
-          />
-        </div>
+        <div className="welcomeBackground">
+          <div className="welcomeLogoContainer">
+            <img
+              src={woofMathLogo}
+              className="woofMathLogo"
+              alt="WoofMath logo"
+            />
+          </div>
 
-        <div className="welcomeContentContainer">
-          <h1>Woof Math</h1>
-          <p>
-            Earn points + super cool animal badges as you play a fun math game.
-            The more math you do, the more badges you get!
-          </p>
+          <div className="welcomeContentContainer">
+            <h1>Woof Math</h1>
+            <p>
+              Earn points + super cool animal badges as you play a fun math
+              game. The more math you do, the more badges you get!
+            </p>
 
-          <div className="welcomeButtonContainer">
-            <Link to={"/login"}>
-              <button className="button login">LOGIN</button>
-            </Link>
-            <Link to={"/register"}>
-              <button className="button signup">SIGN UP</button>
-            </Link>
+            <div className="welcomeButtonContainer">
+              <Link to={"/login"}>
+                <button className="button login">LOGIN</button>
+              </Link>
+              <Link to={"/register"}>
+                <button className="button signup">SIGN UP</button>
+              </Link>
+            </div>
           </div>
         </div>
 
         <div className="welcomeAboutSeparator">
           {" "}
-          <h1>Learn more about the game...</h1>
+          <h1>Learn more about the game</h1>
         </div>
         <div className="welcomeAboutContainer">
           <div className="welcomeSubContainerTop">
@@ -97,6 +99,9 @@ function Welcome() {
                 </li>
                 <li>See if you can win the goldendoodle badge!</li>
               </ul>
+              <Link to={"/register"}>
+                <button className="button signup welcome">SIGN UP</button>
+              </Link>
             </div>
           </div>
         </div>
