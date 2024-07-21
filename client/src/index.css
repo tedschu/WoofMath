@@ -133,13 +133,14 @@ button {
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(#cb4527, #ec9c52);
-  height: 100vh;
+  /* height: 100vh; */
   color: white;
 }
 
 .welcomeLogoContainer {
   display: flex;
   margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 .woofMathLogo {
@@ -174,7 +175,7 @@ button {
 
 .welcomeAboutContainer {
   width: 100%;
-  margin-top: 25px;
+  margin: 20px 0px;
   border-top: 1px solid #a6d5ea;
   padding-top: 30px;
   display: flex;
@@ -183,11 +184,47 @@ button {
   justify-content: center;
 }
 
-.welcomeAbout.content {
-  margin: 10px 0px;
-  background: #a6d5ea;
+.welcomeSubContainer {
+  display: grid;
   width: 80%;
   border-radius: 9px;
+  background: #a6d5ea;
+  border: 1px solid #a6d5ea;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 10px 0px;
+}
+
+.welcomeSubContainer.top {
+  grid-template-columns: [first] 70% [line2] 30%;
+}
+
+.welcomeSubContainer.bottom {
+  grid-template-columns: [first] 70% [line2] 30%;
+}
+
+.welcomeAboutContent {
+  background: #a6d5ea;
+  color: black;
+}
+
+.welcomeAboutImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcomeAboutImage.top {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.welcomeAboutImage.bottom > img {
+  width: 400px;
+  box-shadow: 2px 2px 7px rgb(131, 131, 131);
+  border-radius: 6px;
 }
 
 /* NAV BAR STYLING */
