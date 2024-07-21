@@ -41,44 +41,54 @@ function Welcome() {
         <div className="welcomeAboutContainer">
           <h1>Learn more about the game...</h1>
 
-          <div className="welcomeSubContainer top">
+          <div className="welcomeSubContainerTop">
             <div className="welcomeAboutContent">
               <h2>Woof Math was built to make math practice fun.</h2>
               <p>
-                If there are two things every kid loves, it's math and dogs,
-                right? Right...?
+                It's a simple game: Woof Math gives you math questions to
+                answer, and as you answer more questions, you get points. As you
+                build up your points, you can earn super cool dog badges. The
+                golden...Goldendoodle is the ultimate badge.
               </p>
-              <p>
-                Ok, ok, maybe it's a bit of a stretch. But learning math is,
-                well, quite useful, and it can also be fun.
-              </p>
+
               <br />
               <h3>It's made for kids. </h3>
               <p>
-                Woof Math is a simple game, built on a simple idea: practice
-                math, and keep track of your progress along the way. Start by
-                quickly creating a free account. We only ask for the minimal
-                info we'd need to make the game work. Check out our privacy
-                policy HERE.
+                Woof Math is made for kids in elementary school. You decide
+                which kind of math you want to play (for example, addition) and
+                how hard the questions should be. Get started by quickly
+                creating a free account. No credit cards, no gimmicks - we only
+                ask for the minimal info we need to get the game going. Check
+                out{" "}
+                <Link to={"/About"} className="welcomePrivacyNotice">
+                  our privacy policy.
+                </Link>
               </p>
             </div>
-            <div className="welcomeAboutImage top">
+            <div className="welcomeAboutImageTop">
               <img src={badge_bernese} alt="" />
               <img src={badge_chihuahua} alt="" />
               <img src={badge_goldendoodle_trophy} alt="" />
             </div>
           </div>
 
-          <div className="welcomeSubContainer bottom">
-            <div className="welcomeAboutImage bottom">
+          <div className="welcomeSubContainerBottom">
+            <div className="welcomeAboutImageBottom">
               <img src={gameplayPic} alt="" />
             </div>
-            <div className="welcomeAboutContent">
-              <h2>Here's how it works:</h2>
-              <p>
-                If there are two things every kid loves, it's math and dogs,
-                right? Right...?
-              </p>
+            <div className="welcomeAboutContent bottom">
+              <h2>Woof math game play:</h2>
+              <ul>
+                <li>
+                  Choose your type of math (ex. addition, division) and how hard
+                  the questions should be.
+                </li>
+                <li>
+                  See how you do! The more questions you get right, the more
+                  points and animal badges you earn.
+                </li>
+                <li>See if you can win the goldendoodle badge!</li>
+              </ul>
             </div>
           </div>
         </div>
