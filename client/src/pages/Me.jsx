@@ -106,9 +106,12 @@ function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
             <button className="button getBack" onClick={navHome}>
               Get back to playing!
             </button>
-            <button className="button accountGray">
-              Contact us / share feedback
-            </button>
+
+            <Link to={"mailto:wooflearning@gmail.com"}>
+              <button className="button accountGray">
+                Contact us / share feedback
+              </button>
+            </Link>
 
             {isLoggedIn && (
               <>

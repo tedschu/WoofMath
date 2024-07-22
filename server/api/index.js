@@ -24,7 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// **** REVISIT THESE LINES / FROM TYLER'S CODEBASE
 app.use("/", express.static(__dirname + "/client/dist"));
 
 //   //Parse the request headers to see if there is a token

@@ -165,9 +165,10 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
                 name="security_question_1"
                 value={userInfo.security_question_1 || ""}
                 onChange={setFormValues}
+                className="securitySelect"
               >
                 <option value="" disabled>
-                  Select a security question #1...
+                  Select security question #1...
                 </option>
                 {securityQuestions.map((question, index) => (
                   <option key={index} value={question}>
@@ -189,9 +190,10 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
                 name="security_question_2"
                 value={userInfo.security_question_2 || ""}
                 onChange={setFormValues}
+                className="securitySelect"
               >
                 <option value="" disabled>
-                  Select a security question...
+                  Select security question #2...
                 </option>
                 {securityQuestions.map((question, index) => (
                   <option key={index} value={question}>

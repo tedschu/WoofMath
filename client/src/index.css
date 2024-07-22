@@ -281,6 +281,9 @@ button {
   color: #189fd8;
 }
 
+.welcomeAboutContent > p {
+  font-size: 20px;
+}
 .welcomePrivacyNotice {
   font-size: 18px;
   font-style: italic;
@@ -356,6 +359,7 @@ nav {
   left: 0;
   border-bottom: 1px solid rgb(232, 232, 232);
   box-shadow: 2px 2px 7px lightgray;
+  z-index: 2;
 }
 
 .navLogo {
@@ -473,6 +477,7 @@ nav {
 .badgeDisabled {
   filter: grayscale(100%);
   opacity: 60%;
+  z-index: 1;
 }
 
 .badgeDogDisabled {
@@ -757,8 +762,7 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 22px;
 }
 
-.registerForm > input,
-.registerForm > select {
+.registerForm > input {
   font-size: 20px;
   margin: 7px;
   height: 50px;
@@ -782,17 +786,10 @@ input[type="number"]::-webkit-inner-spin-button {
   background-image: linear-gradient(#a6d5ea, #c8e8f7);
 }
 
-.registerForm input::placeholder,
-select:invalid {
+.registerForm input::placeholder {
   font-size: 17px;
   color: rgb(140, 140, 140);
   font-style: italic;
-}
-
-select {
-  color: rgb(140, 140, 140);
-  font-size: 17px;
-  width: 320px;
 }
 
 .registerForm > button {
@@ -824,7 +821,8 @@ p {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin: 10px 0px;
+  gap: 10px;
 }
 
 .securityQuestionsContainer > input {
@@ -836,6 +834,27 @@ p {
   font-family: "Patrick Hand";
   font-size: 22px;
   background-image: linear-gradient(#a6d5ea, #c8e8f7);
+}
+
+.securitySelect {
+  height: 50px;
+  width: 280px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  font-family: "Patrick Hand";
+  font-size: 22px;
+  background-image: linear-gradient(#a6d5ea, #c8e8f7);
+  color: black;
+}
+
+.securitySelect > option {
+  font-size: 18px;
+  color: rgb(140, 140, 140);
+}
+
+.securitySelect:invalid {
+  color: gray;
 }
 
 /* ACCOUNT PAGE STYLING */
@@ -852,7 +871,7 @@ p {
   justify-content: center;
   align-items: center;
   width: 60%;
-  margin-top: 50px;
+  margin: 50px 0px;
   background-color: #f5f5f5;
   border-radius: 12px;
   padding: 20px;
@@ -1010,6 +1029,7 @@ ul li {
 
   .welcomeAboutContent.bottom {
     padding-left: 15px;
+    width: 90%;
   }
 
   /* .welcomeAboutContent > ul li {
