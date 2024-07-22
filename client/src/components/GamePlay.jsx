@@ -258,7 +258,7 @@ function GamePlay({
       <div className="gamePlayContainer">
         <div className="gamePlay">
           <h3>
-            Let's go! Here's question #{questionCount} (for
+            Here's question #{questionCount} (for
             <span className="pointsHighlight"> {addToScore} points</span>):
           </h3>
 

@@ -46,6 +46,9 @@ export default function GameSelector({
               color: "#0085bd",
               border: "1px solid lightgray",
             },
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
           }}
         >
           <ToggleButton value="addition">Addition</ToggleButton>

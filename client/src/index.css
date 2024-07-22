@@ -120,6 +120,7 @@ button {
   color: white;
   font-size: 25px;
   border: none;
+  box-shadow: 2px 2px 6px #c1c1c1;
 }
 
 .button.recover:hover {
@@ -258,7 +259,7 @@ button {
 }
 
 .welcomeAboutContent > h2,
-h3 {
+.welcomeAboutContent > h3 {
   color: #189fd8;
 }
 
@@ -363,7 +364,8 @@ nav {
   display: flex;
   justify-content: end;
   align-items: center;
-  padding-right: 15px;
+  padding-right: 5px;
+  text-align: right;
 }
 
 /* SCOREBAR STYLING */
@@ -422,7 +424,7 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 85px;
+  width: 78px;
 }
 
 .individualScores > h1 {
@@ -436,6 +438,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   padding: 10px 0;
   gap: 5px;
 }
@@ -473,7 +476,7 @@ nav {
 }
 
 .eachBadge > img {
-  width: 70px;
+  width: 50px;
 }
 
 /* GAME SELECTION and SLIDER STYLING */
@@ -544,6 +547,7 @@ nav {
 .questionContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   /* background: lightcyan; */
   padding: 5px;
   margin: 5px;
@@ -597,6 +601,7 @@ nav {
   margin-top: 10px;
   padding: 10px 10px;
   font-size: 18px;
+  text-align: center;
   background-color: rgb(194, 255, 194);
   border: 1px solid rgb(232, 232, 232);
   border-radius: 6px;
@@ -731,7 +736,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .registerForm > input,
-select {
+.registerForm > select {
   font-size: 20px;
   margin: 7px;
   height: 50px;
@@ -982,7 +987,7 @@ ul li {
   } */
 
   .welcomeAboutContent > h2,
-  h3 {
+  .welcomeAboutContent > h3 {
     color: #189fd8;
   }
 
@@ -1034,5 +1039,19 @@ ul li {
     width: 100%;
     max-width: 400px;
     padding-left: 10px;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .eachBadge > img {
+    width: 70px;
+  }
+
+  .navUser {
+    padding-right: 15px;
+  }
+
+  .individualScores {
+    width: 85px;
   }
 }
