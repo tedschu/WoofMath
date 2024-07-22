@@ -712,7 +712,7 @@ input[type="number"]::-webkit-inner-spin-button {
   color: white;
 }
 
-.registerContentContainer > img {
+.registerLogo {
   width: 200px;
   margin-bottom: 20px;
 }
@@ -795,6 +795,7 @@ p {
 .securityQuestionsContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
@@ -880,26 +881,52 @@ p {
 }
 
 .aboutHeader {
-  display: flex;
+  display: grid;
+  grid-template-columns: [first] 25% [line2] 50% [line3] 25%;
+
   width: 100%;
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(#cb4527, #e38c3a);
   padding: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .aboutHeaderImg {
   width: 130px;
 }
 
+.aboutHeaderImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .aboutContentContainer {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 85%;
   background-color: rgb(242, 242, 242);
   border-radius: 9px;
   margin: 20px 0px;
+  padding: 30px;
+}
+
+.aboutContentContainer p {
+  padding: 10px;
+}
+
+.aboutContentContainer > p,
+ul li {
+  font-size: 20px;
+}
+
+.aboutContentContainer > ul {
+  padding: 10px 35px;
+}
+
+.bold {
+  font-weight: bolder;
 }
 
 /* ***************** */

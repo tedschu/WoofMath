@@ -102,7 +102,9 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     <>
       <div className="registerPageContainer">
         <div className="registerContentContainer">
-          <img src={woofMathLogo} alt="" />
+          <Link to={"/welcome"}>
+            <img src={woofMathLogo} alt="" className="registerLogo" />
+          </Link>
           <h1>Hey, you!</h1>
           <h2>
             With your parent's permission, create a free account below to begin
