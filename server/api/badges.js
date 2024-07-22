@@ -6,8 +6,6 @@ const prisma = new PrismaClient();
 
 // Updates a badge (e.g. when a user wins a new badge)
 
-// CONSOLIDATE THIS INTO .USERS FILE? WOULD MAKE SOURCING USER_ID SIMPLER
-// ALTERNATIVE IS TO DUPLICATE TOKEN CALL FUNCTION TO GRAB ID, OR, TO PASS PARAMS
 router.put("/", async (req, res) => {
   try {
     const user_badges = await prisma.badge.update({

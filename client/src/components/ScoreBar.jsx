@@ -40,8 +40,7 @@ function ScoreBar({
             <h1 className="scoreFont">{totalScore}</h1>
             <h5>TOTAL SCORE</h5>
           </div>
-          {/* </div> */}
-          {/* <div className="subScoreContainer"> */}
+
           <div className="individualScores">
             <h1>{userScore.addition_score}</h1>
             <h5>ADDITION</h5>
@@ -58,7 +57,6 @@ function ScoreBar({
             <h1>{userScore.division_score}</h1>
             <h5>DIVISION</h5>
           </div>
-          {/* </div> */}
         </div>
 
         <div className="badgesContainer">

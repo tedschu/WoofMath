@@ -30,7 +30,6 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   // Submit button
   const submit = (event) => {
     event.preventDefault();
-    //console.log("This is loginForm: ", loginForm);
     loginCheck(userInfo);
   };
 
@@ -71,8 +70,6 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
       setLoginFailed(true);
     }
   }
-
-  //console.log(userInfo);
 
   return (
     <>

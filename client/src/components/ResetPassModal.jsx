@@ -21,7 +21,6 @@ function ResetPassModal({
     const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
     setUserInfo(newObj);
-    //console.log(userInfo);
   };
 
   const usernameSubmit = (event) => {

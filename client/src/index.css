@@ -72,6 +72,7 @@ button {
 
 .buttonGrayText {
   color: gray;
+  width: 200px;
 }
 
 .button.login {
@@ -144,18 +145,35 @@ button {
   color: white;
 }
 
+.button.getBack {
+  width: 200px;
+  border-radius: 10px;
+  background-image: linear-gradient(#0085bd, #71afcb);
+  color: white;
+  font-size: 22px;
+  border: none;
+  box-shadow: 2px 2px 6px #c1c1c1;
+  margin-top: 40px;
+}
+
+.button.accountGray {
+  width: 200px;
+  border-radius: 10px;
+  background-color: lightgray;
+  color: black;
+  font-size: 20px;
+  border: none;
+  box-shadow: 2px 2px 6px #c1c1c1;
+}
+
 /* WELCOME PAGE STYLING */
 .welcomePageContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-image: linear-gradient(#cb4527, #ec9c52); */
-  /* height: 100vh; */
   color: white;
   width: 100%;
-
-  /* padding-top: 50px; */
 }
 
 .welcomeBackground {
@@ -368,6 +386,10 @@ nav {
   text-align: right;
 }
 
+.navUser > h4 {
+  font-size: 18px;
+}
+
 /* SCOREBAR STYLING */
 
 .scoreBarContainer {
@@ -384,6 +406,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px 0px;
 
   /* grid-template-columns: [first] 50% [line2] 50%; */
 }
@@ -530,7 +553,6 @@ nav {
   justify-content: center;
   align-items: center;
   width: 75%;
-  /* border: 1px solid #dcdcdc; */
   border-radius: 10px;
   padding: 10px;
   box-shadow: 2px 2px 10px lightgray;
@@ -822,15 +844,23 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
 }
 
-.purple {
-  color: rgb(68, 68, 179);
+.accountContentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-top: 50px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 20px;
+  gap: 5px;
 }
 
-.getBackButton {
-  background-color: rgb(220, 254, 220);
+.accountFont {
+  color: #0085bd;
 }
 
 /* STYLING FOR FORGOT PASSWORD MODAL */
@@ -1049,6 +1079,10 @@ ul li {
 
   .navUser {
     padding-right: 15px;
+  }
+
+  .navUser > h4 {
+    font-size: 22px;
   }
 
   .individualScores {

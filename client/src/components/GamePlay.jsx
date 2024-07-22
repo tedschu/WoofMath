@@ -132,7 +132,6 @@ function GamePlay({
       });
 
       const data = await response.json();
-      // console.log(data);
 
       // SET ALL STATE VALUES HERE (SCORES, BADGES, USER INFO, ETC.)
       if (response.ok) {
@@ -303,10 +302,6 @@ function GamePlay({
             <div className="answerSubmit">
               <button
                 className="button submit"
-                // onClick={() => {
-                //   findAnswer();
-                //   setSubmitted(true);
-                // }}
                 type="submit"
                 // autoFocus
               >

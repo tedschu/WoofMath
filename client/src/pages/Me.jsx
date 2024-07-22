@@ -65,50 +65,62 @@ function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
         />
 
         <div className="accountPageContainer">
-          <h2>Welcome! Here's what you've shared with us:</h2>
-          <li>
-            Name: <span className="purple">{userInfo.name}</span>
-          </li>
-          <li>
-            Email: <span className="purple">{userInfo.email}</span>
-          </li>
-          <li>
-            Year you were born:{" "}
-            <span className="purple">{userInfo.birth_year}</span>
-          </li>
-          <li>
-            Username: <span className="purple">{userInfo.username}</span>
-          </li>
-          <li>
-            Security question #1:{" "}
-            <span className="purple">{userInfo.security_question_1}</span>
-          </li>
-          <li>
-            Security answer #1:{" "}
-            <span className="purple">{userInfo.security_answer_1}</span>
-          </li>
-          <li>
-            Security question #2:{" "}
-            <span className="purple">{userInfo.security_question_2}</span>
-          </li>
-          <li>
-            Security answer #2:{" "}
-            <span className="purple">{userInfo.security_answer_2}</span>
-          </li>
+          <div className="accountContentContainer">
+            <h2>
+              Welcome, {userInfo.username}! Here's what you've shared with us:
+            </h2>
+            <li>
+              Name: <span className="accountFont">{userInfo.name}</span>
+            </li>
+            <li>
+              Email: <span className="accountFont">{userInfo.email}</span>
+            </li>
+            <li>
+              Year you were born:{" "}
+              <span className="accountFont">{userInfo.birth_year}</span>
+            </li>
+            <li>
+              Username: <span className="accountFont">{userInfo.username}</span>
+            </li>
+            <li>
+              Security question #1:{" "}
+              <span className="accountFont">
+                {userInfo.security_question_1}
+              </span>
+            </li>
+            <li>
+              Security answer #1:{" "}
+              <span className="accountFont">{userInfo.security_answer_1}</span>
+            </li>
+            <li>
+              Security question #2:{" "}
+              <span className="accountFont">
+                {userInfo.security_question_2}
+              </span>
+            </li>
+            <li>
+              Security answer #2:{" "}
+              <span className="accountFont">{userInfo.security_answer_2}</span>
+            </li>
 
-          <button className="getBackButton" onClick={navHome}>
-            Get back to playing!
-          </button>
-          <button>Contact us / share feedback</button>
+            <button className="button getBack" onClick={navHome}>
+              Get back to playing!
+            </button>
+            <button className="button accountGray">
+              Contact us / share feedback
+            </button>
 
-          {isLoggedIn && (
-            <>
-              <button onClick={handleLogout}>Log out</button>
-              <button className="buttonGrayText" onClick={handleDelete}>
-                Delete my account
-              </button>
-            </>
-          )}
+            {isLoggedIn && (
+              <>
+                <button className="button accountGray" onClick={handleLogout}>
+                  Log out
+                </button>
+                <button className="buttonGrayText" onClick={handleDelete}>
+                  Delete my account
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>

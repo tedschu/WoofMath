@@ -22,7 +22,6 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
     setUserInfo(newObj);
-    //console.log(userInfo);
   };
 
   // Submit button
@@ -50,7 +49,6 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     }
   };
 
-  //console.log(userInfo.name);
   // *************
   // Posts login form data to API AND validates whether user exists
   // Uses isLoggedIn state setter to pass "true" to parent state in App.jsx
@@ -95,8 +93,6 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
       setErrorMessage(error.message);
     }
   }
-
-  //console.log(loginFailed);
 
   return (
     <>

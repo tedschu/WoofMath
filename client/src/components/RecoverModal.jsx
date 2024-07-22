@@ -19,15 +19,12 @@ function RecoverModal({
     const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
     setUserInfo(newObj);
-    //console.log(userInfo);
   };
 
   const submit = (event) => {
     event.preventDefault();
     getUsernames(userInfo);
   };
-
-  // console.log(userInfo.email);
 
   const getUsernames = async (userInfo) => {
     try {

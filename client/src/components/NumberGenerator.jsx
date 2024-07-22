@@ -31,11 +31,7 @@ function NumberGenerator({
 
   // Figures out division random numbers so they divide evenly (e.g. no remainder)
   function getDivisionEquation(answer, multiple) {
-    // console.log("This is the answer: ", answer);
-    // console.log("This is the multiple: ", multiple);
     let result = answer * multiple;
-    // console.log("This is the result: ", result);
-
     // Ensures that the first number displaying to the user divided by the second number will always divide cleanly
     setFirstNumber(result);
     setSecondNumber(multiple);

@@ -32,8 +32,6 @@ export default function DiscreteSlider({
     setGotWrong(false);
   };
 
-  //console.log(sliderValue);
-
   return (
     <div className="sliderContainer">
       <h3>How hard should the questions be?</h3>

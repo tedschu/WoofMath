@@ -26,8 +26,6 @@ export default function GameSelector({
     textTransform: "none",
   };
 
-  //console.log(alignment);
-
   return (
     <>
       <div className="gameSelectContainer">
