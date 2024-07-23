@@ -17,6 +17,10 @@ async function main() {
       password: "test",
       total_logins: 7,
       last_login: now,
+      security_question_1: "test",
+      security_answer_1: "test",
+      security_question_2: "test",
+      security_answer_2: "test",
     },
   });
 
@@ -53,6 +57,10 @@ async function main() {
       password: "test",
       total_logins: 7,
       last_login: now,
+      security_question_1: "test",
+      security_answer_1: "test",
+      security_question_2: "test",
+      security_answer_2: "test",
     },
   });
 
