@@ -11,8 +11,8 @@ function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
-    window.location.reload();
-    //navigate("/");
+    // window.location.reload();
+    navigate("/");
   };
 
   const navHome = () => {
