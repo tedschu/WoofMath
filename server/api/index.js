@@ -6,11 +6,12 @@ const path = require("path");
 const { PrismaClient } = require("@prisma/client");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
+const morgan = require("morgan");
 
 const prisma = new PrismaClient();
 const port = process.env.PORT || 8080;
 
-//app.use(morgan("dev"));
+app.use(morgan("dev"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,9 +25,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/", express.static(__dirname + "/../../client/dist"));
+// app.use(express.static(path.join(__dirname, "/../../client/dist")));
 
-console.log(__dirname + "/../client/dist");
+//console.log(path.join(__dirname, "/../../client/dist"));
 //   //Parse the request headers to see if there is a token
 // app.use(parseToken);
 
@@ -44,6 +45,9 @@ app.use(baseQuery + "users", require("./users"));
 app.use(baseQuery + "badges", require("./badges"));
 // app.use(baseQuery + "game_state", require("./game_state"));
 app.use(baseQuery + "scores", require("./scores"));
+
+app.use(express.static(path.join(__dirname, "/../../client/dist")));
+app.use("*", express.static(path.join(__dirname, "/../../client/dist")));
 
 app.listen(port, () => {
   console.log(`WoofMath is running at port ${port}`);
