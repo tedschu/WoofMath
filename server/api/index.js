@@ -24,8 +24,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/", express.static(__dirname + "/client/dist"));
+app.use("/", express.static(__dirname + "/../../client/dist"));
 
+console.log(__dirname + "/../client/dist");
 //   //Parse the request headers to see if there is a token
 // app.use(parseToken);
 

@@ -1,5 +1,3 @@
-const pg = require("pg");
-const bcrypt = require("bcrypt");
+const { Client } = require("pg");
 
-// Ensure all DB functions are exported once completed
-module.exports = {};
+module.exports = { client };
