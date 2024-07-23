@@ -129,6 +129,7 @@ function App() {
               userScore={userScore}
               totalScore={totalScore}
               userBadges={userBadges}
+              setIsLoggedIn={setIsLoggedIn}
             />
           }
         />
@@ -155,7 +156,7 @@ function App() {
           }
         />
         <Route path="/welcome" element={<Welcome />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About isLoggedIn={isLoggedIn} />} />
       </Routes>
     </>
   );

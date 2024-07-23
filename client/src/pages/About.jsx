@@ -4,14 +4,22 @@ import Nav from "../components/Nav";
 import woofMathLogo from "../assets/woofmath_logo_1.png";
 import { Link } from "react-router-dom";
 
-function About() {
+function About({ isLoggedIn }) {
+  console.log(isLoggedIn);
+
   return (
     <>
       <div className="aboutContainer">
         <div className="aboutHeader">
-          <Link to={"/welcome"}>
-            <div> Go back</div>
-          </Link>
+          {isLoggedIn ? (
+            <Link to={"/me"}>
+              <div> Go back</div>
+            </Link>
+          ) : (
+            <Link to={"/welcome"}>
+              <div> Go back</div>
+            </Link>
+          )}
           <div className="aboutHeaderImgContainer">
             <Link to={"/welcome"}>
               <img src={woofMathLogo} className="aboutHeaderImg" alt="" />

@@ -5,13 +5,21 @@ import { useNavigate } from "react-router-dom";
 import ScoreBar from "../components/ScoreBar";
 import Nav from "../components/Nav";
 
-function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
+function Me({
+  userInfo,
+  userScore,
+  totalScore,
+  userBadges,
+  isLoggedIn,
+  setIsLoggedIn,
+}) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     // window.location.reload();
+    setIsLoggedIn(false);
     navigate("/");
   };
 
@@ -124,6 +132,9 @@ function Me({ userInfo, userScore, totalScore, userBadges, isLoggedIn }) {
               </>
             )}
           </div>
+          <Link to={"/about"}>
+            <div className="accountFooter">About us / privacy policy</div>
+          </Link>
         </div>
       </div>
     </>

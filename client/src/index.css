@@ -870,16 +870,26 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  margin: 50px 0px;
+  width: 75%;
+  margin: 50px 0px 20px 0px;
   background-color: #f5f5f5;
   border-radius: 12px;
   padding: 20px;
   gap: 5px;
+  text-align: center;
 }
 
 .accountFont {
   color: #0085bd;
+}
+
+.accountFooter {
+  text-align: center;
+  color: #0085bd;
+  margin: 0px 0px 20px 0px;
+  width: 100%;
+  font-size: 20px;
+  text-decoration: underline;
 }
 
 /* STYLING FOR FORGOT PASSWORD MODAL */
