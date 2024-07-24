@@ -39,7 +39,7 @@ h3 {
 }
 
 h5 {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 label {
@@ -410,6 +410,7 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 5px 0px;
+  gap: 20px;
 
   /* grid-template-columns: [first] 50% [line2] 50%; */
 }
@@ -450,7 +451,7 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 78px;
+  /* width: 70px; */
 }
 
 .individualScores > h1 {
@@ -499,7 +500,7 @@ nav {
 }
 
 .eachBadge > h3 {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .eachBadge > img {
@@ -995,12 +996,41 @@ ul li {
 /* ***************** */
 /* ********** */
 /* MEDIA QUERIES FOR DESKTOP SIZING */
+
+/* SCREEN IS ABOVE 550px (e.g. tablet) */
+@media screen and (min-width: 550px) {
+  .eachBadge > img {
+    width: 70px;
+  }
+
+  .navUser {
+    padding-right: 15px;
+  }
+
+  .navUser > h4 {
+    font-size: 22px;
+  }
+
+  /* .scoresContainer {
+    gap: 0px;
+  } */
+}
+
+/* SCREEN IS ABOVE 1050px (desktop) */
 @media screen and (min-width: 1050px) {
   .scoreBarContainer {
     /* background: rgb(237, 237, 237); */
     display: grid;
     grid-template-columns: [first] 50% [line2] 50%;
     border-bottom: 1px solid rgb(232, 232, 232);
+  }
+
+  .scoresContainer {
+    gap: 2px;
+  }
+
+  .individualScores {
+    width: 80px;
   }
 
   .welcomeAboutContainer {
@@ -1098,23 +1128,5 @@ ul li {
     width: 100%;
     max-width: 400px;
     padding-left: 10px;
-  }
-}
-
-@media screen and (min-width: 550px) {
-  .eachBadge > img {
-    width: 70px;
-  }
-
-  .navUser {
-    padding-right: 15px;
-  }
-
-  .navUser > h4 {
-    font-size: 22px;
-  }
-
-  .individualScores {
-    width: 85px;
   }
 }

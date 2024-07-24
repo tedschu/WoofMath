@@ -43,19 +43,19 @@ function ScoreBar({
 
           <div className="individualScores">
             <h1>{userScore.addition_score}</h1>
-            <h5>ADDITION</h5>
+            <h5>ADD</h5>
           </div>
           <div className="individualScores">
             <h1>{userScore.subtraction_score}</h1>
-            <h5>SUBTRACTION</h5>
+            <h5>SUBTRACT</h5>
           </div>
           <div className="individualScores">
             <h1>{userScore.multiplication_score}</h1>
-            <h5>MULTIPLICATION</h5>
+            <h5>MULTIPLY</h5>
           </div>
           <div className="individualScores">
             <h1>{userScore.division_score}</h1>
-            <h5>DIVISION</h5>
+            <h5>DIVIDE</h5>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ function ScoreBar({
               alt=""
               className={userBadges.husky ? "badgeEnabled" : "badgeDisabled"}
             />
-            <h3>1,000 E</h3>
+            <h3>250 each</h3>
           </div>
           <div className="eachBadge">
             <img

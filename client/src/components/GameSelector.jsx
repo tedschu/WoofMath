@@ -43,16 +43,18 @@ export default function GameSelector({
               ...buttonStyle,
               color: "#0085bd",
               border: "1px solid lightgray",
+              padding: "11px",
+              minWidth: "67px",
             },
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
           }}
         >
-          <ToggleButton value="addition">Addition</ToggleButton>
-          <ToggleButton value="subtraction">Subtraction</ToggleButton>
-          <ToggleButton value="multiplication">Multiplication</ToggleButton>
-          <ToggleButton value="division">Division</ToggleButton>
+          <ToggleButton value="addition">Add</ToggleButton>
+          <ToggleButton value="subtraction">Subtract</ToggleButton>
+          <ToggleButton value="multiplication">Multiply</ToggleButton>
+          <ToggleButton value="division">Divide</ToggleButton>
         </ToggleButtonGroup>
       </div>
     </>

@@ -71,27 +71,68 @@ function GamePlay({
           addToScore,
           prevScore
         );
+
+        const newTotalScore = getTotalScore(updatedScores, prevScore);
+
+        setTotalScore(newTotalScore);
         postUserScore(updatedScores);
+
+        updateBadges(newTotalScore, updatedScores);
+
         setUserAnswer("");
         handleQuestionCount(); // ensures next question loads automatically upon rightAnswer
         setGotRight(true);
 
         return { ...prevScore, ...updatedScores };
       });
-      // Determines whether there is a new qualifying badge, and returns an object (updatedBadges) to pass to API
-      const updatedBadges = getUpdatedBadges();
-      // IF there is an updatedBadge, sets userBadges state and then posts to DB
-      if (Object.keys(updatedBadges).length > 0) {
-        setUserBadges((prevBadges) => ({
-          ...prevBadges,
-          ...updatedBadges,
-        }));
-        postUserBadges(updatedBadges);
-      }
     } else {
       setGotWrong(true);
       setGotRight(false);
     }
+  }
+
+  function updateBadges(newTotalScore, updatedScores) {
+    setUserBadges((prevBadges) => {
+      const updatedBadges = {};
+
+      if (newTotalScore >= 100 && !userBadges.bernese) {
+        updatedBadges.bernese = true;
+      } else if (newTotalScore >= 500 && !userBadges.chihuahua) {
+        updatedBadges.chihuahua = true;
+      } else if (newTotalScore >= 1000 && !userBadges.boxer) {
+        updatedBadges.boxer = true;
+      } else if (
+        newTotalScore >= 1000 &&
+        userScore.addition_score >= 250 &&
+        userScore.subtraction_score >= 250 &&
+        userScore.multiplication_score >= 250 &&
+        userScore.division_score >= 250 &&
+        !userBadges.husky
+      ) {
+        updatedBadges.husky = true;
+      } else if (newTotalScore >= 2000 && !userBadges.golden) {
+        updatedBadges.golden = true;
+      } else if (
+        newTotalScore >= 5000 &&
+        userScore.addition_score >= 500 &&
+        userScore.subtraction_score >= 500 &&
+        userScore.multiplication_score >= 500 &&
+        userScore.division_score >= 500 &&
+        !userBadges.cat
+      ) {
+        updatedBadges.cat = true;
+      } else if (newTotalScore >= 10000) {
+        updatedBadges.goldendoodle_trophy = true;
+        !userBadges.goldendoodle_trophy;
+      }
+
+      if (Object.keys(updatedBadges).length > 0) {
+        const newBadges = { ...prevBadges, ...updatedBadges };
+        postUserBadges(updatedBadges);
+        return newBadges;
+      }
+      return prevBadges;
+    });
   }
 
   // Function to create an object for the score that's being updated (ex. addition) to pass into body / update DB
@@ -114,6 +155,25 @@ function GamePlay({
         break;
     }
     return updatedScores;
+  }
+
+  // ****
+  function getTotalScore(updatedScores, prevScore) {
+    const newTotalScore =
+      (updatedScores.addition_score !== undefined
+        ? updatedScores.addition_score
+        : prevScore.addition_score) +
+      (updatedScores.subtraction_score !== undefined
+        ? updatedScores.subtraction_score
+        : prevScore.subtraction_score) +
+      (updatedScores.multiplication_score !== undefined
+        ? updatedScores.multiplication_score
+        : prevScore.multiplication_score) +
+      (updatedScores.division_score !== undefined
+        ? updatedScores.division_score
+        : prevScore.division_score);
+
+    return newTotalScore;
   }
 
   // Function to pass the updated score to the database, update scores state values for gameplay
@@ -183,45 +243,6 @@ function GamePlay({
     return () => clearTimeout(timer);
   }, [gotRight]);
 
-  // Logic for determining when to update userBadges state, run postUserBadges function
-  // Passes the value to be updated in postUserBadges (e.g. cow: true)
-
-  function getUpdatedBadges() {
-    const updatedBadge = {};
-
-    if (totalScore > 100 && !userBadges.bernese) {
-      updatedBadge.bernese = true;
-    } else if (totalScore > 500 && !userBadges.chihuahua) {
-      updatedBadge.chihuahua = true;
-    } else if (totalScore > 1000 && !userBadges.boxer) {
-      updatedBadge.boxer = true;
-    } else if (
-      totalScore > 1000 &&
-      userScore.addition_score > 250 &&
-      userScore.subtraction_score > 250 &&
-      userScore.multiplication_score > 250 &&
-      userScore.division_score > 250 &&
-      !userBadges.husky
-    ) {
-      updatedBadge.husky = true;
-    } else if (totalScore > 2000 && !userBadges.golden) {
-      updatedBadge.golden = true;
-    } else if (
-      totalScore > 5000 &&
-      userScore.addition_score > 500 &&
-      userScore.subtraction_score > 500 &&
-      userScore.multiplication_score > 500 &&
-      userScore.division_score > 500 &&
-      !userBadges.cat
-    ) {
-      updatedBadge.cat = true;
-    } else if (totalScore > 10000) {
-      updatedBadge.goldendoodle_trophy = true;
-      !userBadges.goldendoodle_trophy;
-    }
-    return updatedBadge;
-  }
-
   // Function to pass the updated score to the database, update scores state values for gameplay
   const postUserBadges = async (updatedBadges) => {
     try {
@@ -257,7 +278,7 @@ function GamePlay({
       <div className="gamePlayContainer">
         <div className="gamePlay">
           <h3>
-            Here's question #{questionCount} (for
+            Question #{questionCount} (for
             <span className="pointsHighlight"> {addToScore} points</span>):
           </h3>
 
