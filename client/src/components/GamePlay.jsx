@@ -31,16 +31,16 @@ function GamePlay({
   // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
   const [addToScore, setAddToScore] = useState(0);
 
-  // state for modal that opens when a new badge is won
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalBadge, setModalBadge] = useState({});
+  // // state for modal that opens when a new badge is won
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [modalBadge, setModalBadge] = useState({});
 
-  const openModal = (badgeName) => {
-    console.log("Inside openModal: ", badgeName);
-    setIsModalOpen(true);
-    setModalBadge(badgeName);
-  };
-  const closeModal = () => setIsModalOpen(false);
+  // const openModal = (badgeName) => {
+  //   console.log("Inside openModal: ", badgeName);
+  //   setIsModalOpen(true);
+  //   setModalBadge(badgeName);
+  // };
+  // const closeModal = () => setIsModalOpen(false);
 
   // Determines the correct answer to the generated question AND stores value in questionResult
   // Compares userAnswer to questionResult to determine if answer is correct
@@ -85,11 +85,10 @@ function GamePlay({
         );
 
         const newTotalScore = getTotalScore(updatedScores, prevScore);
+        updateBadges(newTotalScore);
 
         setTotalScore(newTotalScore);
         postUserScore(updatedScores);
-
-        updateBadges(newTotalScore, updatedScores);
 
         setUserAnswer("");
         handleQuestionCount(); // ensures next question loads automatically upon rightAnswer
@@ -107,15 +106,12 @@ function GamePlay({
     setUserBadges((prevBadges) => {
       const updatedBadges = {};
 
-      if (newTotalScore >= 305 && !userBadges.bernese) {
+      if (newTotalScore >= 100 && !userBadges.bernese) {
         updatedBadges.bernese = true;
-        openModal("bernese");
-      } else if (newTotalScore >= 285 && !userBadges.chihuahua) {
+      } else if (newTotalScore >= 500 && !userBadges.chihuahua) {
         updatedBadges.chihuahua = true;
-        openModal("chihuahua");
       } else if (newTotalScore >= 1000 && !userBadges.boxer) {
         updatedBadges.boxer = true;
-        openModal("boxer");
       } else if (
         newTotalScore >= 1000 &&
         userScore.addition_score >= 250 &&
@@ -125,10 +121,8 @@ function GamePlay({
         !userBadges.husky
       ) {
         updatedBadges.husky = true;
-        openModal("husky");
       } else if (newTotalScore >= 2000 && !userBadges.golden) {
         updatedBadges.golden = true;
-        openModal("golden");
       } else if (
         newTotalScore >= 5000 &&
         userScore.addition_score >= 500 &&
@@ -138,11 +132,8 @@ function GamePlay({
         !userBadges.cat
       ) {
         updatedBadges.cat = true;
-        openModal("cat");
-      } else if (newTotalScore >= 10000) {
+      } else if (newTotalScore >= 10000 && !userBadges.goldendoodle_trophy) {
         updatedBadges.goldendoodle_trophy = true;
-        openModal("goldendoodle_trophy");
-        !userBadges.goldendoodle_trophy;
       }
 
       // *** use UPDATEDBADGES TO CONTROL THE MODAL WINDOW
@@ -150,7 +141,6 @@ function GamePlay({
       if (Object.keys(updatedBadges).length > 0) {
         const newBadges = { ...prevBadges, ...updatedBadges };
         postUserBadges(updatedBadges);
-
         return newBadges;
       }
       return prevBadges;
@@ -281,12 +271,12 @@ function GamePlay({
       });
 
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
 
       // SET ALL STATE VALUES HERE (SCORES, BADGES, USER INFO, ETC.)
       if (response.ok) {
         //setUserBadges(data.badge);
-        console.log(data);
+        // console.log(data);
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -371,11 +361,11 @@ function GamePlay({
           </button>
         </div>
 
-        <BadgeModal
+        {/* <BadgeModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
           modalBadge={modalBadge}
-        />
+        /> */}
       </div>
     </>
   );
