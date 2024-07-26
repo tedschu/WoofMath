@@ -774,18 +774,6 @@ input[type="number"]::-webkit-inner-spin-button {
   background-image: linear-gradient(#a6d5ea, #c8e8f7);
 }
 
-.registerForm > input {
-  height: 50px;
-  width: 250px;
-  padding: 8px;
-  border: 1px solid lightgray;
-  border-radius: 6px;
-  font-family: "Patrick Hand";
-  font-size: 22px;
-  margin: 7px;
-  background-image: linear-gradient(#a6d5ea, #c8e8f7);
-}
-
 .registerForm input::placeholder {
   font-size: 17px;
   color: rgb(140, 140, 140);
@@ -855,6 +843,38 @@ p {
 
 .securitySelect:invalid {
   color: gray;
+}
+
+.resetModalForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.resetModalForm > label {
+  font-size: 22px;
+  color: black;
+}
+
+.resetModalForm > input {
+  font-size: 20px;
+  margin: 7px;
+  height: 50px;
+  width: 270px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  font-family: "Patrick Hand";
+  background-image: linear-gradient(#a6d5ea, #c8e8f7);
+}
+
+.resetModalForm input::placeholder {
+  font-size: 17px;
+  color: rgb(140, 140, 140);
+  font-style: italic;
 }
 
 /* ACCOUNT PAGE STYLING */

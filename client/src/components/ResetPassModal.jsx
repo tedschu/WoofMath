@@ -129,7 +129,11 @@ function ResetPassModal({
           <h2>Let's reset your password.</h2>
 
           {resetStep === 1 && (
-            <form action="" className="registerForm" onSubmit={usernameSubmit}>
+            <form
+              action=""
+              className="resetModalForm"
+              onSubmit={usernameSubmit}
+            >
               <label htmlFor="name">First, what is your username?</label>
               <input
                 type="text"
@@ -151,7 +155,7 @@ function ResetPassModal({
 
               <form
                 action=""
-                className="registerForm"
+                className="resetModalForm"
                 onSubmit={questionsSubmit}
               >
                 <label htmlFor="security_answer_1">
@@ -189,7 +193,7 @@ function ResetPassModal({
 
               <form
                 action=""
-                className="registerForm"
+                className="resetModalForm"
                 onSubmit={passwordSubmit}
               >
                 <label htmlFor="password">Password:</label>
