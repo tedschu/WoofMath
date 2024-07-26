@@ -74,6 +74,10 @@ button {
   width: 200px;
 }
 
+.buttonGrayText.skip {
+  width: 150px;
+}
+
 .button.login {
   width: 200px;
   border-radius: 10px;
@@ -1156,5 +1160,6 @@ ul li {
 
   .gamePlay {
     width: 70%;
+    padding: 30px 0px;
   }
 }
