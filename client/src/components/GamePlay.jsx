@@ -18,6 +18,10 @@ function GamePlay({
   setUserBadges,
   totalScore,
   setTotalScore,
+  isModalOpen,
+  setIsModalOpen,
+  modalBadge,
+  setModalBadge,
 }) {
   const [questionCount, setQuestionCount] = useState(1);
   const [mathOperator, setMathOperator] = useState("+");
@@ -31,15 +35,14 @@ function GamePlay({
   // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
   const [addToScore, setAddToScore] = useState(0);
 
-  // state for modal that opens when a new badge is won
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalBadge, setModalBadge] = useState("");
+  // // state for modal that opens when a new badge is won
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [modalBadge, setModalBadge] = useState("");
 
   const openModal = () => {
     // console.log("Inside openModal: ", modalBadge);
     setIsModalOpen(true);
   };
-  const closeModal = () => setIsModalOpen(false);
 
   // Determines the correct answer to the generated question AND stores value in questionResult
   // Compares userAnswer to questionResult to determine if answer is correct
@@ -111,7 +114,7 @@ function GamePlay({
       } else if (newTotalScore >= 620 && !userBadges.chihuahua) {
         updatedBadges.chihuahua = true;
         setModalBadge("chihuahua");
-      } else if (newTotalScore >= 1000 && !userBadges.boxer) {
+      } else if (newTotalScore >= 630 && !userBadges.boxer) {
         updatedBadges.boxer = true;
         setModalBadge("boxer");
       } else if (
@@ -366,11 +369,11 @@ function GamePlay({
           </button>
         </div>
 
-        <BadgeModal
+        {/* <BadgeModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
           modalBadge={modalBadge}
-        />
+        /> */}
       </div>
     </>
   );

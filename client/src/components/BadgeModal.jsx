@@ -44,7 +44,8 @@ function BadgeModal({ isModalOpen, closeModal, modalBadge }) {
     <>
       <div className="badgeModalOverlay">
         <div className="badgeModalContent">
-          <h2>YASSSSS! YOU WON THE {modalBadge} BADGE!</h2>
+          <h2>YESSSSS! </h2>
+          <h2>You won the {modalBadge} badge!</h2>
 
           <img src={badgeImage} alt="" />
 

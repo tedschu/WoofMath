@@ -1019,11 +1019,73 @@ ul li {
 
 /* BADGE MODAL STYLING */
 .badgeModalOverlay {
-  background-color: lightblue;
+  position: fixed;
+  top: 65px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(152, 151, 151, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .badgeModalContent {
-  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 8px solid #a6d5ea;
+  background-color: #f9fdff;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 750px;
+  width: 90%;
+  color: #0085bd;
+  text-align: center;
+}
+
+.badgeModalContent > img {
+  width: 80%;
+  margin: 15px 0px;
+  animation: wiggle 2s linear infinite;
+}
+
+/* Keyframes */
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
+
+.modalClose {
+  float: right;
+  border: 1px solid lightgray;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100px;
+  box-shadow: 2px 2px 8px rgb(220, 220, 220);
 }
 
 /* ***************** */

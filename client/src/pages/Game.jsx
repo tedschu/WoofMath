@@ -7,6 +7,7 @@ import Slider from "../components/Slider";
 import GamePlay from "../components/GamePlay";
 import GameSelector from "../components/GameSelector";
 import Nav from "../components/Nav";
+import BadgeModal from "../components/BadgeModal";
 
 function Game({
   isLoggedIn,
@@ -25,6 +26,10 @@ function Game({
   const [gotRight, setGotRight] = useState(false);
   const [gotWrong, setGotWrong] = useState(false);
 
+  // state for modal that opens when a new badge is won
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalBadge, setModalBadge] = useState("");
+
   const navigate = useNavigate();
 
   // If a user is not signed in (no token) they are redirected to the login page.
@@ -35,6 +40,8 @@ function Game({
       navigate("/welcome");
     }
   }, []);
+
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <>
@@ -82,6 +89,16 @@ function Game({
           setGotWrong={setGotWrong}
           userBadges={userBadges}
           setUserBadges={setUserBadges}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          modalBadge={modalBadge}
+          setModalBadge={setModalBadge}
+        />
+
+        <BadgeModal
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+          modalBadge={modalBadge}
         />
       </div>
     </>
