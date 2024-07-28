@@ -127,7 +127,7 @@ function GamePlay({
       ) {
         updatedBadges.husky = true;
         setModalBadge("husky");
-      } else if (newTotalScore >= 680 && !userBadges.golden) {
+      } else if (newTotalScore >= 2000 && !userBadges.golden) {
         updatedBadges.golden = true;
         setModalBadge("golden");
       } else if (
