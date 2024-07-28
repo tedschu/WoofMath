@@ -105,13 +105,13 @@ function GamePlay({
     setUserBadges((prevBadges) => {
       const updatedBadges = {};
 
-      if (newTotalScore >= 580 && !userBadges.bernese) {
+      if (newTotalScore >= 610 && !userBadges.bernese) {
         updatedBadges.bernese = true;
         setModalBadge("bernese");
-      } else if (newTotalScore >= 590 && !userBadges.chihuahua) {
+      } else if (newTotalScore >= 620 && !userBadges.chihuahua) {
         updatedBadges.chihuahua = true;
         setModalBadge("chihuahua");
-      } else if (newTotalScore >= 600 && !userBadges.boxer) {
+      } else if (newTotalScore >= 1000 && !userBadges.boxer) {
         updatedBadges.boxer = true;
         setModalBadge("boxer");
       } else if (
