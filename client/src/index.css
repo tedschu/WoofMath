@@ -414,7 +414,7 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 5px 0px;
-  gap: 15px;
+  gap: 10px;
 
   /* grid-template-columns: [first] 50% [line2] 50%; */
 }
@@ -1015,6 +1015,15 @@ ul li {
 
 .bold {
   font-weight: bolder;
+}
+
+/* BADGE MODAL STYLING */
+.badgeModalOverlay {
+  background-color: lightblue;
+}
+
+.badgeModalContent {
+  background-color: lightgray;
 }
 
 /* ***************** */

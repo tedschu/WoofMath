@@ -31,16 +31,15 @@ function GamePlay({
   // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
   const [addToScore, setAddToScore] = useState(0);
 
-  // // state for modal that opens when a new badge is won
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [modalBadge, setModalBadge] = useState({});
+  // state for modal that opens when a new badge is won
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalBadge, setModalBadge] = useState("");
 
-  // const openModal = (badgeName) => {
-  //   console.log("Inside openModal: ", badgeName);
-  //   setIsModalOpen(true);
-  //   setModalBadge(badgeName);
-  // };
-  // const closeModal = () => setIsModalOpen(false);
+  const openModal = () => {
+    console.log("Inside openModal: ", modalBadge);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
 
   // Determines the correct answer to the generated question AND stores value in questionResult
   // Compares userAnswer to questionResult to determine if answer is correct
@@ -106,12 +105,15 @@ function GamePlay({
     setUserBadges((prevBadges) => {
       const updatedBadges = {};
 
-      if (newTotalScore >= 100 && !userBadges.bernese) {
+      if (newTotalScore >= 580 && !userBadges.bernese) {
         updatedBadges.bernese = true;
-      } else if (newTotalScore >= 500 && !userBadges.chihuahua) {
+        setModalBadge("bernese");
+      } else if (newTotalScore >= 590 && !userBadges.chihuahua) {
         updatedBadges.chihuahua = true;
-      } else if (newTotalScore >= 1000 && !userBadges.boxer) {
+        setModalBadge("chihuahua");
+      } else if (newTotalScore >= 600 && !userBadges.boxer) {
         updatedBadges.boxer = true;
+        setModalBadge("boxer");
       } else if (
         newTotalScore >= 1000 &&
         userScore.addition_score >= 250 &&
@@ -121,8 +123,10 @@ function GamePlay({
         !userBadges.husky
       ) {
         updatedBadges.husky = true;
-      } else if (newTotalScore >= 2000 && !userBadges.golden) {
+        setModalBadge("husky");
+      } else if (newTotalScore >= 680 && !userBadges.golden) {
         updatedBadges.golden = true;
+        setModalBadge("golden");
       } else if (
         newTotalScore >= 5000 &&
         userScore.addition_score >= 500 &&
@@ -132,15 +136,18 @@ function GamePlay({
         !userBadges.cat
       ) {
         updatedBadges.cat = true;
+        setModalBadge("cat");
       } else if (newTotalScore >= 10000 && !userBadges.goldendoodle_trophy) {
         updatedBadges.goldendoodle_trophy = true;
+        setModalBadge("goldendoodle_trophy");
       }
 
-      // *** use UPDATEDBADGES TO CONTROL THE MODAL WINDOW
+      console.log(updatedBadges);
 
       if (Object.keys(updatedBadges).length > 0) {
         const newBadges = { ...prevBadges, ...updatedBadges };
         postUserBadges(updatedBadges);
+        openModal();
         return newBadges;
       }
       return prevBadges;
@@ -361,11 +368,11 @@ function GamePlay({
           </button>
         </div>
 
-        {/* <BadgeModal
+        <BadgeModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
           modalBadge={modalBadge}
-        /> */}
+        />
       </div>
     </>
   );
