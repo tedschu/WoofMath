@@ -36,7 +36,7 @@ function GamePlay({
   const [modalBadge, setModalBadge] = useState("");
 
   const openModal = () => {
-    console.log("Inside openModal: ", modalBadge);
+    // console.log("Inside openModal: ", modalBadge);
     setIsModalOpen(true);
   };
   const closeModal = () => setIsModalOpen(false);
