@@ -142,8 +142,6 @@ function GamePlay({
         setModalBadge("goldendoodle_trophy");
       }
 
-      console.log(updatedBadges);
-
       if (Object.keys(updatedBadges).length > 0) {
         const newBadges = { ...prevBadges, ...updatedBadges };
         postUserBadges(updatedBadges);
