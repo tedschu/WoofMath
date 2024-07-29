@@ -414,7 +414,7 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 5px 0px;
-  gap: 10px;
+  gap: 5px;
 
   /* grid-template-columns: [first] 50% [line2] 50%; */
 }
@@ -441,6 +441,7 @@ nav {
   border-radius: 8px;
   font-size: 45px;
   padding: 0px 12px;
+  margin: 0px 5px;
 }
 
 .subScoreContainer {
@@ -1110,9 +1111,9 @@ ul li {
     width: 75%;
   }
 
-  /* .scoresContainer {
-    gap: 0px;
-  } */
+  .scoresContainer {
+    gap: 15px;
+  }
 }
 
 /* SCREEN IS ABOVE 1050px (desktop) */

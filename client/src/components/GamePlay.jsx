@@ -131,7 +131,7 @@ function GamePlay({
         updatedBadges.golden = true;
         setModalBadge("golden");
       } else if (
-        newTotalScore >= 5000 &&
+        newTotalScore >= 2000 &&
         userScore.addition_score >= 500 &&
         userScore.subtraction_score >= 500 &&
         userScore.multiplication_score >= 500 &&
@@ -140,7 +140,7 @@ function GamePlay({
       ) {
         updatedBadges.cat = true;
         setModalBadge("cat");
-      } else if (newTotalScore >= 10000 && !userBadges.goldendoodle_trophy) {
+      } else if (newTotalScore >= 5000 && !userBadges.goldendoodle_trophy) {
         updatedBadges.goldendoodle_trophy = true;
         setModalBadge("goldendoodle_trophy");
       }

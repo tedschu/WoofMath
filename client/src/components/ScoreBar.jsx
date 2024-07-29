@@ -108,7 +108,7 @@ function ScoreBar({
               alt=""
               className={userBadges.cat ? "badgeEnabled" : "badgeDisabled"}
             />
-            <h3>5,000</h3>
+            <h3>500 each</h3>
           </div>
           <div className="eachBadge">
             <img
@@ -120,7 +120,7 @@ function ScoreBar({
                   : "badgeDisabled"
               }
             />
-            <h3>10,000</h3>
+            <h3>5,000</h3>
           </div>
         </div>
       </div>
