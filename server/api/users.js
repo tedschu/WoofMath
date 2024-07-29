@@ -86,7 +86,7 @@ router.put("/:id", verifyToken, async (req, res) => {
         id: parseInt(req.user),
       },
       data: {
-        name: req.body.name,
+        // name: req.body.name,
         birth_year: req.body.birth_year,
         email: req.body.email,
         username: req.body.username,

@@ -29,7 +29,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     event.preventDefault();
 
     if (
-      userInfo.name ||
+      // userInfo.name ||
       userInfo.birth_year ||
       userInfo.email ||
       userInfo.username ||
@@ -62,7 +62,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name: userInfo.name,
+            // name: userInfo.name,
             birth_year: parseInt(userInfo.birth_year),
             email: userInfo.email,
             username: userInfo.username,
@@ -113,14 +113,14 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
           </Link>
 
           <form action="" className="registerForm" onSubmit={submit}>
-            <label htmlFor="name">Your first name:</label>
+            {/* <label htmlFor="name">Your first name:</label>
             <input
               type="text"
               placeholder="example: Charlie"
               name="name"
               value={userInfo.name}
               onChange={setFormValues}
-            />
+            /> */}
             <label htmlFor="birth_year">The year you were born:</label>
             <input
               type="text"

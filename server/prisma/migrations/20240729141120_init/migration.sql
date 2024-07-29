@@ -13,7 +13,7 @@ CREATE TABLE "Score" (
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
+    "name" TEXT,
     "birth_year" INTEGER NOT NULL,
     "email" TEXT NOT NULL,
     "username" TEXT NOT NULL,

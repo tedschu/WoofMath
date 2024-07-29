@@ -77,9 +77,9 @@ function Me({
             <h2>
               Welcome, {userInfo.username}! Here's what you've shared with us:
             </h2>
-            <li>
+            {/* <li>
               Name: <span className="accountFont">{userInfo.name}</span>
-            </li>
+            </li> */}
             <li>
               Email: <span className="accountFont">{userInfo.email}</span>
             </li>

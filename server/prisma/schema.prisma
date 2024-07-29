@@ -25,7 +25,7 @@ model Score {
 
 model User {
   id  Int  @id @default(autoincrement())
-  name String
+  name String?
   birth_year Int
   email String
   username String @unique

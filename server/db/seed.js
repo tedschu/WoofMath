@@ -10,7 +10,7 @@ async function main() {
 
   const testUser = await prisma.user.create({
     data: {
-      name: "Testuser",
+      // name: "Testuser",
       birth_year: 2014,
       email: "test@email.com",
       username: "testUser",
@@ -50,7 +50,7 @@ async function main() {
   // CREATING SECOND USER
   const secondUser = await prisma.user.create({
     data: {
-      name: "Jimmy",
+      // name: "Jimmy",
       birth_year: 2016,
       email: "test@email.com",
       username: "Jimmy",

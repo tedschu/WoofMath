@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 router.post("/register", async (req, res) => {
   try {
     const {
-      name,
+      // name,
       birth_year,
       email,
       username,
@@ -32,7 +32,6 @@ router.post("/register", async (req, res) => {
     }
 
     if (
-      !name ||
       !birth_year ||
       !email ||
       !username ||
@@ -50,7 +49,7 @@ router.post("/register", async (req, res) => {
     const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
     const newUser = await prisma.user.create({
       data: {
-        name: req.body.name,
+        // name: req.body.name,
         birth_year: req.body.birth_year,
         email: req.body.email,
         username: req.body.username,
@@ -89,7 +88,7 @@ router.post("/register", async (req, res) => {
       token: token,
       user: {
         id: newUser.id,
-        name: newUser.name,
+        // name: newUser.name,
         username: newUser.username,
         email: newUser.email,
         birth_year: newUser.birth_year,
