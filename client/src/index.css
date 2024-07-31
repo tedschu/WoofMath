@@ -472,7 +472,7 @@ nav {
   align-items: center;
   flex-wrap: wrap;
   padding: 10px 0;
-  gap: 5px;
+  gap: 2px;
 }
 
 .badgeEnabled {
@@ -509,7 +509,7 @@ nav {
 }
 
 .eachBadge > img {
-  width: 50px;
+  width: 45px;
 }
 
 /* GAME SELECTION and SLIDER STYLING */
@@ -1116,6 +1116,10 @@ ul li {
   }
 }
 
+.badgesContainer {
+  gap: 5px;
+}
+
 /* SCREEN IS ABOVE 1050px (desktop) */
 @media screen and (min-width: 1050px) {
   .scoreBarContainer {
@@ -1127,6 +1131,10 @@ ul li {
 
   .scoresContainer {
     gap: 2px;
+  }
+
+  .badgesContainer {
+    gap: 5px;
   }
 
   .individualScores {
