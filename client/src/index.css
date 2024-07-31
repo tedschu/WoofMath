@@ -464,6 +464,7 @@ nav {
   border-radius: 8px;
   padding: 0px 10px;
   color: #939393;
+  font-size: 25px;
 }
 
 .badgesContainer {
@@ -509,7 +510,7 @@ nav {
 }
 
 .eachBadge > img {
-  width: 45px;
+  width: 49px;
 }
 
 /* GAME SELECTION and SLIDER STYLING */
@@ -1114,10 +1115,10 @@ ul li {
   .scoresContainer {
     gap: 15px;
   }
-}
 
-.badgesContainer {
-  gap: 5px;
+  .individualScores > h1 {
+    font-size: 30px;
+  }
 }
 
 /* SCREEN IS ABOVE 1050px (desktop) */
@@ -1139,6 +1140,10 @@ ul li {
 
   .individualScores {
     width: 80px;
+  }
+
+  .individualScores > h1 {
+    font-size: 30px;
   }
 
   .welcomeAboutContainer {
