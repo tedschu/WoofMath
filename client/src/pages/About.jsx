@@ -95,10 +95,10 @@ function About({ isLoggedIn }) {
             account:
           </h4>
           <ul>
-            <li>
+            {/* <li>
               <span className="bold">First name:</span> We ask for a first name
               to help us find your username if you forget it.
-            </li>
+            </li> */}
             <li>
               <span className="bold">Birth year:</span> This is the only bit of
               "analytics" that we may use as the creators of Woof Math. Quite
