@@ -53,18 +53,18 @@ function Welcome() {
                 It's a simple game: Woof Math gives you math questions to
                 answer, and as you answer more questions, you get points. As you
                 build up your points, you can earn super cool dog badges. The
-                golden...Goldendoodle is the ultimate badge.
+                goldendoodle is the ultimate badge.
               </p>
 
               <br />
               <h2>It's made for kids. </h2>
               <p>
-                Woof Math is made for kids in elementary school. You decide
-                which kind of math you want to play (for example, addition) and
-                how hard the questions should be. Get started by quickly
-                creating a free account. No credit cards, no gimmicks - we only
-                ask for the minimal info we need to get the game going. Check
-                out{" "}
+                Woof Math is for kids in elementary school. You decide which
+                kind of math you want to play (for example, addition) and how
+                hard the questions should be. Get started by quickly creating a
+                free account. No credit cards, no gimmicks - we only ask for the
+                info we need to get the game going, and so you can keep track of
+                your scores. For more, check out{" "}
                 <Link to={"/About"} className="welcomePrivacyNotice">
                   our privacy policy.
                 </Link>
