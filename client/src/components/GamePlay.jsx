@@ -87,7 +87,8 @@ function GamePlay({
         );
 
         const newTotalScore = getTotalScore(updatedScores, prevScore);
-        updateBadges(newTotalScore);
+        const newUserScore = { ...prevScore, ...updatedScores };
+        updateBadges(newTotalScore, newUserScore);
 
         setTotalScore(newTotalScore);
         postUserScore(updatedScores);
@@ -104,7 +105,7 @@ function GamePlay({
     }
   }
 
-  function updateBadges(newTotalScore, updatedScores) {
+  function updateBadges(newTotalScore, newUserScore) {
     setUserBadges((prevBadges) => {
       const updatedBadges = {};
 
@@ -119,10 +120,10 @@ function GamePlay({
         setModalBadge("boxer");
       } else if (
         newTotalScore >= 1000 &&
-        userScore.addition_score >= 250 &&
-        userScore.subtraction_score >= 250 &&
-        userScore.multiplication_score >= 250 &&
-        userScore.division_score >= 250 &&
+        newUserScore.addition_score >= 250 &&
+        newUserScore.subtraction_score >= 250 &&
+        newUserScore.multiplication_score >= 250 &&
+        newUserScore.division_score >= 250 &&
         !userBadges.husky
       ) {
         updatedBadges.husky = true;
@@ -132,10 +133,10 @@ function GamePlay({
         setModalBadge("golden");
       } else if (
         newTotalScore >= 2000 &&
-        userScore.addition_score >= 500 &&
-        userScore.subtraction_score >= 500 &&
-        userScore.multiplication_score >= 500 &&
-        userScore.division_score >= 500 &&
+        newUserScore.addition_score >= 500 &&
+        newUserScore.subtraction_score >= 500 &&
+        newUserScore.multiplication_score >= 500 &&
+        newUserScore.division_score >= 500 &&
         !userBadges.cat
       ) {
         updatedBadges.cat = true;

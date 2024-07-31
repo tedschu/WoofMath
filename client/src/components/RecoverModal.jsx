@@ -57,8 +57,6 @@ function RecoverModal({
     }
   };
 
-  console.log(returnedUsers);
-
   return (
     <>
       <div className="modalOverlay">
