@@ -45,10 +45,14 @@ function BadgeModal({ isModalOpen, closeModal, modalBadge }) {
       <div className="badgeModalOverlay">
         <div className="badgeModalContent">
           <h2>YESSSSS! </h2>
-          {modalBadge != "goldendoodle_trophy" ? (
-            <h2>You won the {modalBadge} badge!</h2>
-          ) : (
+          {modalBadge == "goldendoodle_trophy" ? (
             <h2>You won the goldendoodle trophy badge! Way to go, champ!</h2>
+          ) : modalBadge == "cat" ? (
+            <h2>
+              Meow! A cat badge? They are a bit sneaky, after all. Congrats!
+            </h2>
+          ) : (
+            <h2>You won the {modalBadge} badge!</h2>
           )}
 
           <img src={badgeImage} alt="" />
