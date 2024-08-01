@@ -35,7 +35,7 @@ function About({ isLoggedIn }) {
             me to ask them some sort of math problem. I'll say something like,
             "what's 5 times 6?" and wait for the response. This could, believe
             it or not, go on for an hour. It's not that they have a particular,
-            burning love of math - it's more that in those moments, it's sort of
+            burning love of math, but rather that in those moments, it becomes
             like a game. They want to see how many they can get in a row. Who
             can answer faster. All that good stuff.
           </p>
@@ -43,16 +43,17 @@ function About({ isLoggedIn }) {
             Woof Math also came along at a fortunate time. It just so happened
             that I was looking for a project to work on at the same time that my
             kids were let out of school for the summer. Seemingly within days
-            they'd forgotten how to read, how to do basic math. I am
-            exaggerating a bit, but if you're a parent, you may have some sense
-            of what I mean.
+            they'd forgotten how to read, or how to do basic math. I am of
+            course exaggerating a bit, but if you're a parent, you may have some
+            sense of what I mean.
           </p>
           <p>
-            Woof Math is a fun project for me to work on, and I like the idea
-            that it may make practicing (or, playing) math fun for my kids and
-            for any other kid that would like to try it out. This is a
-            completely free, simple app. I'd like to keep it that way at its
-            core, even as we explore ways to make it more fun and useful.
+            Woof Math has been an incredibly rewarding project to work on, and I
+            like the idea that it may make practicing (or, playing) math fun for
+            my kids and for any other kid that would like to try it out. It is
+            meant to be simple, fun, and free of distractions (like ads). I'd
+            like to keep it that way at its core, even as we explore ways to
+            make it more fun and useful.
           </p>
           <p>
             Finally, what about the "woof" in Woof Math? Well, candidly, it's a
@@ -65,7 +66,7 @@ function About({ isLoggedIn }) {
             like to use it. Please feel free to reach out to me with feedback or
             suggestions at any time. Thanks!
           </p>
-          <p>Ted</p>
+          <p>Ted Schuster</p>
           <p>Founder and developer, Woof Math</p>
           <p>Built in Illinois</p>
           <p>WoofLearning@gmail.com</p>
