@@ -202,19 +202,19 @@ function NumberGenerator({
             setAddToScore(10);
             break;
           case 3:
-            setDivNumberAnswer(getRandomNumber(5, 10));
+            setDivNumberAnswer(getRandomNumber(5, 12));
             setDivNumberMultiple(getRandomNumber(2, 10));
             getDivisionEquation(divNumberAnswer, divNumberMultiple);
             setAddToScore(15);
             break;
           case 4:
-            setDivNumberAnswer(getRandomNumber(5, 10));
+            setDivNumberAnswer(getRandomNumber(5, 15));
             setDivNumberMultiple(getRandomNumber(10, 20));
             getDivisionEquation(divNumberAnswer, divNumberMultiple);
             setAddToScore(21);
             break;
           case 5:
-            setDivNumberAnswer(getRandomNumber(5, 12));
+            setDivNumberAnswer(getRandomNumber(5, 15));
             setDivNumberMultiple(getRandomNumber(20, 50));
             getDivisionEquation(divNumberAnswer, divNumberMultiple);
             setAddToScore(31);
