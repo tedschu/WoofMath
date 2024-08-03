@@ -120,7 +120,7 @@ function ScoreBar({
                   : "badgeDisabled"
               }
             />
-            <h3>5,000</h3>
+            <h3>4,000</h3>
           </div>
         </div>
       </div>
