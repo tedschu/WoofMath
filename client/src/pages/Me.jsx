@@ -20,7 +20,7 @@ function Me({
     localStorage.removeItem("userId");
     // window.location.reload();
     setIsLoggedIn(false);
-    navigate("/");
+    navigate("/welcome");
   };
 
   const navHome = () => {
