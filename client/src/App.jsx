@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Router, Routes, useNavigate } from "react-router-dom";
 import React from "react";
-
 import GamePlay from "./components/GamePlay";
 import Nav from "./components/Nav";
 import ScoreBar from "./components/ScoreBar";
@@ -14,7 +13,9 @@ import Welcome from "./pages/Welcome";
 import About from "./pages/About";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const storedToken = localStorage.getItem("token");
+
+  const [isLoggedIn, setIsLoggedIn] = useState(!!storedToken);
   const [userInfo, setUserInfo] = useState({
     name: "",
     birth_year: "",
@@ -43,14 +44,15 @@ function App() {
     husky: false,
     goldendoodle_trophy: false,
   });
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(storedToken || "");
+
+  const navigate = useNavigate();
 
   // Verifies that a user is loggedIn (checks for token)
   // IF token exists: update setters (isLoggedIn, badges, userscore, userId)
   // IF token doesn't exist, navigate to /login
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setIsLoggedIn(true);
       setToken(storedToken);
@@ -90,6 +92,10 @@ function App() {
                 parseInt(data.score.multiplication_score) +
                 parseInt(data.score.division_score)
             );
+          }
+          // ADDED TO HANDLE CASE WHERE API CALL IS BAD OR HASN'T COME BACK
+          else if (!response.ok) {
+            navigate("/welcome");
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
