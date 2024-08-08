@@ -1119,10 +1119,6 @@ ul li {
   .individualScores > h1 {
     font-size: 30px;
   }
-
-  .registerPageContainer {
-    /* height: 100vh; */
-  }
 }
 
 /* SCREEN IS ABOVE 1050px (desktop) */

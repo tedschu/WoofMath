@@ -1,15 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHippo } from "@fortawesome/free-solid-svg-icons";
-import { faFrog } from "@fortawesome/free-solid-svg-icons";
-import { faDove } from "@fortawesome/free-solid-svg-icons";
-import { faCat } from "@fortawesome/free-solid-svg-icons";
-import { faFish } from "@fortawesome/free-solid-svg-icons";
-import { faCow } from "@fortawesome/free-solid-svg-icons";
-import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
+
 import badge_bernese from "../assets/badges/badge_bernese.png";
 import badge_chihuahua from "../assets/badges/badge_chihuahua.png";
 import badge_boxer from "../assets/badges/badge_boxer.png";

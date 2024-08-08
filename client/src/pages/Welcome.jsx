@@ -87,7 +87,7 @@ function Welcome() {
               <img src={gameplayPic} alt="" />
             </div>
             <div className="welcomeAboutContent bottom">
-              <h2>Woof math game play:</h2>
+              <h2>Woof Math game play:</h2>
               <ul>
                 <li>
                   Choose your type of math (ex. addition, division) and how hard
