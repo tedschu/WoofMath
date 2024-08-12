@@ -36,9 +36,12 @@ model User {
   security_answer_2 String
   total_logins Int
   last_login DateTime
+  has_WoofReading Boolean?
   score Score?
   badge Badge?
   game_state Game_state?
+  score_reading Score_reading?
+  badge_reading Badge_reading?
 }
 
 model Badge {
@@ -61,5 +64,24 @@ model Game_state {
   user_id Int @unique
 }
 
+model Score_reading {
+  id   Int   @id @default(autoincrement())
+  score  Int? @default(0)
+  user User @relation(fields: [user_id], references: [id])
+  user_id Int @unique
+}
+
+model Badge_reading {
+  id Int @id @default(autoincrement())
+  bernese Boolean? @default(false)
+  boxer Boolean? @default(false)
+  cat Boolean? @default(false)
+  chihuahua Boolean? @default(false)
+  golden Boolean? @default(false)
+  husky Boolean? @default(false)
+  goldendoodle_trophy Boolean? @default(false)
+  user User @relation(fields: [user_id], references: [id])
+  user_id Int @unique
+}
 
 

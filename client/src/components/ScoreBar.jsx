@@ -1,5 +1,4 @@
 import React from "react";
-
 import badge_bernese from "../assets/badges/badge_bernese.png";
 import badge_chihuahua from "../assets/badges/badge_chihuahua.png";
 import badge_boxer from "../assets/badges/badge_boxer.png";

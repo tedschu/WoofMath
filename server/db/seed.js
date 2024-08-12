@@ -47,6 +47,22 @@ async function main() {
     },
   });
 
+  await prisma.badge_reading.create({
+    data: {
+      bernese: true,
+      boxer: true,
+      user_id: testUser.id,
+    },
+  });
+
+  await prisma.score_reading.create({
+    data: {
+      addition_score: 150,
+      subtraction_score: 200,
+      user_id: testUser.id,
+    },
+  });
+
   // CREATING SECOND USER
   const secondUser = await prisma.user.create({
     data: {
