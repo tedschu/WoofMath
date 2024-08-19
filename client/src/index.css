@@ -1116,6 +1116,10 @@ ul li {
     gap: 15px;
   }
 
+  .registerPageContainer {
+    height: 100vh;
+  }
+
   .individualScores > h1 {
     font-size: 30px;
   }
@@ -1128,6 +1132,10 @@ ul li {
     display: grid;
     grid-template-columns: [first] 50% [line2] 50%;
     border-bottom: 1px solid rgb(232, 232, 232);
+  }
+
+  .registerPageContainer {
+    height: 100vh;
   }
 
   .scoresContainer {
