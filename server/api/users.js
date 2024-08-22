@@ -64,6 +64,14 @@ router.delete("/:id", verifyToken, async (req, res) => {
       where: { user_id: userId },
     });
 
+    await prisma.score_reading.deleteMany({
+      where: { user_id: userId },
+    });
+
+    await prisma.badge_reading.deleteMany({
+      where: { user_id: userId },
+    });
+
     const deletedUser = await prisma.user.delete({
       where: {
         id: userId,

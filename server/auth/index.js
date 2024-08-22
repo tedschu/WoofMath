@@ -73,6 +73,16 @@ router.post("/register", async (req, res) => {
             bernese: false,
           },
         },
+        score_reading: {
+          create: {
+            score: 0,
+          },
+        },
+        badge_reading: {
+          create: {
+            bernese: false,
+          },
+        },
       },
     });
 
