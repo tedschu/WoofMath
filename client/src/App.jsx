@@ -104,7 +104,7 @@ function App() {
 
       getUserData();
     }
-  }, [isLoggedIn]); // SET TO ISLOGGEDIN TO ENSURE RELOAD POST LOGIN AND REGISTRATION
+  }, [isLoggedIn, token]); // SET TO ISLOGGEDIN TO ENSURE RELOAD POST LOGIN AND REGISTRATION
 
   return (
     <>
@@ -158,6 +158,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               userInfo={userInfo}
               setUserInfo={setUserInfo}
+              setToken={setToken}
             />
           }
         />

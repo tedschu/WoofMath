@@ -111,18 +111,18 @@ function NumberGenerator({
           case 3:
             setFirstNumber(getRandomNumber(50, 99));
             setSecondNumber(getRandomNumber(1, 49));
-            setAddToScore(12);
+            setAddToScore(13);
             break;
           case 4:
             setFirstNumber(getRandomNumber(100, 999));
             setSecondNumber(getRandomNumber(1, 99));
-            setAddToScore(17);
+            setAddToScore(19);
             break;
           case 5:
             setFirstNumber(getRandomNumber(500, 999));
             setSecondNumber(getRandomNumber(1, 300));
             setThirdNumber(getRandomNumber(1, 200));
-            setAddToScore(23);
+            setAddToScore(29);
             break;
         }
         break;

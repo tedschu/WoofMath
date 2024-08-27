@@ -7,7 +7,7 @@ import ResetPassModal from "../components/ResetPassModal";
 import woofMathLogo from "../assets/woofmath_logo_1.png";
 import bernese from "../assets/bernese_login.png";
 
-function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
+function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo, setToken }) {
   const [loginFailed, setLoginFailed] = useState(false);
   const [isRecoverModalOpen, setIsRecoverModalOpen] = useState(false);
   const [isResetPassModalOpen, setIsResetPassModalOpen] = useState(false);
@@ -61,6 +61,7 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
         localStorage.setItem("token", data.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
         localStorage.setItem("userId", data.id); // SETS USER ID INTO LOCALSTORAGE TO HELP WITH RENDERING USER DATA ON GAME AND ACCOUNT PAGES
         //setUserId(data.id);
+        setToken(data.token);
         setIsLoggedIn(true);
         setLoginFailed(false);
         navigate("/");
