@@ -1100,6 +1100,10 @@ ul li {
     width: 70px;
   }
 
+  .registerPageContainer {
+    padding-top: 100px;
+  }
+
   .navUser {
     padding-right: 15px;
   }
@@ -1114,10 +1118,6 @@ ul li {
 
   .scoresContainer {
     gap: 15px;
-  }
-
-  .registerPageContainer {
-    height: 100vh;
   }
 
   .individualScores > h1 {
@@ -1135,7 +1135,7 @@ ul li {
   }
 
   .registerPageContainer {
-    height: 100vh;
+    padding-top: 100px;
   }
 
   .scoresContainer {
