@@ -35,10 +35,6 @@ function GamePlay({
   // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
   const [addToScore, setAddToScore] = useState(0);
 
-  // // state for modal that opens when a new badge is won
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [modalBadge, setModalBadge] = useState("");
-
   const openModal = () => {
     // console.log("Inside openModal: ", modalBadge);
     setIsModalOpen(true);
@@ -369,12 +365,6 @@ function GamePlay({
             SKIP QUESTION
           </button>
         </div>
-
-        {/* <BadgeModal
-          isModalOpen={isModalOpen}
-          closeModal={closeModal}
-          modalBadge={modalBadge}
-        /> */}
       </div>
     </>
   );
