@@ -83,6 +83,11 @@ router.post("/register", async (req, res) => {
             bernese: false,
           },
         },
+        user: {
+          create: {
+            has_WoofReading: true,
+          },
+        },
       },
     });
 
