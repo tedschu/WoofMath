@@ -168,7 +168,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
                 className="securitySelect"
               >
                 <option value="" disabled>
-                  Select security question #1...
+                  Choose a security question...
                 </option>
                 {securityQuestions.map((question, index) => (
                   <option key={index} value={question}>
@@ -193,7 +193,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
                 className="securitySelect"
               >
                 <option value="" disabled>
-                  Select security question #2...
+                  Choose a security question...
                 </option>
                 {securityQuestions.map((question, index) => (
                   <option key={index} value={question}>
