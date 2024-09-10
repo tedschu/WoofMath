@@ -780,6 +780,10 @@ input[type="number"]::-webkit-inner-spin-button {
   background-image: linear-gradient(#a6d5ea, #c8e8f7);
 }
 
+.labelBlack {
+  color: black;
+}
+
 .registerForm input::placeholder {
   font-size: 17px;
   color: rgb(140, 140, 140);

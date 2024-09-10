@@ -12,7 +12,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
 
   const securityQuestions = [
     "What is the name of your pet?",
-    "What is your middle name?",
+    "What is your favorite color?",
     "What is your favorite ice cream flavor?",
     "What is your lucky number?",
   ];
@@ -30,7 +30,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
 
     if (
       // userInfo.name ||
-      userInfo.birth_year ||
+      //userInfo.birth_year ||
       userInfo.email ||
       userInfo.username ||
       userInfo.password ||
@@ -63,7 +63,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
           },
           body: JSON.stringify({
             // name: userInfo.name,
-            birth_year: parseInt(userInfo.birth_year),
+            //birth_year: parseInt(userInfo.birth_year),
             email: userInfo.email,
             username: userInfo.username,
             password: userInfo.password,
@@ -121,14 +121,14 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
               value={userInfo.name}
               onChange={setFormValues}
             /> */}
-            <label htmlFor="birth_year">The year you were born:</label>
+            {/* <label htmlFor="birth_year">The year you were born:</label>
             <input
               type="text"
               placeholder="example: 2014"
               name="birth_year"
               value={userInfo.birth_year}
               onChange={setFormValues}
-            />
+            /> */}
             <label htmlFor="email">Your parent's email:</label>
             <input
               type="text"

@@ -100,14 +100,14 @@ function About({ isLoggedIn }) {
               <span className="bold">First name:</span> We ask for a first name
               to help us find your username if you forget it.
             </li> */}
-            <li>
+            {/* <li>
               <span className="bold">Birth year:</span> This is the only bit of
               "analytics" that we may use as the creators of Woof Math. Quite
               simply, we would be interested to know which age groups get the
               most usage out of the app. We can then use this information to
               help improve the app in the future. As noted above, this
               information is not shared with any third parties.
-            </li>
+            </li> */}
             <li>
               <span className="bold">"Your parent's email":</span> We ask for a
               parent email, not a child's email, to help us identify you when
