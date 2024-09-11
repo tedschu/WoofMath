@@ -195,7 +195,7 @@ button {
 }
 
 .woofMathLogo {
-  width: 350px;
+  width: 300px;
 }
 
 .welcomeContentContainer {
@@ -672,11 +672,11 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .loginPageContainer {
   display: flex;
-
+  padding: 20px 0px;
   /* background: #d4492b; */
   justify-content: center;
   background-image: linear-gradient(#d4492b, #ec9c52);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .loginContainer {
@@ -735,7 +735,7 @@ input[type="number"]::-webkit-inner-spin-button {
   /* background: #d4492b; */
   justify-content: center;
   background-image: linear-gradient(#d4492b, #ec9c52);
-  /* height: 100vh; */
+  min-height: 100vh;
 }
 
 .registerContentContainer {
@@ -1104,10 +1104,6 @@ ul li {
     width: 70px;
   }
 
-  .registerPageContainer {
-    padding-top: 100px;
-  }
-
   .navUser {
     padding-right: 15px;
   }
@@ -1136,10 +1132,6 @@ ul li {
     display: grid;
     grid-template-columns: [first] 50% [line2] 50%;
     border-bottom: 1px solid rgb(232, 232, 232);
-  }
-
-  .registerPageContainer {
-    padding-top: 100px;
   }
 
   .scoresContainer {
