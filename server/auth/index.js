@@ -120,10 +120,25 @@ router.post("/login", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
+    const user = await prisma.user.findFirst({
+      where: {
+        username: {
+          equals: username,
+          mode: "insensitive",
+        },
+      },
+    });
+
     //checks if the user exists
     const userMatch = await prisma.user.findUnique({
       where: {
-        username: username,
+        id: user.id,
+      },
+      select: {
+        id: true,
+        username: true,
+        password: true,
+        has_WoofReading: true,
       },
     });
 
@@ -135,7 +150,7 @@ router.post("/login", async (req, res) => {
         res.status(401).send({ message: "Invalid login credentials" });
       } else {
         const updateUserStats = await prisma.user.update({
-          where: { username: username },
+          where: { id: user.id },
           data: {
             total_logins: {
               increment: 1,
@@ -165,7 +180,10 @@ router.get("/find-username/:email", async (req, res) => {
   try {
     const users = await prisma.user.findMany({
       where: {
-        email: req.params.email,
+        email: {
+          equals: req.params.email,
+          mode: "insensitive",
+        },
       },
       select: {
         username: true,
@@ -188,9 +206,12 @@ router.get("/find-username/:email", async (req, res) => {
 // Part of password recovery process
 router.get("/get-questions/:username", async (req, res) => {
   try {
-    const users = await prisma.user.findUnique({
+    const users = await prisma.user.findFirst({
       where: {
-        username: req.params.username,
+        username: {
+          equals: req.params.username,
+          mode: "insensitive",
+        },
       },
       select: {
         security_question_1: true,
@@ -198,7 +219,9 @@ router.get("/get-questions/:username", async (req, res) => {
       },
     });
 
-    if (users.length === 0) {
+    console.log(users);
+
+    if (!users) {
       return res.status(404).json({ message: "This username does not exist" });
     }
     res.send(users);
@@ -225,8 +248,13 @@ router.post("/check-answers", async (req, res) => {
     }
 
     //checks if the user exists
-    const answerMatch = await prisma.user.findUnique({
-      where: { username },
+    const answerMatch = await prisma.user.findFirst({
+      where: {
+        username: {
+          equals: username,
+          mode: "insensitive",
+        },
+      },
       select: {
         security_answer_1: true,
         security_answer_2: true,
@@ -261,22 +289,35 @@ router.put("/reset-password", async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    if (req.body.password.length == 0) {
+    if (password.length == 0) {
       return res
         .status(400)
         .json({ message: "Make sure you enter a new password." });
     }
 
-    const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
+    const hashPassword = await bcrypt.hash(password, saltRounds);
+
+    const user = await prisma.user.findFirst({
+      where: {
+        username: {
+          equals: username,
+          mode: "insensitive",
+        },
+      },
+    });
 
     const updatePassword = await prisma.user.update({
-      where: { username: username },
+      where: { id: user.id },
       data: {
         password: hashPassword,
       },
     });
 
-    res.json({ message: "Password successfully updated." });
+    if (updatePassword) {
+      res.json({ message: "Password successfully updated." });
+    } else {
+      res.status(400).json({ message: "Password not updated." });
+    }
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
