@@ -17,8 +17,6 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(!!storedToken);
   const [userInfo, setUserInfo] = useState({
-    name: "",
-    birth_year: "",
     email: "",
     username: "",
     password: "",

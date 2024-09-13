@@ -49,6 +49,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     }
   };
 
+  console.log(userInfo);
   // *************
   // Posts login form data to API AND validates whether user exists
   // Uses isLoggedIn state setter to pass "true" to parent state in App.jsx

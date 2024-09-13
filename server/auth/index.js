@@ -11,8 +11,6 @@ const prisma = new PrismaClient();
 router.post("/register", async (req, res) => {
   try {
     const {
-      // name,
-      //birth_year,
       email,
       username,
       password,
@@ -58,6 +56,7 @@ router.post("/register", async (req, res) => {
         security_question_2: req.body.security_question_2,
         security_answer_2: req.body.security_answer_2,
         total_logins: 1,
+        has_WoofReading: true,
         last_login: new Date().toISOString(),
         score: {
           create: {
@@ -82,7 +81,6 @@ router.post("/register", async (req, res) => {
             bernese: false,
           },
         },
-        has_WoofReading: true,
       },
     });
 
@@ -108,7 +106,7 @@ router.post("/register", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.stat(500).json({ error: "Registration failed" });
+    res.status(500).json({ error: "Registration failed" });
   }
 });
 
