@@ -77,8 +77,21 @@ router.post("/register", async (req, res) => {
         badge_reading: {
           create: {
             bernese: false,
+            boxer: false,
+            cat: false,
+            chihuahua: false,
+            golden: false,
+            husky: false,
+            waterdog: false,
+            goldendoodle_trophy: false,
           },
         },
+      },
+      include: {
+        score: true,
+        badge: true,
+        score_reading: true,
+        badge_reading: true,
       },
     });
 
