@@ -43,7 +43,6 @@ app.get(baseQuery, (req, res) => [
 app.use("/auth", require("../auth/index")); // for register and login
 app.use(baseQuery + "users", require("./users"));
 // app.use(baseQuery + "game_state", require("./game_state"));
-app.use(baseQuery + "scores", require("./scores"));
 
 app.use(express.static(path.join(__dirname, "/../../client/dist")));
 app.use("*", express.static(path.join(__dirname, "/../../client/dist")));
