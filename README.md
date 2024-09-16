@@ -23,5 +23,4 @@ Woof Math (woofmath.com) is a full-stack math game application, built using the 
 - [Authentication system] (docs/authentication.md)
 - [Database schema] (docs/schema.md)
 - [Game logic] (docs/gameLogic.md)
-- [Anthropic API integration] (docs/anthropic.md)
 - [Security practices] (docs/security.md)
