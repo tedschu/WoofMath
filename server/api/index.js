@@ -7,7 +7,7 @@ const { PrismaClient } = require("@prisma/client");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const morgan = require("morgan");
-
+const helmet = require("helmet");
 const prisma = new PrismaClient();
 const port = process.env.PORT || 8080;
 
@@ -25,11 +25,22 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use(express.static(path.join(__dirname, "/../../client/dist")));
-
-//console.log(path.join(__dirname, "/../../client/dist"));
-//   //Parse the request headers to see if there is a token
-// app.use(parseToken);
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'", "https://fonts.googleapis.com"],
+      imgSrc: ["'self'", "data:"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      connectSrc: ["'self'", "https://api.anthropic.com"],
+      frameSrc: ["'none'"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+      workerSrc: ["'none'"],
+    },
+  })
+);
 
 const baseQuery = `/api/`;
 
