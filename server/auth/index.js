@@ -175,7 +175,7 @@ router.post("/login", async (req, res) => {
           },
           process.env.JWT_SECRET
         );
-        res.send({ token: token, id: userMatch.id });
+        res.status(200).send({ token: token, id: userMatch.id });
       }
     }
   } catch (error) {
@@ -204,7 +204,7 @@ router.get("/find-username/:email", async (req, res) => {
         .status(404)
         .json({ message: "No user was found with this email" });
     }
-    res.send(users);
+    res.status(200).send(users);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -233,7 +233,7 @@ router.get("/get-questions/:username", async (req, res) => {
     if (!users) {
       return res.status(404).json({ message: "This username does not exist" });
     }
-    res.send(users);
+    res.status(200).send(users);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -282,7 +282,9 @@ router.post("/check-answers", async (req, res) => {
       security_answer_2.toLowerCase() ==
         answerMatch.security_answer_2.toLowerCase()
     ) {
-      return res.json({ message: "Success", username: answerMatch.username });
+      return res
+        .status(200)
+        .json({ message: "Success", username: answerMatch.username });
     } else {
       answerAttempts++;
       return res.status(400).json({ message: "Your answers don't match." });
@@ -323,7 +325,7 @@ router.put("/reset-password", async (req, res) => {
     });
 
     if (updatePassword) {
-      res.json({ message: "Password successfully updated." });
+      res.status(200).json({ message: "Password successfully updated." });
     } else {
       res.status(400).json({ message: "Password not updated." });
     }
