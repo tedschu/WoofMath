@@ -15,7 +15,7 @@ The Woof Math frontend is a React-based single-page application (SPA) designed t
 
 ### 1. Math Type Selection
 
-**Component**: `GameSelector.jsx`
+**Component**: `GameSelector.tsx`
 
 - Users choose:
   - Type of math they want to practice (addition, subtraction, multiplication, division)
@@ -26,7 +26,7 @@ The Woof Math frontend is a React-based single-page application (SPA) designed t
 
 ### 2. Math Difficulty Selection
 
-**Component**: `Slider.jsx`
+**Component**: `Slider.tsx`
 
 - Users can adjust difficulty using a slider (1-5 scale)
 
@@ -36,7 +36,7 @@ The Woof Math frontend is a React-based single-page application (SPA) designed t
 
 ### 3. Number Generation
 
-**Component**: `NumberGenerator.jsx`
+**Component**: `NumberGenerator.tsx`
 
 **Key Functions**:
 
@@ -64,14 +64,14 @@ The following table outlines the points awarded for each correct answer based on
 
 ### 4. Question Presentation
 
-**Component**: `GamePlay.jsx`
+**Component**: `GamePlay.tsx`
 
 - Displays the generated equation
 - User inputs answers in field
 
 ### 5. Answer Evaluation
 
-**Component**: `GamePlay.jsx`
+**Component**: `GamePlay.tsx`
 
 **Key Functions**:
 
@@ -80,7 +80,7 @@ The following table outlines the points awarded for each correct answer based on
 
 ### 6. Score Update and Badge Award
 
-**Component**: `GamePlay.jsx`
+**Component**: `GamePlay.tsx`
 
 **Key Functions**:
 
@@ -97,12 +97,12 @@ The following table outlines the points awarded for each correct answer based on
   - 250 points in each math type (>1000 total): Husky badge
   - 2000 points: Golden badge
   - 500 points in each math type (>2000 total): Cat badge
-  - 4000 points: Goldendoodle Trophy
+  - 3000 points: Goldendoodle Trophy
 
 ## State Management
 
-- User state (scores, badges) is managed in the `App.jsx` component
-- Game state (current story, user answers) is managed in `GamePlay.jsx`
+- User state (scores, badges) is managed in the `App.tsx` component
+- Game state (current story, user answers) is managed in `GamePlay.tsx`
 - React hooks (`useState`, `useEffect`) are used for local state management
 
 ## API Interactions

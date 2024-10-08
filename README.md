@@ -1,6 +1,6 @@
 # Woof Math
 
-Woof Math (woofmath.com) is a full-stack math game application, built using the PERN (PostreSQL, Express, React, Node.js) stack.
+Woof Math (woofmath.com) is a full-stack math game application, built using the PERN (PostreSQL, Express, React, Node.js) stack and Typescript.
 
 # Features
 
