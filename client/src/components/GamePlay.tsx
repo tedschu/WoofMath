@@ -163,7 +163,7 @@ function GamePlay({
       ) {
         updatedBadges.cat = true;
         setModalBadge("cat");
-      } else if (newTotalScore >= 4000 && !userBadges.goldendoodle_trophy) {
+      } else if (newTotalScore >= 3000 && !userBadges.goldendoodle_trophy) {
         updatedBadges.goldendoodle_trophy = true;
         setModalBadge("goldendoodle_trophy");
       }
