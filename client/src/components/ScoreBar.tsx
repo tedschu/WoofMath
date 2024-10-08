@@ -104,7 +104,7 @@ function ScoreBar({ userScore, userBadges, totalScore }: ScoreBarProps) {
                   : "badgeDisabled"
               }
             />
-            <h3>4,000</h3>
+            <h3>3,000</h3>
           </div>
         </div>
       </div>
