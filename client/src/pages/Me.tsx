@@ -4,6 +4,16 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ScoreBar from "../components/ScoreBar";
 import Nav from "../components/Nav";
+import { UserInfo, UserBadges, UserScore } from "../types/types";
+
+type MeProps = {
+  userInfo: UserInfo;
+  userScore: UserScore;
+  totalScore: number;
+  userBadges: UserBadges;
+  isLoggedIn: boolean;
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 function Me({
   userInfo,
@@ -12,7 +22,7 @@ function Me({
   userBadges,
   isLoggedIn,
   setIsLoggedIn,
-}) {
+}: MeProps) {
   const navigate = useNavigate();
 
   const handleLogout = () => {

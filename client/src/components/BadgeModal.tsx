@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import bernese from "../assets/bernese.png";
 import chihuahua from "../assets/chihuahua.png";
 import boxer from "../assets/boxer.png";
@@ -7,14 +6,21 @@ import husky from "../assets/husky.png";
 import golden from "../assets/golden.png";
 import cat from "../assets/cat.png";
 import goldendoodleTrophy from "../assets/goldendoodle_trophy_large.png";
+import { ModalBadgeType } from "../types/types";
 
-function BadgeModal({ isModalOpen, closeModal, modalBadge }) {
+type BadgeModalTypes = {
+  isModalOpen: boolean;
+  closeModal: () => void;
+  modalBadge: ModalBadgeType;
+};
+
+function BadgeModal({ isModalOpen, closeModal, modalBadge }: BadgeModalTypes) {
   if (!isModalOpen) return null;
 
   // const [returnedUsers, setReturnedUsers] = useState([]);
   // const [noUsers, setNoUsers] = useState(false);
 
-  let badgeImage = null;
+  let badgeImage: string | undefined = undefined;
 
   switch (modalBadge) {
     case "bernese":
@@ -38,6 +44,8 @@ function BadgeModal({ isModalOpen, closeModal, modalBadge }) {
     case "goldendoodle_trophy":
       badgeImage = goldendoodleTrophy;
       break;
+    default:
+      badgeImage = undefined;
   }
 
   return (

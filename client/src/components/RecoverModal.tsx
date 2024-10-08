@@ -1,32 +1,42 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { UserInfo } from "../types/types";
+
+type RecoverModalTypes = {
+  isRecoverOpen: boolean;
+  onRecoverClose: () => void;
+  userInfo: UserInfo;
+  setUserInfo: React.Dispatch<React.SetStateAction<UserInfo>>;
+};
+
+type UserTypes = {
+  username: string;
+};
 
 function RecoverModal({
   isRecoverOpen,
   onRecoverClose,
   userInfo,
   setUserInfo,
-}) {
+}: RecoverModalTypes) {
   if (!isRecoverOpen) return null;
 
   const [returnedUsers, setReturnedUsers] = useState([]);
   const [noUsers, setNoUsers] = useState(false);
 
   // Handles form values AND updates loginForm state
-  const setFormValues = (event) => {
+  const setFormValues = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
     setUserInfo(newObj);
   };
 
-  const submit = (event) => {
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     getUsernames(userInfo);
   };
 
-  const getUsernames = async (userInfo) => {
+  const getUsernames = async (userInfo: UserInfo) => {
     try {
       const response = await fetch(`/auth/find-username/${userInfo.email}`, {
         method: "GET",
@@ -39,7 +49,7 @@ function RecoverModal({
       console.log(data);
 
       if (response.ok) {
-        const usernamesArray = data.map((user) => user.username);
+        const usernamesArray = data.map((user: UserTypes) => user.username);
 
         setReturnedUsers(usernamesArray);
 

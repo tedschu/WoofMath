@@ -26,12 +26,10 @@ router.post("/register", async (req, res) => {
     });
 
     if (existingUser) {
-      return res
-        .status(400)
-        .json({
-          error:
-            "Username already exists. If you have an existing Woof username,  you can use it for Woof Math and Woof Reading.",
-        });
+      return res.status(400).json({
+        error:
+          "Username already exists. If you have an existing Woof username,  you can use it for Woof Math and Woof Reading.",
+      });
     }
 
     if (

@@ -577,6 +577,15 @@ nav {
   color: #d4492b;
 }
 
+.answer-input {
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.answer-input:focus {
+  border: 2px solid #7dc2e0;
+}
+
 .questionContainer {
   display: flex;
   flex-direction: row;

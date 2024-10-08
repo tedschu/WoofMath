@@ -6,20 +6,15 @@ import badge_husky from "../assets/badges/badge_husky.png";
 import badge_golden from "../assets/badges/badge_golden.png";
 import badge_cat from "../assets/badges/badge_cat.png";
 import badge_goldendoodle_trophy from "../assets/badges/goldendoodle_trophy_color.png";
+import { UserScore, UserBadges } from "../types/types";
 
-function ScoreBar({
-  isLoggedIn,
-  loginForm,
-  userScore,
-  setUserScore,
-  userBadges,
-  setUserBadges,
-  sliderValue,
-  gameSelector,
-  userInfo,
-  totalScore,
-  setTotalScore,
-}) {
+type ScoreBarProps = {
+  userScore: UserScore;
+  userBadges: UserBadges;
+  totalScore: number;
+};
+
+function ScoreBar({ userScore, userBadges, totalScore }: ScoreBarProps) {
   return (
     <>
       <div className="scoreBarContainer">

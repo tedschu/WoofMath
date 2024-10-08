@@ -11,4 +11,10 @@ export default defineConfig({
       // "/users": "http://localhost:8080/",
     },
   },
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
+  assetsInclude: ["**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif", "**/*.svg"],
 });

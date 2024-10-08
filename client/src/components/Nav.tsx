@@ -1,12 +1,14 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShieldDog } from "@fortawesome/free-solid-svg-icons";
 import woofMathLogo from "../assets/woofmath_logo_1.png";
+import { UserInfo } from "../types/types";
 
-function Nav({ isLoggedIn, userInfo }) {
+type NavTypes = {
+  isLoggedIn: boolean;
+  userInfo: UserInfo;
+};
+
+function Nav({ isLoggedIn, userInfo }: NavTypes) {
   return (
     <>
       <nav>

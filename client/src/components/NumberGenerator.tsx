@@ -1,7 +1,20 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { GameSelectorType } from "../types/types";
+
+type NumberGeneratorProps = {
+  sliderValue: number;
+  gameSelector: GameSelectorType;
+  setFirstNumber: React.Dispatch<React.SetStateAction<number | null>>;
+  setSecondNumber: React.Dispatch<React.SetStateAction<number | null>>;
+  setThirdNumber: React.Dispatch<React.SetStateAction<number | null>>;
+  setMathOperator: React.Dispatch<React.SetStateAction<string>>;
+  firstNumber: number | null;
+  secondNumber: number | null;
+  thirdNumber: number | null;
+  mathOperator: string;
+  questionCount: number;
+  setAddToScore: React.Dispatch<React.SetStateAction<number>>;
+};
 
 function NumberGenerator({
   sliderValue,
@@ -16,21 +29,21 @@ function NumberGenerator({
   mathOperator,
   questionCount,
   setAddToScore,
-}) {
+}: NumberGeneratorProps) {
   // for the division equations specifically
   // Uses an "answer" (ex. 2) and a "multiple" (ex. 5) to generate a result (10)
-  const [divNumberAnswer, setDivNumberAnswer] = useState("");
-  const [divNumberMultiple, setDivNumberMultiple] = useState("");
+  const [divNumberAnswer, setDivNumberAnswer] = useState<number>(0);
+  const [divNumberMultiple, setDivNumberMultiple] = useState<number>(0);
 
   // Function to generate random numbers based on min / max values that can be passed in
-  function getRandomNumber(min, max) {
+  function getRandomNumber(min: number, max: number) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   // Figures out division random numbers so they divide evenly (e.g. no remainder)
-  function getDivisionEquation(answer, multiple) {
+  function getDivisionEquation(answer: number, multiple: number) {
     let result = answer * multiple;
     // Ensures that the first number displaying to the user divided by the second number will always divide cleanly
     setFirstNumber(result);

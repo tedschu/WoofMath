@@ -1,13 +1,37 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import NumberGenerator from "./NumberGenerator";
-import { useParams } from "react-router-dom";
-import BadgeModal from "./BadgeModal";
+import {
+  GameSelectorType,
+  UserScore,
+  UserInfo,
+  UserBadges,
+  ModalBadgeType,
+} from "../types/types";
+
+type GamePlayProps = {
+  sliderValue: number;
+  gameSelector: GameSelectorType;
+  userScore: UserScore;
+  setUserScore: React.Dispatch<React.SetStateAction<UserScore>>;
+  userInfo: UserInfo;
+  gotRight: boolean;
+  gotWrong: boolean;
+  setGotRight: React.Dispatch<React.SetStateAction<boolean>>;
+  setGotWrong: React.Dispatch<React.SetStateAction<boolean>>;
+  userBadges: UserBadges;
+  setUserBadges: React.Dispatch<React.SetStateAction<UserBadges>>;
+  totalScore: number;
+  setTotalScore: React.Dispatch<React.SetStateAction<number>>;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  modalBadge: ModalBadgeType;
+  setModalBadge: React.Dispatch<React.SetStateAction<ModalBadgeType>>;
+};
 
 function GamePlay({
   sliderValue,
   gameSelector,
-  userScore,
   setUserScore,
   userInfo,
   gotRight,
@@ -16,20 +40,17 @@ function GamePlay({
   setGotWrong,
   userBadges,
   setUserBadges,
-  totalScore,
   setTotalScore,
-  isModalOpen,
   setIsModalOpen,
-  modalBadge,
   setModalBadge,
-}) {
+}: GamePlayProps) {
   const [questionCount, setQuestionCount] = useState(1);
   const [mathOperator, setMathOperator] = useState("+");
-  const [firstNumber, setFirstNumber] = useState("");
-  const [secondNumber, setSecondNumber] = useState("");
-  const [thirdNumber, setThirdNumber] = useState("");
-  const [userAnswer, setUserAnswer] = useState("");
-  const [questionResult, setQuestionResult] = useState("");
+  const [firstNumber, setFirstNumber] = useState<number | null>(null);
+  const [secondNumber, setSecondNumber] = useState<number | null>(null);
+  const [thirdNumber, setThirdNumber] = useState<number | null>(null);
+  const [userAnswer, setUserAnswer] = useState<string | number>("");
+  const [questionResult, setQuestionResult] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   // passes to NumberGenerator. Will update with expected value (score) to add to userScore IF the question is answered correctly.
@@ -43,7 +64,12 @@ function GamePlay({
   // Determines the correct answer to the generated question AND stores value in questionResult
   // Compares userAnswer to questionResult to determine if answer is correct
   function findAnswer() {
-    let result;
+    if (firstNumber === null || secondNumber === null) {
+      console.error("First or second number is null");
+      return;
+    }
+
+    let result = 0;
 
     switch (mathOperator) {
       case "+":
@@ -62,11 +88,11 @@ function GamePlay({
         result = firstNumber / secondNumber;
         break;
     }
-    setQuestionResult(parseInt(result));
+    setQuestionResult(Math.round(result));
   }
 
   // User input field (answer) results
-  const setAnswer = (e) => {
+  const setAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserAnswer(parseInt(e.target.value));
     //console.log(value);
   };
@@ -101,9 +127,9 @@ function GamePlay({
     }
   }
 
-  function updateBadges(newTotalScore, newUserScore) {
+  function updateBadges(newTotalScore: number, newUserScore: UserScore) {
     setUserBadges((prevBadges) => {
-      const updatedBadges = {};
+      const updatedBadges: Partial<UserBadges> = {};
 
       if (newTotalScore >= 100 && !userBadges.bernese) {
         updatedBadges.bernese = true;
@@ -153,8 +179,12 @@ function GamePlay({
   }
 
   // Function to create an object for the score that's being updated (ex. addition) to pass into body / update DB
-  function getUpdatedScores(gameSelector, addToScore, currentScore) {
-    const updatedScores = {};
+  function getUpdatedScores(
+    gameSelector: GameSelectorType,
+    addToScore: number,
+    currentScore: UserScore
+  ): Partial<UserScore> {
+    const updatedScores: Partial<UserScore> = {};
     switch (gameSelector) {
       case "addition":
         updatedScores.addition_score = addToScore + currentScore.addition_score;
@@ -175,7 +205,10 @@ function GamePlay({
   }
 
   // ****
-  function getTotalScore(updatedScores, prevScore) {
+  function getTotalScore(
+    updatedScores: Partial<UserScore>,
+    prevScore: UserScore
+  ): number {
     const newTotalScore =
       (updatedScores.addition_score !== undefined
         ? updatedScores.addition_score
@@ -194,7 +227,9 @@ function GamePlay({
   }
 
   // Function to pass the updated score to the database, update scores state values for gameplay
-  const postUserScore = async (updatedScores) => {
+  const postUserScore = async (
+    updatedScores: Partial<UserScore>
+  ): Promise<void> => {
     try {
       // const updatedScores = getUpdatedScores(gameSelector, addToScore);
       const storedToken = localStorage.getItem("token");
@@ -243,7 +278,7 @@ function GamePlay({
     setGotWrong(false);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     findAnswer();
     setSubmitted(true);
@@ -251,7 +286,7 @@ function GamePlay({
 
   // Controls alert when question was right. Visible for 3 seconds.
   useEffect(() => {
-    let timer;
+    let timer: number;
     if (gotRight) {
       timer = setTimeout(() => {
         setGotRight(false);
@@ -261,7 +296,9 @@ function GamePlay({
   }, [gotRight]);
 
   // Function to pass the updated score to the database, update scores state values for gameplay
-  const postUserBadges = async (updatedBadges) => {
+  const postUserBadges = async (
+    updatedBadges: Partial<UserBadges>
+  ): Promise<void> => {
     try {
       // const updatedScores = getUpdatedScores(gameSelector, addToScore);
       const storedToken = localStorage.getItem("token");
@@ -314,8 +351,6 @@ function GamePlay({
                 mathOperator={mathOperator}
                 questionCount={questionCount}
                 setAddToScore={setAddToScore}
-                setGotRight={setGotRight}
-                setGotWrong={setGotWrong}
               />
               <div className="equalSpace">=</div>
               <div className="answerBox">
@@ -324,15 +359,16 @@ function GamePlay({
                   placeholder="Your answer..."
                   value={userAnswer}
                   onChange={setAnswer}
-                  onWheel={(e) => e.target.blur()}
-                  style={{
-                    border: "1px solid #ccc",
-                    outline: "none",
-                    "&:focus": {
-                      border: "2px solid #7dc2e0",
-                      // boxShadow: "0 0 5px rgba(166, 213, 234, 0.5)",
-                    },
-                  }}
+                  onWheel={(e) => (e.target as HTMLInputElement).blur()}
+                  className="answer-input"
+                  // style={{
+                  //   border: "1px solid #ccc",
+                  //   outline: "none",
+                  //   "&:focus": {
+                  //     border: "2px solid #7dc2e0",
+                  //     // boxShadow: "0 0 5px rgba(166, 213, 234, 0.5)",
+                  //   },
+                  // }}
                 />
               </div>
             </div>

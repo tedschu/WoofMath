@@ -1,18 +1,27 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { GameSelectorType } from "../types/types";
+import { ToggleButtonGroupProps } from "@mui/material/ToggleButtonGroup";
+
+type GameSelectorComponentTypes = {
+  setGameSelector: React.Dispatch<React.SetStateAction<GameSelectorType>>;
+  setGotRight: React.Dispatch<React.SetStateAction<boolean>>;
+  setGotWrong: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export default function GameSelector({
   setGameSelector,
   setGotRight,
   setGotWrong,
-}) {
+}: GameSelectorComponentTypes) {
   const [alignment, setAlignment] = useState("addition");
 
-  const handleChange = (event, newAlignment) => {
+  const handleChange: ToggleButtonGroupProps["onChange"] = (
+    event,
+    newAlignment: GameSelectorType
+  ) => {
     if (newAlignment != null) {
       setAlignment(newAlignment);
       setGameSelector(newAlignment);
@@ -37,7 +46,6 @@ export default function GameSelector({
           exclusive
           onChange={handleChange}
           aria-label="Platform"
-          required
           sx={{
             "& .MuiToggleButton-root": {
               ...buttonStyle,

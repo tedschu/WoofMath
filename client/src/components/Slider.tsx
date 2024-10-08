@@ -1,9 +1,14 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import { SliderProps } from "@mui/material/Slider";
+
+type DiscreteSliderProps = {
+  setSliderValue: React.Dispatch<React.SetStateAction<number>>;
+  sliderValue: number;
+  setGotRight: React.Dispatch<React.SetStateAction<boolean>>;
+  setGotWrong: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const marks = [
   {
@@ -16,7 +21,7 @@ const marks = [
   },
 ];
 
-function valuetext(value) {
+function valuetext(value: number) {
   return `${value}°C`;
 }
 
@@ -25,9 +30,9 @@ export default function DiscreteSlider({
   sliderValue,
   setGotRight,
   setGotWrong,
-}) {
-  const handleSliderChange = (event, newValue) => {
-    setSliderValue(newValue);
+}: DiscreteSliderProps) {
+  const handleSliderChange: SliderProps["onChange"] = (event, newValue) => {
+    setSliderValue(newValue as number);
     setGotRight(false);
     setGotWrong(false);
   };
