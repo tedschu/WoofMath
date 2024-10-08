@@ -1,13 +1,20 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import RecoverModal from "../components/RecoverModal";
 import ResetPassModal from "../components/ResetPassModal";
 import woofMathLogo from "../assets/woofmath_logo_1.png";
-import bernese from "../assets/bernese_login.png";
+import { UserInfo } from "../types/types";
 
-function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo, setToken }) {
+type LoginProps = {
+  userInfo: UserInfo;
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  setUserInfo: React.Dispatch<React.SetStateAction<UserInfo>>;
+  setToken: React.Dispatch<React.SetStateAction<string>>;
+};
+
+function Login({ setIsLoggedIn, userInfo, setUserInfo, setToken }: LoginProps) {
   const [loginFailed, setLoginFailed] = useState(false);
   const [isRecoverModalOpen, setIsRecoverModalOpen] = useState(false);
   const [isResetPassModalOpen, setIsResetPassModalOpen] = useState(false);
@@ -21,14 +28,14 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo, setToken }) {
   const navigate = useNavigate();
 
   // Handles form values
-  const setFormValues = (event) => {
+  const setFormValues = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
     setUserInfo(newObj);
   };
 
   // Submit button
-  const submit = (event) => {
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     loginCheck(userInfo);
   };
@@ -36,7 +43,7 @@ function Login({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo, setToken }) {
   // *************
   // Posts login form data to API AND validates whether user exists
   // Uses isLoggedIn state setter to pass "true" to parent state in App.jsx
-  async function loginCheck(userInfo) {
+  async function loginCheck(userInfo: UserInfo) {
     try {
       const response = await fetch(
         "/auth/login", //path to login (see vite.config)

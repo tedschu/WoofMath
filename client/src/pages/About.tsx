@@ -1,10 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Nav from "../components/Nav";
 import woofMathLogo from "../assets/woofmath_logo_1.png";
 import { Link } from "react-router-dom";
 
-function About({ isLoggedIn }) {
+type AboutProps = {
+  isLoggedIn: boolean;
+};
+
+function About({ isLoggedIn }: AboutProps) {
   console.log(isLoggedIn);
 
   return (

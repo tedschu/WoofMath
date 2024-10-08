@@ -1,6 +1,5 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { GameProps, GameSelectorType, ModalBadgeType } from "../types/types";
 import { useNavigate } from "react-router-dom";
 import ScoreBar from "../components/ScoreBar";
 import Slider from "../components/Slider";
@@ -11,7 +10,6 @@ import BadgeModal from "../components/BadgeModal";
 
 function Game({
   isLoggedIn,
-  loginForm,
   userScore,
   setUserScore,
   userBadges,
@@ -19,16 +17,18 @@ function Game({
   userInfo,
   totalScore,
   setTotalScore,
-}) {
+}: GameProps) {
+  // Establishing state values for gameplay functionality that will be passed to multiple child components
   const [sliderValue, setSliderValue] = useState(1);
-  const [gameSelector, setGameSelector] = useState("addition");
+  const [gameSelector, setGameSelector] =
+    useState<GameSelectorType>("addition");
   //State values for conditional user alerts AND to pass points to DB (if gotRight )
   const [gotRight, setGotRight] = useState(false);
   const [gotWrong, setGotWrong] = useState(false);
 
   // state for modal that opens when a new badge is won
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalBadge, setModalBadge] = useState("");
+  const [modalBadge, setModalBadge] = useState<ModalBadgeType>("");
 
   const navigate = useNavigate();
 
@@ -49,17 +49,9 @@ function Game({
 
       <div className="mainContainer">
         <ScoreBar
-          isLoggedIn={isLoggedIn}
-          loginForm={loginForm}
           userScore={userScore}
-          setUserScore={setUserScore}
           userBadges={userBadges}
-          setUserBadges={setUserBadges}
-          sliderValue={sliderValue}
-          gameSelector={gameSelector}
-          userInfo={userInfo}
           totalScore={totalScore}
-          setTotalScore={setTotalScore}
         />
 
         <GameSelector

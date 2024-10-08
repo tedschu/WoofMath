@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Route, Router, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { UserScore, UserBadges, UserInfo } from "./types/types";
 import React from "react";
 import GamePlay from "./components/GamePlay";
 import Nav from "./components/Nav";
@@ -16,7 +17,8 @@ function App() {
   const storedToken = localStorage.getItem("token");
 
   const [isLoggedIn, setIsLoggedIn] = useState(!!storedToken);
-  const [userInfo, setUserInfo] = useState({
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    id: "",
     email: "",
     username: "",
     password: "",
@@ -25,15 +27,14 @@ function App() {
     security_question_2: "",
     security_answer_2: "",
   });
-  const [userScore, setUserScore] = useState({
+  const [userScore, setUserScore] = useState<UserScore>({
     addition_score: 0,
     subtraction_score: 0,
     multiplication_score: 0,
     division_score: 0,
-    total_score: 0,
   });
   const [totalScore, setTotalScore] = useState(0);
-  const [userBadges, setUserBadges] = useState({
+  const [userBadges, setUserBadges] = useState<UserBadges>({
     bernese: false,
     boxer: false,
     cat: false,
@@ -48,10 +49,12 @@ function App() {
 
   // Runs on page load to check for an expired token. If token is expired, clears out localstorage and redirects to login screen.
   useEffect(() => {
-    isTokenExpired(storedToken);
+    if (storedToken) {
+      isTokenExpired(storedToken);
+    }
   }, []);
 
-  function isTokenExpired(token) {
+  function isTokenExpired(token: string) {
     try {
       const payloadBase64 = token.split(".")[1];
       const decodedJson = atob(payloadBase64);
@@ -98,8 +101,6 @@ function App() {
             setUserInfo({
               id: data.id,
               username: data.username,
-              name: data.name,
-              birth_year: data.birth_year,
               email: data.email,
               security_question_1: data.security_question_1,
               security_answer_1: data.security_answer_1,
@@ -177,7 +178,6 @@ function App() {
           element={
             <Login
               setIsLoggedIn={setIsLoggedIn}
-              isLoggedIn={isLoggedIn}
               userInfo={userInfo}
               setUserInfo={setUserInfo}
               setToken={setToken}

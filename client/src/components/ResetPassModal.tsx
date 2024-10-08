@@ -1,35 +1,50 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useState, FormEvent, ChangeEvent } from "react";
+import { UserInfo } from "../types/types";
+
+type ResetPassModalTypes = {
+  isResetPassOpen: boolean;
+  onResetPassClose: () => void;
+  userInfo: UserInfo;
+  setUserInfo: React.Dispatch<React.SetStateAction<UserInfo>>;
+};
+
+type SecurityQuestionTypes = {
+  security_question_1: string;
+  security_question_2: string;
+};
 
 function ResetPassModal({
   isResetPassOpen,
   onResetPassClose,
   userInfo,
   setUserInfo,
-}) {
+}: ResetPassModalTypes) {
   if (!isResetPassOpen) return null;
 
   const [resetStep, setResetStep] = useState(1);
-  const [securityQuestions, setSecurityQuestions] = useState({});
+  const [securityQuestions, setSecurityQuestions] =
+    useState<SecurityQuestionTypes>({
+      security_question_1: "",
+      security_question_2: "",
+    });
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
   // Handles form values AND updates loginForm state
-  const setFormValues = (event) => {
+  const setFormValues = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
     setUserInfo(newObj);
   };
 
-  const usernameSubmit = (event) => {
+  const usernameSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     getSecurityQuestions(userInfo);
   };
 
   // Step 1: takes in a username and returns the security questions
-  const getSecurityQuestions = async (userInfo) => {
+  const getSecurityQuestions = async (userInfo: UserInfo) => {
     try {
       const response = await fetch(`/auth/get-questions/${userInfo.username}`, {
         method: "GET",
@@ -55,14 +70,12 @@ function ResetPassModal({
     }
   };
 
-  const questionsSubmit = (event) => {
+  const questionsSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     checkSecurityAnswers(userInfo);
   };
 
-  console.log(userInfo.username);
-
-  async function checkSecurityAnswers(userInfo) {
+  async function checkSecurityAnswers(userInfo: UserInfo) {
     try {
       const response = await fetch("/auth/check-answers/", {
         method: "POST",
@@ -89,12 +102,12 @@ function ResetPassModal({
     }
   }
 
-  const passwordSubmit = (event) => {
+  const passwordSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     updatePassword(userInfo);
   };
 
-  async function updatePassword(userInfo) {
+  async function updatePassword(userInfo: UserInfo) {
     try {
       const response = await fetch("/auth/reset-password", {
         method: "PUT",

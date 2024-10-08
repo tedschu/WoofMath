@@ -3,8 +3,16 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import woofMathLogo from "../assets/woofmath_logo_1.png";
+import { UserInfo } from "../types/types";
 
-function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
+type RegisterProps = {
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoggedIn: boolean;
+  userInfo: UserInfo;
+  setUserInfo: React.Dispatch<React.SetStateAction<UserInfo>>;
+};
+
+function Register({ setIsLoggedIn, userInfo, setUserInfo }: RegisterProps) {
   const [registerError, setRegisterError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -18,14 +26,17 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
   ];
 
   // Handles form values AND updates loginForm state
-  const setFormValues = (event) => {
+  const setFormValues = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const newObj = { ...userInfo };
     newObj[event.target.name] = event.target.value;
+
     setUserInfo(newObj);
   };
 
   // Submit button
-  const submit = (event) => {
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (
@@ -49,11 +60,11 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     }
   };
 
-  console.log(userInfo);
+  //console.log(userInfo);
   // *************
   // Posts login form data to API AND validates whether user exists
   // Uses isLoggedIn state setter to pass "true" to parent state in App.jsx
-  async function registerUser(userInfo) {
+  async function registerUser(userInfo: UserInfo) {
     try {
       const response = await fetch(
         "/auth/register", //path to register (see vite.config)
@@ -91,7 +102,7 @@ function Register({ setIsLoggedIn, isLoggedIn, userInfo, setUserInfo }) {
     } catch (error) {
       console.error("Error during registration", error);
       setRegisterError(true);
-      setErrorMessage(error.message);
+      setErrorMessage(error instanceof Error ? error.message : String(error));
     }
   }
 
