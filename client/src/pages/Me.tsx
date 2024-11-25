@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ScoreBar from "../components/ScoreBar";
@@ -92,10 +91,6 @@ function Me({
             </li> */}
             <li>
               Email: <span className="accountFont">{userInfo.email}</span>
-            </li>
-            <li>
-              Year you were born:{" "}
-              <span className="accountFont">{userInfo.birth_year}</span>
             </li>
             <li>
               Username: <span className="accountFont">{userInfo.username}</span>
