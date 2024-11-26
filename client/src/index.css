@@ -216,8 +216,8 @@ button {
 }
 
 .welcomeContentContainer > h1 {
-  font-size: 55px;
-  font-family: "Schoolbell";
+  font-size: 60px;
+  /* font-family: "Schoolbell"; */
 }
 
 .welcomeButtonContainer {
