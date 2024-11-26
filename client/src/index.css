@@ -377,11 +377,11 @@ nav {
 }
 
 .navTitle {
-  font-size: 40px;
+  font-size: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Schoolbell";
+  /* font-family: "Schoolbell"; */
   color: white;
 }
 

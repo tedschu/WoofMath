@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import woofMathLogo from "../assets/woofmath_logo_1.png";
 import { UserInfo } from "../types/types";
